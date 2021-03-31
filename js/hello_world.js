@@ -2,6 +2,8 @@ main();
 
 /**
  * Starta applikationen
+ * 
+ * Test
  */
 function main() {
    hello_world();
