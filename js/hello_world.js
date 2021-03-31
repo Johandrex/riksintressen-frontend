@@ -2,7 +2,7 @@ main();
 
 /**
  * Starta applikationen
- * 
+ * Wibke commits
  * Test
  */
 function main() {
@@ -11,7 +11,7 @@ function main() {
 };
 
 function hello_world() {
-  alert("Hello world!");
+  alert("Hello J+J+W!");
 };
 
 function setup_map() {
