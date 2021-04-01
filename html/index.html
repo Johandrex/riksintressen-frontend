@@ -4,28 +4,16 @@
         <title>Titel</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /> <!-- Ger bra resultat för mobiler -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-        <!-- openlayers library tillagt -->
+        <!-- openlayers library -->
         <link rel="stylesheet" type="text/css" href="../lib/openlayers/v6.5.0/css/ol.css"/>
         <script src="../lib/openlayers/v6.5.0/build/ol.js"></script>
+
+        <!-- css & js -->
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <script type="text/javascript" type="module" src="../js/setup.js"></script>
     </head>
     <body>
         <div id="map" class="map"></div>
-
-        <script type="text/javascript">
-            var map = new ol.Map({
-              target: 'map',
-              layers: [
-                new ol.layer.Tile({
-                  source: new ol.source.OSM()
-                })
-              ],
-              view: new ol.View({
-                center: ol.proj.fromLonLat([37.41, 8.82]),
-                zoom: 4
-              })
-            });
-          </script>
     </body>
 </html>
