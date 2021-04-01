@@ -5,15 +5,27 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /> <!-- Ger bra resultat för mobiler -->
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <script type="module" src="../js/hello_world.js"></script>
 
-        <!-- leaflet library tillagt -->
-        <link rel="stylesheet" sy="../lib/leaflet/leaflet.css" />
-        <script src="../lib/leaflet/leaflet.js"></script>
+        <!-- openlayers library tillagt -->
+        <link rel="stylesheet" type="text/css" href="../lib/openlayers/v6.5.0/css/ol.css"/>
+        <script src="../lib/openlayers/v6.5.0/build/ol.js"></script>
     </head>
     <body>
+        <div id="map" class="map"></div>
 
-       <div id="mapid"></div>
-
+        <script type="text/javascript">
+            var map = new ol.Map({
+              target: 'map',
+              layers: [
+                new ol.layer.Tile({
+                  source: new ol.source.OSM()
+                })
+              ],
+              view: new ol.View({
+                center: ol.proj.fromLonLat([37.41, 8.82]),
+                zoom: 4
+              })
+            });
+          </script>
     </body>
 </html>
