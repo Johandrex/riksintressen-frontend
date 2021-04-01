@@ -4,7 +4,6 @@ main();
  * Starta applikationen
  */
 function main() {
-  alert("Hello");
    setup_map();
 };
 
