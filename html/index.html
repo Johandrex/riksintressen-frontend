@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="sv">
     <head>
-        <title>Titel</title>
+        <title>Riksantikvarieämbetet - Geodata</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /> <!-- Ger bra resultat för mobiler -->
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-        <!-- openlayers library -->
+        <!-- openlayers bibliotek -->
         <link rel="stylesheet" type="text/css" href="../lib/openlayers/v6.5.0/css/ol.css"/>
         <script src="../lib/openlayers/v6.5.0/build/ol.js"></script>
-
-        <!-- css & js -->
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
     </head>
     <body>
+        <!-- Header med logo och settings -->
+        <header>
+            <div class="navbar">
+                <div class="navbar-logotype">
+                    <a class="navbar-brand" href="#" title="Riksantikvarieämbetet"><img src="https://www.raa.se/app/themes/raa-external/assets/images/riksantikvarieambetet-colored.svg" alt="Riksantikvarieämbetet"></a>
+                </div>
+    
+                <div class="navbar-menu">
+                    <div class="navbar-setting" title="Verktyg 1" role="button"><p>Verktyg 1</p></div>
+
+                    <div class="navbar-setting" title="Verktyg 2" role="button"><p>Verktyg 2</p></div>
+
+                    <div class="navbar-setting" title="Verktyg 3" role="button"><p>Verktyg 3</p></div>
+                </div>
+            </div>
+        </header>
+    
+        <!-- Karta -->
         <div id="map" class="map">
-          <script type="text/javascript" type="module" src="../js/setup.js"></script>
+            <script type="text/javascript" type="module" src="../js/map.js"></script> <!-- JavaScript för karta -->
         </div>
     </body>
 </html>
