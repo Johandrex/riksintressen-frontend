@@ -4,7 +4,7 @@ main();
  * Starta applikationen
  */
 function main() {
-   setup_map();
+   var map = setup_map();
 };
 
 function setup_map() {
@@ -16,8 +16,24 @@ function setup_map() {
       })
     ],
     view: new ol.View({
-      center: ol.proj.fromLonLat([18.2735696, 57.6271917]),
-      zoom: 12
+      center: ol.proj.fromLonLat([15.04047, 56.21664]),
+      zoom: 10
     })
   });
+
+  const layer = new ol.layer.VectorImage ({
+    title: 'Layer',
+    visible: true,
+    source: new ol.source.Vector({
+       url: '/data/test.geojson',
+       format: new ol.format.GeoJSON()
+    })
+  });
+  map.addLayer(layer);
+
+  map.on('click', function(e){
+    map.forEachFeatureAtPixel(e.pixel, function(feature, layer) {
+      console.log(feature);
+    })
+  })
 };
