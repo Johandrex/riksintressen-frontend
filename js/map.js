@@ -7,7 +7,12 @@ function main() {
    var map = setup_map();
 };
 
+/**
+ * Initiera kartan med openlayers biblioteket
+ */
 function setup_map() {
+
+  // Skapa kartan med position över visby
   var map = new ol.Map({
     target: 'map',
     layers: [
@@ -16,11 +21,12 @@ function setup_map() {
       })
     ],
     view: new ol.View({
-      center: ol.proj.fromLonLat([15.04047, 56.21664]),
-      zoom: 10
+      center: ol.proj.fromLonLat([18.3278145, 57.6271917]),
+      zoom: 12
     })
   });
 
+  // Hämta json data över geometrier
   const layer = new ol.layer.VectorImage ({
     title: 'Layer',
     visible: true,
@@ -31,6 +37,7 @@ function setup_map() {
   });
   map.addLayer(layer);
 
+  // När användaren trycker på en geometri skrivs det ut i konsolen.
   map.on('click', function(e){
     map.forEachFeatureAtPixel(e.pixel, function(feature, layer) {
       console.log(feature);
