@@ -18,3 +18,4 @@ Skapare: Johannes Seldevall, Sebastian Sjöberg och Wibke Du Rietz.
 3. gå in i repository mappen "cd riksintressen-frontend"
 4. installera angular och nödvändiga plugins via npm "npm install @angular/core @angular/forms @angular/common @angular/material @angular/router tailwindcss ngx-order-pipe @ng-select/ng-select"
 5. starta applikationen med angular "ng serve"
+sjjiqdffob bnlsrootbu kugijhblpr dfecwejrir viekkhqdjr ayqsgahqdl invpvxoxux yxdagarvxd ivwxmdryyl aaehkrxejd
