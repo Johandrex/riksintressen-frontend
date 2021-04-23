@@ -48,5 +48,6 @@ Thumbs.db
 *.mov
 *.wmv
 
-# Remove package-lock
+# Remove package
 package-lock.json
+package.json
