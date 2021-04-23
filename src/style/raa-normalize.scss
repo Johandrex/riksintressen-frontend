@@ -1,0 +1,14 @@
+@import 'dist/assets/fonts/SourceSansPro/SourceSansPro';
+
+body {
+  font-size: 16px;
+  font-weight: normal;
+  color: #3a3a3a;
+  letter-spacing: normal;
+}
+
+// Sätt alltid all font till Source Sans Pro
+* {
+  box-sizing: inherit;
+  font-family: 'Source Sans Pro', sans-serif;
+}
