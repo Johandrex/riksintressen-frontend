@@ -10,6 +10,9 @@ import { NavigationBarComponent } from './navigation-bar.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NavigationBarComponent
   ]
 })
 export class NavigationBarModule { }
