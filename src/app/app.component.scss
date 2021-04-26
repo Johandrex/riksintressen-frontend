@@ -16,15 +16,6 @@
     background: none;
     position: relative;
   }
-  #over_map {
-    align-content: center;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
-    height: 50vh;
-    width: 50vw;
-    z-index: 99;
-  }
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
