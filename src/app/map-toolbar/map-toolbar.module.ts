@@ -10,6 +10,9 @@ import { MapToolbarComponent } from './map-toolbar.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MapToolbarComponent
   ]
 })
 export class MapToolbarModule { }

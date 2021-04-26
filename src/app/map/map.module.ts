@@ -10,6 +10,9 @@ import { MapComponent } from './map.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MapComponent
   ]
 })
 export class MapModule { }
