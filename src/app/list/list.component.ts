@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
+  // A list that collects data from the database
   queriedResults : any;
 
   constructor() { 
