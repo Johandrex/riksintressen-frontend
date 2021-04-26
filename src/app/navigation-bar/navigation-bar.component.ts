@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListComponent } from '../list/list.component';
+
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public list: ListComponent){}
+
+  listButton: boolean = true;
+
 
   ngOnInit(): void {
+  }
+
+  /* Dölj / visa listan */
+  toggleList(): void {
+    if (this.listButton == true) {
+      this.listButton = false;
+      this.list.toggleList(false);
+    } else {
+      this.listButton = true;
+      this.list.toggleList(true);
+
+    }
   }
 
 }

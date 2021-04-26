@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-list',
@@ -6,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
   // A list that collects data from the database
   queriedResults : any;
+  isVisible: boolean;
 
   constructor() { 
+    this.isVisible = true;
+
     this.queriedResults = [
       { 
         "id":"T1", 
@@ -34,4 +41,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleList(visibilityParameter: boolean): void {
+    this.isVisible = visibilityParameter;
+  }
 }
