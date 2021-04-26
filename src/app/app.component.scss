@@ -7,6 +7,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  #content {
+    position: relative;
+  }
+
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 

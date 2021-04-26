@@ -10,6 +10,9 @@ import { InformationSidebarComponent } from './information-sidebar.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    InformationSidebarComponent
   ]
 })
 export class InformationSidebarModule { }
