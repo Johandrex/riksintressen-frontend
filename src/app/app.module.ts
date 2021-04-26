@@ -3,26 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { InformationSidebarComponent } from './information-sidebar/information-sidebar.component';
-import { ListComponent } from './list/list.component';
-import { MapComponent } from './map/map.component';
-import { MapToolbarComponent } from './map-toolbar/map-toolbar.component';
-import { HomeComponent } from './home/home.component';
+import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
+import { InformationSidebarModule } from './information-sidebar/information-sidebar.module';
+import { ListModule } from './list/list.module';
+import { MapModule } from './map/map.module';
+import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
   ],
   imports: [
+    HomeModule,
     BrowserModule,
     AppRoutingModule,
-    NavigationBarComponent,
-    InformationSidebarComponent,
-    ListComponent,
-    MapComponent,
-    MapToolbarComponent,
+    NavigationBarModule,
+    InformationSidebarModule,
+    ListModule,
+    MapModule,
+    MapToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
