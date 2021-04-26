@@ -8,19 +8,21 @@ import { InformationSidebarComponent } from './information-sidebar/information-s
 import { ListComponent } from './list/list.component';
 import { MapComponent } from './map/map.component';
 import { MapToolbarComponent } from './map-toolbar/map-toolbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
     NavigationBarComponent,
     InformationSidebarComponent,
     ListComponent,
     MapComponent,
-    MapToolbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    MapToolbarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
