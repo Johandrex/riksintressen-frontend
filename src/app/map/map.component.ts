@@ -46,7 +46,7 @@ export class MapComponent implements OnInit {
       })
     });
   
-    // Hämta json data över geometrier
+    // Hämta json-data över geometrier
     const layer = new VectorLayer ({
       visible: true,
       source: new Vector({

@@ -1,1 +1,27 @@
-<p>list works!</p>
+<div class="container">
+    <div>
+        <table class="table_results">
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Kategorier</th>
+                    <th>Kommun</th>
+                    <th>Län</th>
+                    <th>Senast ändrad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let resultRow of queriedResults">
+                    <td>{{resultRow.name}}</td>
+                    <td>{{resultRow.categories}}</td>
+                    <td>{{resultRow.municipality}}</td>
+                    <td>{{resultRow.province}}</td>
+                    <td>{{resultRow.lastEdited}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>

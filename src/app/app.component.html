@@ -1,8 +1,14 @@
-<app-navigation-bar></app-navigation-bar>
-
-<div id="content" role="main">
-  <app-map></app-map>
-  <app-information-sidebar></app-information-sidebar>
+<div class="content">
+	<header>
+		<app-navigation-bar></app-navigation-bar>
+	</header>
+	<main>
+		<div id="wrapper">
+			<app-map id=map></app-map>
+			<app-list id="over_map"></app-list>
+		</div>
+		<app-information-sidebar></app-information-sidebar>
+	</main>
 </div>
 
 <router-outlet></router-outlet>
