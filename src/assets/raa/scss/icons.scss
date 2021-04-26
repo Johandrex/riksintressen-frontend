@@ -1,19 +1,17 @@
-/////////////
-// Icons //
-/////////////
-
-// Överrid med
-// $raa-style-font-path: '~raa-style/dist';
-// i importerande projekt
-$raa-style-font-path: '..' !default;
+/*
+Ikoner
+Överrid med
+$raa-style-font-path: '~raa-style/dist';
+i importerande projekt
+*/
 
 @font-face {
   font-family: 'raa-icons';
-  src: url('#{$raa-style-font-path}/assets/icons/fonts/raa-icons.eot');
-  src: url('#{$raa-style-font-path}/assets/icons/fonts/raa-icons.eot') format('embedded-opentype'),
-    url('#{$raa-style-font-path}/assets/icons/fonts/raa-icons.woff') format('woff'),
-    url('#{$raa-style-font-path}/assets/icons/fonts/raa-icons.svg') format('svg'),
-    url('#{$raa-style-font-path}/assets/icons/fonts/raa-icons.ttf') format('truetype');
+  src: url(../assets/icons/fonts/raa-icons.eot);
+  src: url(../assets/icons/fonts/raa-icons.eot) format('embedded-opentype'),
+    url(../assets/icons/fonts/raa-icons.woff) format('woff'),
+    url(../assets/icons/fonts/raa-icons.svg) format('svg'),
+    url(../assets/icons/fonts/raa-icons.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: block;
