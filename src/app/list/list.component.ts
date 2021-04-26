@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss', '../../assets/raa/scss/raa-normalize.scss']
 })
 export class ListComponent implements OnInit {
   // A list that collects data from the database
