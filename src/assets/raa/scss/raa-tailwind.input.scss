@@ -1,0 +1,34 @@
+.raa-input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  height: 2.5rem;
+  border-width: 1px;
+  border-style: solid;
+  --border-opacity: 1;
+  border-color: #DADADA;
+  border-color: rgba(218, 218, 218, var(--border-opacity));
+  border-radius: 2px;
+  --bg-opacity: 1;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
+}
+
+.raa-input::-ms-clear {
+  /*Tar bort 'X' från IE11*/
+  width: 0;
+  height: 0;
+}
+
+.raa-input.error {
+  --bg-opacity: 1;
+  background-color: #FCEBEB;
+  background-color: rgba(252, 235, 235, var(--bg-opacity));
+}
+
+.raa-input:focus {
+  box-shadow: 0 0 0.1px 3px rgb(255,178,25);
+  outline: 2px dotted transparent;
+}

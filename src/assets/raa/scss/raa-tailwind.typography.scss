@@ -1,0 +1,196 @@
+.raa-link {
+  display: inline-block;
+  --text-opacity: 1;
+  color: #C94A18;
+  color: rgba(201, 74, 24, var(--text-opacity));
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.4s;
+  line-height: 1.375rem;
+  text-decoration-color: transparent;
+}
+
+.raa-link:focus {
+  text-decoration: underline;
+  --bg-opacity: 1;
+  background-color: #C94A18;
+  background-color: rgba(201, 74, 24, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #ffffff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  outline: 2px dotted transparent;
+}
+
+.raa-link:hover {
+  text-decoration: underline;
+  --text-opacity: 1;
+  color: #b54216;
+  color: rgba(181, 66, 22, var(--text-opacity));
+  background-color: transparent;
+}
+
+.raa-link:active {
+  --text-opacity: 1;
+  color: #a33b14;
+  color: rgba(163, 59, 20, var(--text-opacity));
+  --border-opacity: 1;
+  border-color: #a33b14;
+  border-color: rgba(163, 59, 20, var(--border-opacity));
+}
+
+/*Tar bort underline under ikon som ligger i länkar och centrerar den*/
+
+.raa-link .raa-icon {
+  display: inline-block;
+  position: relative;
+  top: 0.1em;
+}
+
+.raa-label {
+  display: flex;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.raa-label.select {
+  position: relative;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+}
+
+.raa-menu-text {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  --text-opacity: 1;
+  color: #C94A18;
+  color: rgba(201, 74, 24, var(--text-opacity));
+}
+
+.raa-menu-text:hover {
+  --text-opacity: 1;
+  color: #b54216;
+  color: rgba(181, 66, 22, var(--text-opacity));
+  text-decoration: underline;
+}
+
+.raa-menu-text:active {
+  --text-opacity: 1;
+  color: #a33b14;
+  color: rgba(163, 59, 20, var(--text-opacity));
+  text-decoration: underline;
+}
+
+.raa-warning-text {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  --text-opacity: 1;
+  color: #DB0000;
+  color: rgba(219, 0, 0, var(--text-opacity));
+}
+
+.raa-secondary-text {
+  font-size: 0.8125rem;
+  line-height: 1.117rem;
+  --text-opacity: 1;
+  color: #6A6A6A;
+  color: rgba(106, 106, 106, var(--text-opacity));
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
+.tw-heading-xl {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.tw-heading-lg {
+  font-size: 1.625rem;
+  line-height: 1.75rem;
+  line-height: 1.75rem;
+}
+
+.tw-heading-md {
+  font-size: 1.375rem;
+  line-height: 1.563rem;
+  line-height: 1.563rem;
+}
+
+.tw-heading-sm {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.188rem;
+}
+
+@media (min-width: 570px) {
+  p {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    line-height: 1.375rem;
+  }
+
+  .tw-heading-xl {
+    font-size: 2.5rem;
+    line-height: 2.813rem;
+    line-height: 2.813rem;
+  }
+
+  .tw-heading-lg {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .tw-heading-md {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    line-height: 1.875rem;
+  }
+
+  .tw-heading-sm {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  p {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    line-height: 1.375rem;
+  }
+
+  .tw-heading-xl {
+    font-size: 3rem;
+    line-height: 3.125rem;
+    line-height: 3.125rem;
+  }
+
+  .tw-heading-lg {
+    font-size: 2.25rem;
+    line-height: 2.813rem;
+    line-height: 2.813rem;
+  }
+
+  .tw-heading-md {
+    font-size: 1.75rem;
+    line-height: 1.875rem;
+    line-height: 1.875rem;
+  }
+
+  .tw-heading-sm {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    line-height: 1.75rem;
+  }
+}
