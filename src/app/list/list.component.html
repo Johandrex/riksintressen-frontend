@@ -3,13 +3,12 @@
         <table class="tableWithResults">
             <thead>
                 <tr>
-                    <th>
-                        <label>Sök efter namn:</label>
-                        <input type="text" [formControl]="nameOfObject">
-                    </th>
-                    <th>
-                        <button type="button" (click)="filterList()">Filtrera/sök</button>
-                    </th>
+                    <form>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Sök på namn"
+                                [(ngModel)]="name" (ngModelChange)="search()">
+                        </th>
+                    </form>
                 </tr>
                 <tr>
                     <th>Namn</th>
@@ -20,12 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let resultRow of queriedResults">
-                    <td>{{resultRow.name}}</td>
-                    <td>{{resultRow.categories}}</td>
-                    <td>{{resultRow.municipality}}</td>
-                    <td>{{resultRow.province}}</td>
-                    <td>{{resultRow.lastEdited}}</td>
+                <tr *ngFor="let result of data">
+                    <td>{{result.name}}</td>
+                    <td>{{result.categories}}</td>
+                    <td>{{result.municipality}}</td>
+                    <td>{{result.province}}</td>
+                    <td>{{result.lastUpdated}}</td>
                 </tr>
             </tbody>
             <tfoot>

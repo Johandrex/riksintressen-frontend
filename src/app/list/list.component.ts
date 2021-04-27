@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { NationalInterest } from '../nationalInterest';
+import { RestService } from '../rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,41 +13,36 @@ import { FormControl } from '@angular/forms';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss', '../../assets/raa/scss/raa-normalize.scss']
 })
-export class ListComponent {
-  // A list that collects data from the database
-  queriedResults : any;
+export class ListComponent implements OnInit {
+  // All data? 
+  data: NationalInterest[] = [];
 
   // Name searched for by user
-  searchedName: string = '';
-  nameOfObject = new FormControl('');
+  name: any = '';
 
-  constructor() { 
-    this.queriedResults = [
-      { 
-        "id":"T1", 
-        "name":"Ramundeboda", 
-        "categories":["Klostermiljö"], 
-        "municipality":"Laxå", 
-        "province":"Örebro", 
-        "lastUpdated":"1996-03-25"
-      },
-      { 
-        "id":"T53", 
-        "name":"Skagershult - Bålby", 
-        "categories":["Kyrkomiljö", "Herrgårdsmiljö"], 
-        "municipality":"Laxå", 
-        "province":"Örebro", 
-        "lastUpdated":"1996-03-25"
-      },
-    ];
+  constructor(public rs: RestService) { 
+
+  }
+  ngOnInit(): void {
+    this.rs.getNationalInterests().subscribe((response) => {
+      this.data = response;
+    })
   }
 
   /**
    * Function which is executed when user filters list or searches.
    * Query database.
    */
-  filterList() {
-    console.log('it does nothing', this.searchedName);
+  search() {
+    console.log('it does nothing', this.name);
+    if(this.name = "") {
+      this.ngOnInit();
+    }
+    else {
+      this.data = this.data.filter(res =>{
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
   }
 
   /* dölja / visa listan */

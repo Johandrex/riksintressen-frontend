@@ -10,6 +10,10 @@ import { MapModule } from './map/map.module';
 import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MapModule,
     MapToolbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
