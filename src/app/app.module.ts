@@ -1,39 +1,45 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
-import { InformationSidebarModule } from './information-sidebar/information-sidebar.module';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { InformationSidebarComponent } from './information-sidebar/information-sidebar.component';
 import { ListComponent } from './list/list.component';
-import { MapModule } from './map/map.module';
-import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
-import { HomeModule } from './home/home.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
+import { MapComponent } from './map/map.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    NavigationBarComponent,
+    InformationSidebarComponent,
+    MapComponent
   ],
   imports: [
-    HomeModule,
-    BrowserModule,
     AppRoutingModule,
-    NavigationBarModule,
-    InformationSidebarModule,
-    MapModule,
-    MapToolbarModule,
+    SharedModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
-    HttpClientModule 
+    HttpClientModule ,
+    NoopAnimationsModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

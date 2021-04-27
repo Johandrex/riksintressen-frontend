@@ -7,10 +7,10 @@ import { Input, Component, OnInit } from '@angular/core';
 })
 export class HeaderButtonComponent implements OnInit {
 
+  /* label där knappens namn lagras */
   @Input() label: string | undefined;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }

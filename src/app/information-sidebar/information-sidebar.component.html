@@ -1,24 +1,40 @@
 <!-- Information -->
+
+<button (click)="drawerToggle()" id="sidebar-drawer" class="tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
+  <i id="drawer-arrow" class="raa-icon-arrow-right tw-text-size-1.75"></i>
+</button>
+
 <div id="sidebar">
-  <h1>Information</h1>
-
-  <button class="raa-button">raa-button</button>
-  <button class="raa-button raa-button-secondary">raa-button-secondary</button>
-
-  <br>
-  <br>
-  
+  <h1 class="tw-heading-md tw-py-2">Information</h1>
+  <p>Du redigerar just nu statlig viktig information, gör ej misstag!</p>
 
   <form>
-      <label class="raa-label">Valid input</label>
-      <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="korrekt text">
-      <label class="raa-label">Invalid input</label>
-      <input type="email" placeholder="Skriv något fult" class="raa-input error invalid-input" value="felaktig text">
-      <p class="error-message">Fältet är felaktigt ifyllt</p>
-    </form>
+    <label class="raa-label">Namn: </label>
+    <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Visby">
 
-    <a class="raa-link"><span class="raa-icon raa-icon-share tw-mr-1"></span>Dela</a>
-    <a class="raa-link"><span class="raa-icon raa-icon-externallink tw-mr-1"></span>Extern länk</a>
-    <a class="raa-link tw-mt-4"><span class="raa-icon raa-icon-add tw-mr-1"></span>Lägg till</a>
+    <label class="raa-label">Motivering: </label>
+    <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Unik tidigmedeltida muromgärdad stad, Östersjöhandelns ledande metropol t.o.m. 1200­talets slut. Hansans födelsestad som i planmönster och bebyggelse ännu väl speglar handel, hantverk och sjöfart samt stadens förvaltningsfunktioner och sociala förhållanden från medeltid fram till modern tid.">
 
+    <label class="raa-label">Beskrivning: </label>
+    <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Medeltida gatunät och tomtstruktur i det centrala stadsområdet och ett nät av infartsvägar utanför detta. Mariakyrkan, kyrkoruiner och medeltida stenhus. Försvarstornet Kruttornet vid platsen för den medeltida hamnen samt ringmuren med vallgravar och en obebyggd zon där utanför. Lämningar av Visborgs slott. Stadsbebyggelse i sten och trä från 1600-1800­talen. Småhusbebyggelse och bevarad planstruktur som under 1700- och 1800-talen växte fram på Klinten och utmed de gamla vägsträckningarna runt det medeltida bebyggelseområdet. Parker och grönstråk. Institutionsbyggnader och annan bebyggelse som hör samman med funktionen som residens- och domkyrkostad. Medeltida kulturlager.">
+
+    <label class="raa-label">Kommun: </label>
+    <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Visby">
+
+    <label class="raa-label">Kategorier: </label>
+    <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Visby">
+
+    <br>
+    <button class="two-buttons raa-button">Bilder >></button>
+    <button class="two-buttons raa-button raa-button-secondary">Dokument >></button>
+    
+    <div id="details">
+      <label class="raa-label">Yta:</label><p>32.1</p>
+      <label class="raa-label">Senast revidering:</label><p>08/18/1997</p>
+      <label class="raa-label">Version:</label><p>1.0</p>
+    </div>
+  
+    <button class="two-buttons raa-button raa-button-confirm">spara</button>
+    <button class="two-buttons raa-button raa-button-cancel">avbryt</button>
+  </form>
 </div>

@@ -11,11 +11,14 @@ import { RestService } from '../rest.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss', '../../assets/raa/scss/raa-normalize.scss']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
   // All data? 
   data: NationalInterest[] = [];
+  
+  // visibility
+  visibility: boolean = true;
 
   // Name searched for by user
   name: any = '';
@@ -45,8 +48,9 @@ export class ListComponent implements OnInit {
     }
   }
 
-  /* dölja / visa listan */
-  toggleList(): void {
-    // ska fixa
-  }
+  toggleVisibility() {
+    console.log("works" + " " + this.visibility);
+    this.visibility = false;
+    console.log("works" + " " + this.visibility);
+    }
 }
