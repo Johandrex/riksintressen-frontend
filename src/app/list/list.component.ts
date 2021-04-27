@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Injectable } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Injectable({
@@ -9,9 +8,12 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss', '../../assets/raa/scss/raa-normalize.scss']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
+  // visibility
+  visibility: boolean = true;
+
   // A list that collects data from the database
   queriedResults : any;
 
@@ -48,8 +50,8 @@ export class ListComponent {
     console.log('it does nothing', this.searchedName);
   }
 
-  /* dölja / visa listan */
-  toggleList(): void {
-    // ska fixa
-  }
+  toggleVisibility() {
+    console.log("works");
+    this.visibility = false;
+    }
 }
