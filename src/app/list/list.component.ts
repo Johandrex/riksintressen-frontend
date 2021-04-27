@@ -13,11 +13,8 @@ import { Injectable } from '@angular/core';
 export class ListComponent implements OnInit {
   // A list that collects data from the database
   queriedResults : any;
-  visibility: boolean;
 
   constructor() { 
-    this.visibility = true;
-
     this.queriedResults = [
       { 
         "id":"T1", 
@@ -41,7 +38,8 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleList(visibility: boolean): void {
-    this.visibility = visibility;
+  /* dölja / visa listan */
+  toggleList(): void {
+    // ska fixa
   }
 }

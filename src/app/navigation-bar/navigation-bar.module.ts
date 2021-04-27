@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationBarComponent } from './navigation-bar.component';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { NavigationBarComponent } from './navigation-bar.component';
     NavigationBarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     NavigationBarComponent
