@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,16 @@ import { Injectable } from '@angular/core';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss', '../../assets/raa/scss/raa-normalize.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
   // A list that collects data from the database
   queriedResults : any;
+
+  // True if visible
   isVisible: boolean;
+
+  // Name searched for by user
+  searchedName: string = '';
+  nameOfObject = new FormControl('');
 
   constructor() { 
     this.isVisible = true;
@@ -38,7 +45,12 @@ export class ListComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
+  /**
+   * Function which is executed when user filters list or searches.
+   * Query database.
+   */
+  filterList() {
+    console.log('it does nothing', this.searchedName);
   }
 
   toggleList(visibilityParameter: boolean): void {

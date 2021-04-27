@@ -5,14 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { InformationSidebarModule } from './information-sidebar/information-sidebar.module';
-import { ListModule } from './list/list.module';
+import { ListComponent } from './list/list.component';
 import { MapModule } from './map/map.module';
 import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
 import { HomeModule } from './home/home.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent
   ],
   imports: [
     HomeModule,
@@ -20,9 +22,10 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     NavigationBarModule,
     InformationSidebarModule,
-    ListModule,
     MapModule,
     MapToolbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

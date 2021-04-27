@@ -3,6 +3,15 @@
         <table class="tableWithResults">
             <thead>
                 <tr>
+                    <th>
+                        <label>Sök efter namn:</label>
+                        <input type="text" [formControl]="nameOfObject">
+                    </th>
+                    <th>
+                        <button type="button" (click)="filterList()">Filtrera/sök</button>
+                    </th>
+                </tr>
+                <tr>
                     <th>Namn</th>
                     <th>Kategorier</th>
                     <th>Kommun</th>
