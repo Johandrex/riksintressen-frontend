@@ -1,3 +1,26 @@
+#sidebar-drawer {
+  position: absolute;
+  width: 1.5rem;
+  height: 3rem;
+  top: 2.7rem;
+  right: 29.9%;
+
+  border: 1px solid #e2e8f0;
+  border-right: 0px; // dölj högra bordern
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+.sidebar-drawer-hide {
+  right: 0% !important;
+}
+
 #sidebar {
   // Ser till att den positionerar 
   width: 30%;
@@ -6,8 +29,12 @@
   top: 0;
   right: 0;
 
-  border: 1px solid #e2e8f0;
+  border-left: 1px solid #e2e8f0;
   background-color: white;
   
   padding: 10px;
+}
+
+.sidebar-hide {
+  visibility: hidden;
 }

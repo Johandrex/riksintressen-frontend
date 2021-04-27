@@ -51,7 +51,8 @@ export class ListComponent {
   }
 
   toggleVisibility() {
-    console.log("works");
+    console.log("works" + " " + this.visibility);
     this.visibility = false;
+    console.log("works" + " " + this.visibility);
     }
 }
