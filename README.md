@@ -8,7 +8,7 @@
 2. cd riksintressen
 
 # installera node moduler i projektet
-3. npm install --save @angular/core @angular/forms @angular/common @angular/router @angular-devkit/build-angular tailwindcss postcss-loader postcss-scss postcss-import autoprefixer @angular-builders/custom-webpack
+3. npm install --save @angular/core @angular/forms @angular/common @angular/material @angular/router @angular-devkit/build-angular tailwindcss postcss-loader postcss-scss postcss-import autoprefixer @angular-builders/custom-webpack
 
 # starta applikationen
 4. ng serve
