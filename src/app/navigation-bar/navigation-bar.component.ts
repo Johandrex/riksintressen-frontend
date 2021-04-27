@@ -17,10 +17,6 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get isSidebarVisible(): boolean {
-    return this.list.isVisible;
-}
-
   /* Dölj / visa listan */
   toggleList(): void {
     if (this.listButton == true) {

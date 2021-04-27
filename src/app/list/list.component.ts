@@ -13,10 +13,10 @@ import { Injectable } from '@angular/core';
 export class ListComponent implements OnInit {
   // A list that collects data from the database
   queriedResults : any;
-  isVisible: boolean;
+  visibility: boolean;
 
   constructor() { 
-    this.isVisible = true;
+    this.visibility = true;
 
     this.queriedResults = [
       { 
@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleList(visibilityParameter: boolean): void {
-    this.isVisible = visibilityParameter;
+  toggleList(visibility: boolean): void {
+    this.visibility = visibility;
   }
 }
