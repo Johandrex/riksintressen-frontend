@@ -1,21 +1,21 @@
 .spacer {
-    flex: 1;
-  }
+  flex: 1;
+}
 
-  .toolbar {
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-  }
+.toolbar {
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
 
-  .toolbar-logo {
-    width: 220px;
-    margin-left: 15px;
-  }
+.toolbar-logo {
+  width: 220px;
+  margin-left: 15px;
+}
 
-  .toolbar-tools {
-    height: 40px;
-    margin-right: 15px;
-  }
+.toolbar-tools {
+  height: 40px;
+  margin-right: 15px;
+}
