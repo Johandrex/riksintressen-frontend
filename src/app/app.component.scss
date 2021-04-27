@@ -1,57 +1,43 @@
 :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+.content {
+  position: relative;
+}
+
+/* Map och list wrapper */
+#wrapper {
+  background: none;
+  position: relative;
+}
+
+/* Responsive Styles, för mobiler och paddor */
+@media screen and (max-width: 767px) {
+
+  .card-container > *:not(.circle-link) ,
+  .terminal {
+    width: 100%;
   }
 
-  .content {
-    position: relative;
+  .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
   }
 
-  /* Map and list wrapper */
-  #wrapper {
-    background: none;
-    position: relative;
-  }
-  #over_map {
-    align-content: center;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
-    height: 50vh;
-    width: 50vw;
-    z-index: 99;
+  .card.highlight-card span {
+    margin-left: 72px;
   }
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
+  svg#rocket-smoke {
+    right: 120px;
+    transform: rotate(-5deg);
   }
+}
 
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
+@media screen and (max-width: 575px) {
+  svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
   }
+}

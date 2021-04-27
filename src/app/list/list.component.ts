@@ -15,16 +15,11 @@ export class ListComponent {
   // A list that collects data from the database
   queriedResults : any;
 
-  // True if visible
-  isVisible: boolean;
-
   // Name searched for by user
   searchedName: string = '';
   nameOfObject = new FormControl('');
 
   constructor() { 
-    this.isVisible = true;
-
     this.queriedResults = [
       { 
         "id":"T1", 
@@ -53,7 +48,8 @@ export class ListComponent {
     console.log('it does nothing', this.searchedName);
   }
 
-  toggleList(visibilityParameter: boolean): void {
-    this.isVisible = visibilityParameter;
+  /* dölja / visa listan */
+  toggleList(): void {
+    // ska fixa
   }
 }

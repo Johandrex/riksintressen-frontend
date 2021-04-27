@@ -1,43 +1,23 @@
 <!-- Header -->
 <div class="toolbar" role="banner">
-    <!-- Logga -->
-    <div class="toolbar-logo">
-      <a href="#" title="Riksantikvarieämbetet"><img src="../../assets/raa/assets/images/logo/RAA_logo_farg_rgb.svg" alt="Riksantikvarieämbetet"></a>
-    </div>
-
-    <button *ngIf="listButton" (click)="toggleList()" role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-      <span class="tw-flex tw-flex-col tw-items-center">
-        <span aria-hidden="true" class="tw-text-header raa-icon-visibility-on"></span>
-        <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">dölj lista</span></span></button>
-
-    <button *ngIf="!listButton" (click)="toggleList()" role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-      <span class="tw-flex tw-flex-col tw-items-center">
-        <span aria-hidden="true" class="tw-text-header raa-icon-visibility-off"></span>
-        <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">visa lista</span></span></button>
-    
-    <div class="spacer"></div>
-
-    <!-- Ikoner från: https://app.raa.se/styleguide/styles -->
-
-    <!-- TODO: Snygga till koden, korta ner den... -->
+  <!-- Logga -->
+  <div class="toolbar-logo">
+    <a href="#" title="Riksantikvarieämbetet"><img src="../../assets/raa/assets/images/logo/RAA_logo_farg_rgb.svg" alt="Riksantikvarieämbetet"></a>
+  </div>
   
-    <!-- Verktyg -->
-    <nav class="toolbar-tools tw-flex tw-justify-end">
-        
-      <button role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-        <span class="tw-flex tw-flex-col tw-items-center">
-          <span class="tw-text-header"></span>
-          <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">sök</span></span></button>
+  <div class="spacer"></div>
 
-      <button role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-        <span class="tw-flex tw-flex-col tw-items-center">
-          <span aria-hidden="true" class="tw-text-header raa-icon-help"></span>
-          <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">hjälp</span></span></button>
+  <!-- Verktyg, ikoner från: https://app.raa.se/styleguide/styles -->
+  <nav class="toolbar-tools tw-flex tw-justify-end">
+  
+      <app-header-button (onClick)="buttonCall($event, buttonSearch)" [label]="buttonSearch"></app-header-button>
+
+      <!-- visa/stäng listan -->
+      <app-header-button (onClick)="buttonCall($event, buttonList)" [label]="buttonList"></app-header-button>
+  
+      <app-header-button (onClick)="buttonCall($event, buttonMenu)" [label]="buttonMenu"></app-header-button>
+  
+      <app-header-button (onClick)="buttonCall($event, buttonHelp)" [label]="buttonHelp"></app-header-button>
       
-      <button role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-        <span class="tw-flex tw-flex-col tw-items-center">
-          <span aria-hidden="true" class="tw-text-header raa-icon-menu"></span>
-          <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">meny</span></span></button>
-        
-    </nav>
+  </nav>
 </div>

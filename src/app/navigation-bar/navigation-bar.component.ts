@@ -9,24 +9,28 @@ import { ListComponent } from '../list/list.component';
 })
 export class NavigationBarComponent implements OnInit {
 
+  buttonList = "lista"
+  buttonSearch = "sök"
+  buttonHelp = "hjälp"
+  buttonMenu = "meny"
+
   constructor(public list: ListComponent){}
-
-  listButton: boolean = true;
-
 
   ngOnInit(): void {
   }
 
-  /* Dölj / visa listan */
-  toggleList(): void {
-    if (this.listButton == true) {
-      this.listButton = false;
-      this.list.toggleList(false);
-    } else {
-      this.listButton = true;
-      this.list.toggleList(true);
+  /* funktion som tillkallas när anvädnaren trycker på knappen */
+  buttonCall(event: any, button: string) {
+    console.log('buttonCall', event + " " + button + " trycktes på!");
 
+    if (button == this.buttonList) {
+      this.toggleList();
     }
   }
 
+
+  /* Dölj / visa listan */
+  toggleList(): void {
+    this.list.toggleList();
+  }
 }
