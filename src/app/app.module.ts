@@ -1,29 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
-import { InformationSidebarModule } from './information-sidebar/information-sidebar.module';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { InformationSidebarComponent } from './information-sidebar/information-sidebar.component';
 import { ListComponent } from './list/list.component';
-import { MapModule } from './map/map.module';
-import { MapToolbarModule } from './map-toolbar/map-toolbar.module';
-import { HomeModule } from './home/home.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    NavigationBarComponent,
+    InformationSidebarComponent,
+    MapComponent
   ],
   imports: [
-    HomeModule,
-    BrowserModule,
     AppRoutingModule,
-    NavigationBarModule,
-    InformationSidebarModule,
-    MapModule,
-    MapToolbarModule,
+    SharedModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule
   ],
