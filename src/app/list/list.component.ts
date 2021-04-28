@@ -15,8 +15,6 @@ import { RestService } from '../rest.service';
 })
 
 export class ListComponent implements OnInit {
-  // visibility
-  visibility: boolean;
 
   // All data? 
   data: NationalInterest[] = [];
@@ -31,9 +29,8 @@ export class ListComponent implements OnInit {
   // The current page of data shown in the UI.
   currentPage: number = 1;
 
-  constructor(public rs: RestService) {
-    this.visibility = true;
-  }
+  constructor(public rs: RestService) {}
+
   ngOnInit(): void {
     this.rs.getNationalInterests().subscribe((response) => {
       this.data = response;
@@ -106,12 +103,6 @@ export class ListComponent implements OnInit {
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
-  }
-
-  toggleVisibility() {
-    console.log("works" + " " + this.visibility);
-    this.visibility = false;
-    console.log("works" + " " + this.visibility);
   }
 
 }

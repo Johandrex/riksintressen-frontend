@@ -11,4 +11,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /**
+   * Function is used to show and hide the list with national interests.
+   */
+  listVisibility: boolean = true;
+  toggleVisibility() {
+    console.log("buttonCall trycktes på!");
+    this.listVisibility = !this.listVisibility;
+  }
+
 }

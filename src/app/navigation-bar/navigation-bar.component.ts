@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListComponent } from '../list/list.component'
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -13,19 +13,17 @@ export class NavigationBarComponent implements OnInit {
   buttonHelp = "hjälp"
   buttonMenu = "meny"
 
-  listVisibility : boolean = true;
+  //listVisibility : boolean = true;
 
-  constructor(private list: ListComponent) { }
+  constructor(private app: AppComponent) { }
 
   ngOnInit(): void { }
 
   /* funktion som tillkallas när anvädnaren trycker på knappen */
   buttonCall(event: any, button: string) {
-    console.log('buttonCall', event + " " + button + " trycktes på!");
-
     /* Dölj / visa listan, funktionen åkallar List modulen där funktionen utförs. */
     if (button == this.buttonList) {
-      this.list.toggleVisibility();
+      this.app.toggleVisibility();
     }
   }
 }
