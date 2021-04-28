@@ -9,7 +9,7 @@ export class InformationSidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
-  constructor() { }
+  constructor() {  }
 
   ngOnInit(): void {
   }
