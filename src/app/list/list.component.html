@@ -1,25 +1,64 @@
 <div class="container" *ngIf="this.visibility">
     <div>
-        <table class="tableWithResults">
+        <table>
             <thead>
                 <tr>
-                    <form>
-                        <th>
-                            <input type="text" class="form-control" placeholder="Sök på namn"
-                                [(ngModel)]="name" (ngModelChange)="search()">
-                        </th>
-                    </form>
+                    <th>
+                        <input type="text" class="form-control" name="name" placeholder="Sök på namn"
+                            [(ngModel)]="name" (ngModelChange)="searchName()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="category" placeholder="Sök på kategori"
+                            [(ngModel)]="category" (ngModelChange)="searchCategory()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommun"
+                            [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="province" placeholder="Sök på län"
+                            [(ngModel)]="province" (ngModelChange)="searchProvince()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="lastUpdated" placeholder="Sök på datum"
+                            [(ngModel)]="lastUpdated" (ngModelChange)="searchLastUpdated()">
+                    </th>
                 </tr>
                 <tr>
-                    <th>Namn</th>
-                    <th>Kategorier</th>
-                    <th>Kommun</th>
-                    <th>Län</th>
-                    <th>Senast ändrad</th>
+                    <th>Namn &nbsp;
+                        <span (click)="sort('name')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Kategorier &nbsp;
+                        <span (click)="sort('categories')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Kommun &nbsp;
+                        <span (click)="sort('municipality')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span></th>
+                    <th>Län &nbsp;
+                        <span (click)="sort('province')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Senast ändrad &nbsp;
+                        <span (click)="sort('lastUpdated')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of data">
+                <tr *ngFor="let result of data | orderBy: key: reverse | 
+                        paginate:{itemsPerPage:5,currentPage:currentPage};">
                     <td>{{result.name}}</td>
                     <td>{{result.categories}}</td>
                     <td>{{result.municipality}}</td>
@@ -28,7 +67,7 @@
                 </tr>
             </tbody>
             <tfoot>
-
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
             </tfoot>
         </table>
     </div>

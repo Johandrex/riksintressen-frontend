@@ -1,6 +1,7 @@
 .container {
-  // Ser till att den positionerar 
+  // Ser till att den positioneras
   width: 60%;
+  min-width: fit-content;
   min-height: 30%;
   position: absolute;
   top: 0;
@@ -10,8 +11,25 @@
   border-radius: 5px;
   background-color: white;
   
-  margin: 60px;
-  padding: 30px;
+  margin: 1em;
 
   z-index: 1;
+}
+
+// Table data can't have margins...
+th, td {
+  padding: 1em;
+}
+
+input {
+  width: auto;
+}
+
+// Icon for sorting
+.icon-sort {
+  float: right;
+}
+.icon-sort:hover {
+  color: #C94A18;
+  cursor: pointer;
 }
