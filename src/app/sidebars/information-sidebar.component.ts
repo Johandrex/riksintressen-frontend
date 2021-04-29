@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-information-sidebar',
+  templateUrl: './information-sidebar.component.html',
+  styleUrls: ['./information-sidebar.component.scss']
+})
+export class InformationSidebarComponent implements OnInit {
+
+  drawerOpen : boolean = true;
+
+  constructor() {  }
+
+  ngOnInit(): void {
+  }
+
+  /* hide or show sidebar menu */
+  drawerToggle() {
+    let sidebar = document.getElementById('sidebar-right');
+    let sidebarDrawer = document.getElementById('sidebar-right-drawer');
+    let drawerArrow = document.getElementById('drawer-right-arrow');
+
+    if (this.drawerOpen) {
+      this.drawerOpen = false;
+      if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
+        sidebarDrawer.classList.add('sidebar-right-drawer-hide');
+        sidebar.classList.add('sidebar-right-hide');
+
+        drawerArrow.classList.add('raa-icon-arrow-left');
+        drawerArrow.classList.remove('raa-icon-arrow-right');
+      }
+    } else {
+      this.drawerOpen = true;
+      if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
+        sidebarDrawer.classList.remove('sidebar-right-drawer-hide');
+        sidebar.classList.remove('sidebar-right-hide');
+
+        drawerArrow.classList.add('raa-icon-arrow-right');
+        drawerArrow.classList.remove('raa-icon-arrow-left');
+      }
+    }
+  }
+
+  getSelectedNationalInterestFromList() {
+    //let id: number = this.ListComponent.getIdOfNationalInterest();
+  }
+}

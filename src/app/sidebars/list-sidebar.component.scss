@@ -1,0 +1,81 @@
+#sidebar-left-drawer {
+  position: absolute;
+  width: 1.5rem;
+  height: 3rem;
+  top: 2.7rem;
+  left: 49.9%;
+
+  border: 1px solid #e2e8f0;
+  border-right: 0px; // dölj högra bordern
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+.sidebar-left-drawer-hide {
+  left: 0% !important;
+}
+
+#sidebar-left {
+  // Ser till att den positionerar 
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-left: 1px solid #e2e8f0;
+  background-color: white;
+
+  overflow-y: auto;
+
+  z-index: 1;
+  padding: 10px;
+}
+
+.sidebar-left-hide {
+  visibility: hidden;
+}
+
+/*
+.container {
+  // Ser till att den positioneras
+  width: 60%;
+  min-width: fit-content;
+  min-height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  background-color: white;
+  
+  margin: 1em;
+
+  z-index: 1;
+}
+
+// Table data can't have margins...
+th, td {
+  padding: 1em;
+}
+
+input {
+  width: auto;
+}
+
+// Icon for sorting
+.icon-sort {
+  float: right;
+}
+.icon-sort:hover {
+  color: #C94A18;
+  cursor: pointer;
+}
+*/

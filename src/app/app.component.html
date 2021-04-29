@@ -6,9 +6,9 @@
 	<main>
 		<!-- listan, sidebar läggs över kartan i wrappern -->
 		<div id="wrapper">
-			<app-list *ngIf="listVisibility"></app-list>
+			<app-list-sidebar *ngIf="listVisibility"></app-list-sidebar>
       		<app-map></app-map>
-      		<app-sidebar></app-sidebar>
+      		<app-information-sidebar></app-information-sidebar>
 		</div>
 	</main>
 </div>

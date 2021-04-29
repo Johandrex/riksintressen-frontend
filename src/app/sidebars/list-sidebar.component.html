@@ -1,0 +1,78 @@
+<button (click)="drawerToggle()" id="sidebar-left-drawer" class="tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
+    <i id="drawer-left-arrow" class="raa-icon-arrow-left tw-text-size-1.75"></i>
+  </button>
+
+<div id="sidebar-left">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="text" class="form-control" name="namn" placeholder="Sök på namn"
+                            [(ngModel)]="namn" (ngModelChange)="searchNamn()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="beskrivning" placeholder="Sök på beskrivning"
+                            [(ngModel)]="beskrivning" (ngModelChange)="searchBeskrivning()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="motivering" placeholder="Sök på motivering"
+                            [(ngModel)]="motivering" (ngModelChange)="searchMotivering()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="diarienummer" placeholder="Sök på diarienummer"
+                            [(ngModel)]="diarienummer" (ngModelChange)="searchDiarienummer()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="kommun" placeholder="Sök på kommun"
+                            [(ngModel)]="kommun" (ngModelChange)="searchKommun()">
+                    </th>
+                </tr>
+                <tr>
+                    <th>Namn &nbsp;
+                        <span (click)="sort('name')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Beskrivning &nbsp;
+                        <span (click)="sort('beskrivning')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Motivering &nbsp;
+                        <span (click)="sort('motivering')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span></th>
+                    <th>Diarienummer &nbsp;
+                        <span (click)="sort('diarienummer')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Kommun &nbsp;
+                        <span (click)="sort('kommun')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of data | orderBy: key: reverse | 
+                        paginate:{itemsPerPage:5,currentPage:currentPage};">
+                    <td>{{result.namn}}</td>
+                    <td>{{result.beskrivning}}</td>
+                    <td>{{result.motivering}}</td>
+                    <td>{{result.diarienummer}}</td>
+                    <td>{{result.kommun}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+            </tfoot>
+        </table>
+    </div>
+</div>

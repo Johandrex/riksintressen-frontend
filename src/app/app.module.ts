@@ -9,8 +9,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { ListComponent } from './list/list.component';
+import { InformationSidebarComponent } from './sidebars/information-sidebar.component';
+import { ListSidebarComponent } from './sidebars/list-sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -22,9 +22,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+    ListSidebarComponent,
     NavigationBarComponent,
-    SidebarComponent,
+    InformationSidebarComponent,
     MapComponent
   ],
   imports: [
@@ -36,7 +36,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     Ng2OrderModule,
     Ng2SearchPipeModule,
-    HttpClientModule,
+    HttpClientModule ,
     NoopAnimationsModule,
     MatRadioModule,
     MatSelectModule
