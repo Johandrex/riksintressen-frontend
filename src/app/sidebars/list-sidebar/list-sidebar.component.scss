@@ -51,6 +51,16 @@ input {
   width: auto;
 }
 
+// The names of national interest are "hyperlinks"
+a {
+  color: #C94A18;
+  text-decoration: underline;
+}
+a:hover {
+  color: #FFB219;
+  cursor: pointer;
+}
+
 // Icon for sorting
 .icon-sort {
   float: right;

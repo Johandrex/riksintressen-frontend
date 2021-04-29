@@ -63,7 +63,9 @@
             <tbody>
                 <tr *ngFor="let result of data | orderBy: key: reverse | 
                         paginate:{itemsPerPage:5,currentPage:currentPage};">
-                    <td>{{result.namn}}</td>
+                    <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
+                        {{result.namn}}
+                    </a></td>
                     <td>{{result.beskrivning}}</td>
                     <td>{{result.motivering}}</td>
                     <td>{{result.diarienummer}}</td>

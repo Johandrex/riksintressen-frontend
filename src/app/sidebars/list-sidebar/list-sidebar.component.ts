@@ -146,6 +146,7 @@ export class ListSidebarComponent implements OnInit {
     // id should never be empty, but just in case...
     if(value > 0) {
       this.idOfNationalInterest = value;
+      // Call info bar
     }
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListSidebarComponent } from '../list-sidebar/list-sidebar.component';
 
 @Component({
   selector: 'app-information-sidebar',
@@ -9,7 +10,7 @@ export class InformationSidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
-  constructor() {  }
+  constructor(private listSidebar: ListSidebarComponent) {  }
 
   ngOnInit(): void {
   }
@@ -42,6 +43,6 @@ export class InformationSidebarComponent implements OnInit {
   }
 
   getSelectedNationalInterestFromList() {
-    //let id: number = this.ListComponent.getIdOfNationalInterest();
+    let id: number = this.listSidebar.getIdOfNationalInterest();
   }
 }
