@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Riksintresse } from '../classes/Riksintresse';
 import { ApiService } from '../api.service';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-
 export class ListComponent implements OnInit {
 
   // All data? 

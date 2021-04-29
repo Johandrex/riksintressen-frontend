@@ -10,7 +10,7 @@ export class SidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
-  constructor() { }
+  constructor(private ListComponent: ListComponent) { }
 
   ngOnInit(): void {}
 
@@ -42,6 +42,6 @@ export class SidebarComponent implements OnInit {
   }
 
   getSelectedNationalInterestFromList() {
-    //let id: number = this.ListComponent.getIdOfNationalInterest();
+    let id: number = this.ListComponent.getIdOfNationalInterest();
   }
 }
