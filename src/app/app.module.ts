@@ -9,8 +9,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { InformationSidebarComponent } from './sidebars/information-sidebar.component';
-import { ListSidebarComponent } from './sidebars/list-sidebar.component';
+import { InformationSidebarComponent } from './sidebars/information-sidebar/information-sidebar.component';
+import { ListSidebarComponent } from './sidebars/list-sidebar/list-sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';

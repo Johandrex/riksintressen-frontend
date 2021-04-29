@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Riksintresse } from '../classes/Riksintresse';
-import { ApiService } from '../api.service';
+import { Riksintresse } from '../../classes/Riksintresse';
+import { ApiService } from '../../api.service';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-list-sidebar',
   templateUrl: './list-sidebar.component.html',
   styleUrls: ['./list-sidebar.component.scss']
 })
-
 export class ListSidebarComponent implements OnInit {
 
   // All data? 
@@ -19,7 +21,6 @@ export class ListSidebarComponent implements OnInit {
   beskrivning: any;
   motivering: any;
   diarienummer: any;
-
   kommun: any;
 
   // The current page of data shown in the UI.
