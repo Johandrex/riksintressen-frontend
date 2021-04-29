@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-information-sidebar',
-  templateUrl: './information-sidebar.component.html',
-  styleUrls: ['./information-sidebar.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class InformationSidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
@@ -40,5 +40,4 @@ export class InformationSidebarComponent implements OnInit {
       }
     }
   }
-
 }

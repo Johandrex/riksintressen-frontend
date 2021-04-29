@@ -13,8 +13,6 @@ export class NavigationBarComponent implements OnInit {
   buttonHelp = "hjälp"
   buttonMenu = "meny"
 
-  //listVisibility : boolean = true;
-
   constructor(private app: AppComponent) { }
 
   ngOnInit(): void { }
@@ -23,7 +21,7 @@ export class NavigationBarComponent implements OnInit {
   buttonCall(event: any, button: string) {
     /* Dölj / visa listan, funktionen åkallar List modulen där funktionen utförs. */
     if (button == this.buttonList) {
-      this.app.toggleVisibility();
+      this.app.toggleList();
     }
   }
 }

@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Riksintresse } from '../classes/Riksintresse';
 import { ApiService } from '../api.service';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 @Component({
   selector: 'app-list',
