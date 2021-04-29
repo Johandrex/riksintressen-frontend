@@ -13,8 +13,6 @@ export class NavigationBarComponent implements OnInit {
   buttonHelp = "hjälp"
   buttonMenu = "meny"
 
-  //listVisibility : boolean = true;
-
   constructor(private app: AppComponent) { }
 
   ngOnInit(): void { }

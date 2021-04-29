@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
    */
   listVisibility: boolean = true;
   toggleVisibility() {
-    console.log("buttonCall trycktes på!");
     this.listVisibility = !this.listVisibility;
   }
 

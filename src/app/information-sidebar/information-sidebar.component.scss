@@ -33,6 +33,8 @@
   background-color: white;
   
   padding: 10px;
+
+  overflow-y: scroll; // Adds a scrollbar to the element
 }
 
 .sidebar-hide {

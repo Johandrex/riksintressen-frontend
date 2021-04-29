@@ -28,6 +28,9 @@ export class ListComponent implements OnInit {
   // The current page of data shown in the UI.
   currentPage: number = 1;
 
+  // Id of last clicked national interest
+  idOfNationalInterest: number = -1;
+
   constructor(public api: ApiService) {}
 
   ngOnInit(): void {
@@ -93,6 +96,28 @@ export class ListComponent implements OnInit {
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+
+  /**
+   * Function to get id of clicked national interest.
+   */
+  getIdOfClicked(event: any) {
+    // Check the id of the item clicked on
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    // id should never be empty, but just in case...
+    if(value > 0) {
+      this.idOfNationalInterest = value;
+    }
+  }
+
+  /**
+   * Simple getter. Is it good practice to encapsulate in typescript?
+   * @returns Id of national interest
+   */
+  getIdOfNationalInterest() {
+    return this.idOfNationalInterest;
   }
 
 }

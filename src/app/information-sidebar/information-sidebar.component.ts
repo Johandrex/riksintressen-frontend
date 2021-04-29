@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListComponent } from '../list/list.component'
 
 @Component({
   selector: 'app-information-sidebar',
@@ -9,7 +10,7 @@ export class InformationSidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
-  constructor() {  }
+  constructor(private listComponent: ListComponent) {  }
 
   ngOnInit(): void {
   }
