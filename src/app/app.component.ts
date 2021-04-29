@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  listVisibility: boolean = true;
 
   constructor() {}
 
@@ -15,8 +16,7 @@ export class AppComponent implements OnInit {
   /**
    * Function is used to show and hide the list with national interests.
    */
-  listVisibility: boolean = true;
-  toggleVisibility() {
+  toggleList() {
     this.listVisibility = !this.listVisibility;
   }
 

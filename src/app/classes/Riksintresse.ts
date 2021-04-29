@@ -4,17 +4,41 @@
  */
 
 export class Riksintresse {
-    id: string;
-    name: string;
-    description: string;
-    motivation: string;
-    diarienumber: string;
+    id: number;
+    namn: string;
+    beskrivning: string;
+    motivering: string;
+    diarienummer: string;
+
+    geometri: number; /* id */
+
+    kommun: string;
+    lan: string;
+
+    kulturmiljotyp: Array<string>;
+
+    version: number;
     
-    constructor(id: string, name: string, description: string, motivation: string, diarienumber: string) {
+    constructor(id: number, namn: string, beskrivning: string, motivering: string, diarienummer: string,
+        geometri: number, kommun: string, lan: string, kulturmiljotyp: Array<string>, version: number) {
+        /* hämtas från riksintresse table */
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.motivation = motivation;
-        this.diarienumber = diarienumber;
+        this.namn = namn;
+        this.beskrivning = beskrivning;
+        this.motivering = motivering;
+        this.diarienummer = diarienummer;
+
+        /* geometri table */
+        this.geometri = geometri;
+
+        /* riksintresse_i_kommun, kommun, lan table */
+        this.kommun = kommun;
+        this.lan = lan;
+
+        /* Array: riksintresse_har_kulturmiljotyp, kulturmiljotyp */
+        this.kulturmiljotyp = kulturmiljotyp;
+
+        /* riksintresse_har_version */
+        this.version = version;
     }
 }

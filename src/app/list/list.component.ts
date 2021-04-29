@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Riksintresse } from '../classes/Riksintresse';
 import { ApiService } from '../api.service';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 @Component({
   selector: 'app-list',
@@ -20,10 +15,12 @@ export class ListComponent implements OnInit {
   data: Riksintresse[] = [];
 
   // Items to be searched for
-  name: any;
-  description: any;
-  motivation: any;
-  diarienumber: any;
+  namn: any;
+  beskrivning: any;
+  motivering: any;
+  diarienummer: any;
+
+  kommun: any;
 
   // The current page of data shown in the UI.
   currentPage: number = 1;
@@ -45,43 +42,53 @@ export class ListComponent implements OnInit {
    * Query database.
    * @todo Make more abstract if possible.
    */
-  searchName() {
-    if (this.name == "") {
+  searchNamn() {
+    if (this.namn == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        return res.namn.toLocaleLowerCase().match(this.namn.toLocaleLowerCase());
       })
     }
   }
-  searchDescription() {
-    if (this.description == "") {
+  searchBeskrivning() {
+    if (this.beskrivning == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.description.toLocaleLowerCase().match(this.description.toLocaleLowerCase());
+        return res.beskrivning.toLocaleLowerCase().match(this.beskrivning.toLocaleLowerCase());
       })
     }
   }
-  searchMotivation() {
-    if (this.motivation == "") {
+  searchMotivering() {
+    if (this.motivering == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.motivation.toLocaleLowerCase().match(this.motivation.toLocaleLowerCase());
+        return res.motivering.toLocaleLowerCase().match(this.motivering.toLocaleLowerCase());
       })
     }
   }
-  searchDiarienumber() {
-    if (this.diarienumber == "") {
+  searchDiarienummer() {
+    if (this.diarienummer == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.diarienumber.toLocaleLowerCase().match(this.diarienumber.toLocaleLowerCase());
+        return res.diarienummer.toLocaleLowerCase().match(this.diarienummer.toLocaleLowerCase());
+      })
+    }
+  }
+  searchKommun() {
+    if (this.diarienummer == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.data = this.data.filter(res => {
+        return res.diarienummer.toLocaleLowerCase().match(this.diarienummer.toLocaleLowerCase());
       })
     }
   }

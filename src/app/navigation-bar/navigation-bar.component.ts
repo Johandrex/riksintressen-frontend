@@ -21,7 +21,7 @@ export class NavigationBarComponent implements OnInit {
   buttonCall(event: any, button: string) {
     /* Dölj / visa listan, funktionen åkallar List modulen där funktionen utförs. */
     if (button == this.buttonList) {
-      this.app.toggleVisibility();
+      this.app.toggleList();
     }
   }
 }

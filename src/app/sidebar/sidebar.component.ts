@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ListComponent } from '../list/list.component'
+import { ListComponent } from '../list/list.component';
 
 @Component({
-  selector: 'app-information-sidebar',
-  templateUrl: './information-sidebar.component.html',
-  styleUrls: ['./information-sidebar.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class InformationSidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit {
 
   drawerOpen : boolean = true;
 
-  constructor(private listComponent: ListComponent) {  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /* hide or show sidebar menu */
   drawerToggle() {
@@ -42,4 +41,7 @@ export class InformationSidebarComponent implements OnInit {
     }
   }
 
+  getSelectedNationalInterestFromList() {
+    //let id: number = this.ListComponent.getIdOfNationalInterest();
+  }
 }
