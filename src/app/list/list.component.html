@@ -4,20 +4,24 @@
             <thead>
                 <tr>
                     <th>
-                        <input type="text" class="form-control" name="name" placeholder="Sök på namn"
-                            [(ngModel)]="name" (ngModelChange)="searchName()">
+                        <input type="text" class="form-control" name="namn" placeholder="Sök på namn"
+                            [(ngModel)]="namn" (ngModelChange)="searchNamn()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="description" placeholder="Sök på beskrivning"
-                            [(ngModel)]="description" (ngModelChange)="searchDescription()">
+                        <input type="text" class="form-control" name="beskrivning" placeholder="Sök på beskrivning"
+                            [(ngModel)]="beskrivning" (ngModelChange)="searchBeskrivning()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="motivation" placeholder="Sök på motivering"
-                            [(ngModel)]="motivation" (ngModelChange)="searchMotivation()">
+                        <input type="text" class="form-control" name="motivering" placeholder="Sök på motivering"
+                            [(ngModel)]="motivering" (ngModelChange)="searchMotivering()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="diarienumber" placeholder="Sök på diarienummer"
-                            [(ngModel)]="diarienumber" (ngModelChange)="searchDiarienumber()">
+                        <input type="text" class="form-control" name="diarienummer" placeholder="Sök på diarienummer"
+                            [(ngModel)]="diarienummer" (ngModelChange)="searchDiarienummer()">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="kommun" placeholder="Sök på kommun"
+                            [(ngModel)]="kommun" (ngModelChange)="searchKommun()">
                     </th>
                 </tr>
                 <tr>
@@ -27,19 +31,25 @@
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
-                    <th>Kategorier &nbsp;
-                        <span (click)="sort('description')" class="icon-sort">
+                    <th>Beskrivning &nbsp;
+                        <span (click)="sort('beskrivning')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span>
+                    </th>
+                    <th>Motivering &nbsp;
+                        <span (click)="sort('motivering')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span></th>
+                    <th>Diarienummer &nbsp;
+                        <span (click)="sort('diarienummer')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
                     <th>Kommun &nbsp;
-                        <span (click)="sort('motivation')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span></th>
-                    <th>Län &nbsp;
-                        <span (click)="sort('diarienumber')" class="icon-sort">
+                        <span (click)="sort('kommun')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
@@ -53,6 +63,7 @@
                     <td>{{result.beskrivning}}</td>
                     <td>{{result.motivering}}</td>
                     <td>{{result.diarienummer}}</td>
+                    <td>{{result.kommun}}</td>
                 </tr>
             </tbody>
             <tfoot>
