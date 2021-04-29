@@ -8,20 +8,16 @@
                             [(ngModel)]="name" (ngModelChange)="searchName()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="category" placeholder="Sök på kategori"
-                            [(ngModel)]="category" (ngModelChange)="searchCategory()">
+                        <input type="text" class="form-control" name="description" placeholder="Sök på beskrivning"
+                            [(ngModel)]="description" (ngModelChange)="searchDescription()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommun"
-                            [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
+                        <input type="text" class="form-control" name="motivation" placeholder="Sök på motivering"
+                            [(ngModel)]="motivation" (ngModelChange)="searchMotivation()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="province" placeholder="Sök på län"
-                            [(ngModel)]="province" (ngModelChange)="searchProvince()">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" name="lastUpdated" placeholder="Sök på datum"
-                            [(ngModel)]="lastUpdated" (ngModelChange)="searchLastUpdated()">
+                        <input type="text" class="form-control" name="diarienumber" placeholder="Sök på diarienummer"
+                            [(ngModel)]="diarienumber" (ngModelChange)="searchDiarienumber()">
                     </th>
                 </tr>
                 <tr>
@@ -32,24 +28,18 @@
                         </span>
                     </th>
                     <th>Kategorier &nbsp;
-                        <span (click)="sort('categories')" class="icon-sort">
+                        <span (click)="sort('description')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
                     <th>Kommun &nbsp;
-                        <span (click)="sort('municipality')" class="icon-sort">
+                        <span (click)="sort('motivation')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span></th>
                     <th>Län &nbsp;
-                        <span (click)="sort('province')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span>
-                    </th>
-                    <th>Senast ändrad &nbsp;
-                        <span (click)="sort('lastUpdated')" class="icon-sort">
+                        <span (click)="sort('diarienumber')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
@@ -59,11 +49,10 @@
             <tbody>
                 <tr *ngFor="let result of data | orderBy: key: reverse | 
                         paginate:{itemsPerPage:5,currentPage:currentPage};">
-                    <td>{{result.name}}</td>
-                    <td>{{result.categories}}</td>
-                    <td>{{result.municipality}}</td>
-                    <td>{{result.province}}</td>
-                    <td>{{result.lastUpdated}}</td>
+                    <td>{{result.namn}}</td>
+                    <td>{{result.beskrivning}}</td>
+                    <td>{{result.motivering}}</td>
+                    <td>{{result.diarienummer}}</td>
                 </tr>
             </tbody>
             <tfoot>

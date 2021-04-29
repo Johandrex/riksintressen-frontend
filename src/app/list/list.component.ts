@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NationalInterest } from '../nationalInterest';
-import { RestService } from '../rest.service';
+import { Riksintresse } from '../classes/Riksintresse';
+import { ApiService } from '../api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,23 +17,23 @@ import { RestService } from '../rest.service';
 export class ListComponent implements OnInit {
 
   // All data? 
-  data: NationalInterest[] = [];
+  data: Riksintresse[] = [];
 
   // Items to be searched for
   name: any;
-  category: any;
-  municipality: any;
-  province: any;
-  lastUpdated: any;
+  description: any;
+  motivation: any;
+  diarienumber: any;
 
   // The current page of data shown in the UI.
   currentPage: number = 1;
 
-  constructor(public rs: RestService) {}
+  constructor(public api: ApiService) {}
 
   ngOnInit(): void {
-    this.rs.getNationalInterests().subscribe((response) => {
+    this.api.getRiksintressen().subscribe((response) => {
       this.data = response;
+      console.log(this.data);
     })
   }
 
@@ -52,43 +52,33 @@ export class ListComponent implements OnInit {
       })
     }
   }
-  searchCategory() {
-    if (this.category == "") {
+  searchDescription() {
+    if (this.description == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.categories.toLocaleLowerCase().match(this.category.toLocaleLowerCase());
+        return res.description.toLocaleLowerCase().match(this.description.toLocaleLowerCase());
       })
     }
   }
-  searchMunicipality() {
-    if (this.municipality == "") {
+  searchMotivation() {
+    if (this.motivation == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.municipality.toLocaleLowerCase().match(this.municipality.toLocaleLowerCase());
+        return res.motivation.toLocaleLowerCase().match(this.motivation.toLocaleLowerCase());
       })
     }
   }
-  searchProvince() {
-    if (this.province == "") {
+  searchDiarienumber() {
+    if (this.diarienumber == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.province.toLocaleLowerCase().match(this.province.toLocaleLowerCase());
-      })
-    }
-  }
-  searchLastUpdated() {
-    if (this.lastUpdated == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.data = this.data.filter(res => {
-        return res.lastUpdated.toLocaleLowerCase().match(this.lastUpdated.toLocaleLowerCase());
+        return res.diarienumber.toLocaleLowerCase().match(this.diarienumber.toLocaleLowerCase());
       })
     }
   }
