@@ -1,5 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Riksintresse } from '../../classes/Riksintresse';
 import { ApiService } from '../../api.service';
 
@@ -50,7 +49,7 @@ export class ListSidebarComponent implements OnInit {
       this.drawerOpen = false;
       if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
         sidebarDrawer.classList.add('sidebar-left-drawer-hide');
-        sidebar.classList.add('sidebar-left-hide');
+        sidebar.classList.add('sidebar-hide');
 
         drawerArrow.classList.add('raa-icon-arrow-right');
         drawerArrow.classList.remove('raa-icon-arrow-left');
@@ -59,7 +58,7 @@ export class ListSidebarComponent implements OnInit {
       this.drawerOpen = true;
       if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
         sidebarDrawer.classList.remove('sidebar-left-drawer-hide');
-        sidebar.classList.remove('sidebar-left-hide');
+        sidebar.classList.remove('sidebar-hide');
 
         drawerArrow.classList.add('raa-icon-arrow-left');
         drawerArrow.classList.remove('raa-icon-arrow-right');

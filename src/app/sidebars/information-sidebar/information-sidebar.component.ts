@@ -25,7 +25,7 @@ export class InformationSidebarComponent implements OnInit {
       this.drawerOpen = false;
       if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
         sidebarDrawer.classList.add('sidebar-right-drawer-hide');
-        sidebar.classList.add('sidebar-right-hide');
+        sidebar.classList.add('sidebar-hide');
 
         drawerArrow.classList.add('raa-icon-arrow-left');
         drawerArrow.classList.remove('raa-icon-arrow-right');
@@ -34,7 +34,7 @@ export class InformationSidebarComponent implements OnInit {
       this.drawerOpen = true;
       if (sidebarDrawer != null && sidebar != null && drawerArrow != null) {
         sidebarDrawer.classList.remove('sidebar-right-drawer-hide');
-        sidebar.classList.remove('sidebar-right-hide');
+        sidebar.classList.remove('sidebar-hide');
 
         drawerArrow.classList.add('raa-icon-arrow-right');
         drawerArrow.classList.remove('raa-icon-arrow-left');

@@ -1,50 +1,30 @@
-#sidebar-left-drawer {
-  position: absolute;
-  width: 1.5rem;
-  height: 3rem;
-  top: 2.7rem;
-  left: 49.9%;
+@import url(../sidebar.scss);
 
-  border: 1px solid #e2e8f0;
-  border-right: 0px; // dölj högra bordern
-  background-color: white;
+#sidebar-left {
+  width: 50%;
+  left: 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
+  border-right: 1px solid #e2e8f0;
   z-index: 1;
+}
+
+#sidebar-left-drawer {
+  left: 49.9%;
+  border-left: 0px; // dölj vänstra bordern
 }
 
 .sidebar-left-drawer-hide {
   left: 0% !important;
 }
 
-#sidebar-left {
-  // Ser till att den positionerar 
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  border-left: 1px solid #e2e8f0;
-  background-color: white;
-
-  overflow-y: auto;
-
-  z-index: 1;
-  padding: 10px;
-}
-
-.sidebar-left-hide {
-  visibility: hidden;
+table {
+  width: 100%;
 }
 
 // Table data can't have margins...
 th, td {
-  padding: 1em;
+  padding: 5px;
+  border: 1px solid #DADADA;
 }
 
 input {

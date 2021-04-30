@@ -1,8 +1,8 @@
-<button (click)="drawerToggle()" id="sidebar-left-drawer" class="tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
+<button (click)="drawerToggle()" id="sidebar-left-drawer" class="sidebar-drawer tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
     <i id="drawer-left-arrow" class="raa-icon-arrow-left tw-text-size-1.75"></i>
   </button>
 
-<div id="sidebar-left">
+<div id="sidebar-left" class="sidebar">
     <div>
         <table>
             <thead>
@@ -72,6 +72,7 @@
                     <td>{{result.kommun}}</td>
                 </tr>
             </tbody>
+            <br />
             <tfoot>
                 <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
             </tfoot>
