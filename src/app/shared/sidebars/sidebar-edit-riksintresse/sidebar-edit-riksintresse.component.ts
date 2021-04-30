@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from '../../../api.service';
+import { Riksintresse } from '../../../classes/Riksintresse';
 
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
 
-  constructor() { }
+  // Receives the id from the parent class (information-sidebar)
+  @Input() idOfNationalInterest: number = -1;
+
+  // Data of national interest by id
+  dataOfNationalInterest: Riksintresse[] = [];
+
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+      this.api.getRiksintresse(this.idOfNationalInterest).subscribe((response) => {
+        this.dataOfNationalInterest = response;
+        console.log(response);
+      });
   }
 
 }
