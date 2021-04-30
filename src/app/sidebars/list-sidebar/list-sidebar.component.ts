@@ -33,7 +33,6 @@ export class ListSidebarComponent implements OnInit {
   ngOnInit(): void {
     this.api.getRiksintressen().subscribe((response) => {
       this.data = response;
-      console.log(this.data);
     })
   }
 
