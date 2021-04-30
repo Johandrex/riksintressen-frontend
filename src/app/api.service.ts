@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Riksintresse } from './classes/Riksintresse';
+import { Geometri } from './classes/Geometri';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,10 @@ export class ApiService {
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
     return this.http.get<Riksintresse[]>(this.url + "riksintresse/" + id);
+  }
+
+  /* hämta all geografi */
+  getGeometri() {
+    return this.http.get<Geometri[]>(this.url + "geometrier");
   }
 }
