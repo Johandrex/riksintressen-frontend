@@ -18,6 +18,8 @@ import { ScaleLine, defaults as DefaultControls } from 'ol/control';
 import { GeoJSON } from 'ol/format';
 import { fromLonLat } from 'ol/proj';
 
+import { Layer } from 'ol/layer';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -58,6 +60,15 @@ export class MapComponent implements OnInit {
     });
   
     // Hämta json-data över geometrier
+
+    /* 
+    var geojson_format = new GeoJSON();
+    var vector_layer = new Vector();
+    this.map.addLayer(vector_layer);
+
+    // vector_layer.addFeatures(geojson_format.readFeatures(this.data));
+    */
+
     const layer = new VectorLayer ({
       visible: true,
       source: new Vector({
