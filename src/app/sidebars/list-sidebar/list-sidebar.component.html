@@ -1,6 +1,6 @@
 <button (click)="drawerToggle()" id="sidebar-left-drawer" class="sidebar-drawer tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
     <i id="drawer-left-arrow" class="raa-icon-arrow-left tw-text-size-1.75"></i>
-  </button>
+</button>
 
 <div id="sidebar-left" class="sidebar">
     <div>
@@ -8,24 +8,20 @@
             <thead>
                 <tr>
                     <th>
-                        <input type="text" class="form-control" name="namn" placeholder="Sök på namn"
-                            [(ngModel)]="namn" (ngModelChange)="searchNamn()">
+                        <input type="text" class="form-control" name="name" placeholder="Sök på namn"
+                            [(ngModel)]="name" (ngModelChange)="searchName()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="beskrivning" placeholder="Sök på beskrivning"
-                            [(ngModel)]="beskrivning" (ngModelChange)="searchBeskrivning()">
+                        <input type="text" class="form-control" name="category" placeholder="Sök på kategorier"
+                            [(ngModel)]="category" (ngModelChange)="searchCategory()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="motivering" placeholder="Sök på motivering"
-                            [(ngModel)]="motivering" (ngModelChange)="searchMotivering()">
+                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommun"
+                            [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="diarienummer" placeholder="Sök på diarienummer"
-                            [(ngModel)]="diarienummer" (ngModelChange)="searchDiarienummer()">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" name="kommun" placeholder="Sök på kommun"
-                            [(ngModel)]="kommun" (ngModelChange)="searchKommun()">
+                        <input type="text" class="form-control" name="province" placeholder="Sök på län?"
+                            [(ngModel)]="province" (ngModelChange)="searchProvince()">
                     </th>
                 </tr>
                 <tr>
@@ -35,25 +31,19 @@
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
-                    <th>Beskrivning &nbsp;
-                        <span (click)="sort('beskrivning')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span>
-                    </th>
-                    <th>Motivering &nbsp;
-                        <span (click)="sort('motivering')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span></th>
-                    <th>Diarienummer &nbsp;
-                        <span (click)="sort('diarienummer')" class="icon-sort">
+                    <th>Kategorier &nbsp;
+                        <span (click)="sort('category')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
                     <th>Kommun &nbsp;
-                        <span (click)="sort('kommun')" class="icon-sort">
+                        <span (click)="sort('municipality')" class="icon-sort">
+                            <div class="raa-icon-arrow-up"></div>
+                            <div class="raa-icon-arrow-down"></div>
+                        </span></th>
+                    <th>Län &nbsp;
+                        <span (click)="sort('province')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
@@ -62,21 +52,20 @@
             </thead>
             <tbody>
                 <tr *ngFor="let result of data | orderBy: key: reverse | 
-                        paginate:{itemsPerPage:7,currentPage:currentPage};">
+                        paginate:{itemsPerPage:100000,currentPage:currentPage};">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
                     <td>{{result.beskrivning}}</td>
-                    <td>{{result.motivering}}</td>
-                    <td>{{result.diarienummer}}</td>
                     <td>{{result.kommun}}</td>
+                    <td>{{result.lan}}</td>
                 </tr>
             </tbody>
         </table>
         <footer>
             <br />
-            <pagination-controls (pageChange)="currentPage = $event"
-            previousLabel="" nextLabel="" [maxSize]="15"></pagination-controls>
+            <!--<pagination-controls (pageChange)="currentPage = $event"
+                previousLabel="" nextLabel="" [maxSize]="15"></pagination-controls>-->
         </footer>
     </div>
 </div>

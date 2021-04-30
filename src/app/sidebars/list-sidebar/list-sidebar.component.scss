@@ -23,8 +23,6 @@ table {
 
 // navigering
 footer {
-  position:absolute;
-  bottom:0;
   width:100%;
 }
 
@@ -35,7 +33,7 @@ th, td {
 }
 
 input {
-  width: auto;
+  width: 100%;
 }
 
 // The names of national interest are "hyperlinks"
@@ -55,8 +53,4 @@ a:hover {
 .icon-sort:hover {
   color: #C94A18;
   cursor: pointer;
-}
-
-.pagination {
-  width: fit-content;
 }

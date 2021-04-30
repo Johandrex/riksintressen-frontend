@@ -17,11 +17,10 @@ export class ListSidebarComponent implements OnInit {
   data: Riksintresse[] = [];
 
   // Items to be searched for
-  namn: any;
-  beskrivning: any;
-  motivering: any;
-  diarienummer: any;
-  kommun: any;
+  name: any;
+  category: any;
+  municipality: any;
+  province: any;
 
   // The current page of data shown in the UI.
   currentPage: number = 1;
@@ -71,53 +70,43 @@ export class ListSidebarComponent implements OnInit {
    * Query database.
    * @todo Make more abstract if possible.
    */
-  searchNamn() {
-    if (this.namn == "") {
+  searchName() {
+    if (this.name == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.namn.toLocaleLowerCase());
+        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
-  searchBeskrivning() {
-    if (this.beskrivning == "") {
+  searchCategory() {
+    if (this.category == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.beskrivning.toLocaleLowerCase().match(this.beskrivning.toLocaleLowerCase());
+        return res.beskrivning.toLocaleLowerCase().match(this.category.toLocaleLowerCase());
       })
     }
   }
-  searchMotivering() {
-    if (this.motivering == "") {
+  searchMunicipality() {
+    if (this.municipality == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.motivering.toLocaleLowerCase().match(this.motivering.toLocaleLowerCase());
+        return res.diarienummer.toLocaleLowerCase().match(this.municipality.toLocaleLowerCase());
       })
     }
   }
-  searchDiarienummer() {
-    if (this.diarienummer == "") {
+  searchProvince() {
+    if (this.province == "") {
       this.ngOnInit();
     }
     else {
       this.data = this.data.filter(res => {
-        return res.diarienummer.toLocaleLowerCase().match(this.diarienummer.toLocaleLowerCase());
-      })
-    }
-  }
-  searchKommun() {
-    if (this.diarienummer == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.data = this.data.filter(res => {
-        return res.diarienummer.toLocaleLowerCase().match(this.diarienummer.toLocaleLowerCase());
+        return res.motivering.toLocaleLowerCase().match(this.province.toLocaleLowerCase());
       })
     }
   }
