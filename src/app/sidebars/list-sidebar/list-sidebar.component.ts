@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Riksintresse } from '../../classes/Riksintresse';
 import { ApiService } from '../../services/api.service';
-import { InformationSidebarComponent } from '../information-sidebar/information-sidebar.component';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ListSidebarComponent implements OnInit {
   // Id of last clicked national interest
   idOfNationalInterest: number = -1;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private dataService: SharedDataService) {}
 
   ngOnInit(): void {
     this.api.getRiksintressen().subscribe((response) => {
@@ -131,10 +131,10 @@ export class ListSidebarComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
-    // id should never be empty, but just in case...
     if(value > 0) {
       this.idOfNationalInterest = value;
-      // Call info bar
+      // Notify observer to keep info-sidebar up to date with selected national interest
+      this.dataService.changeIdofNationalInterestDisplayed(this.idOfNationalInterest);
     }
   }
 

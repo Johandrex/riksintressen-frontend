@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { ListSidebarComponent } from '../list-sidebar/list-sidebar.component';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,11 @@ export class InformationSidebarComponent implements OnInit {
   // Checks whether user has opened this bar or not
   drawerOpen : boolean = true;
 
-  constructor() {  }
+  constructor(private dataService: SharedDataService) {  }
 
   ngOnInit(): void {
+    // Subscribe to selected id of national interest
+    this.dataService.currentId.subscribe(id => this.idOfNationalInterest = id);
   }
 
   /* hide or show sidebar menu */
@@ -49,7 +51,4 @@ export class InformationSidebarComponent implements OnInit {
     }
   }
 
-  getSelectedNationalInterestFromList() {
-    
-  }
 }
