@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Riksintresse } from '../../classes/Riksintresse';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../services/api.service';
+import { InformationSidebarComponent } from '../information-sidebar/information-sidebar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class ListSidebarComponent implements OnInit {
   // Id of last clicked national interest
   idOfNationalInterest: number = -1;
 
-  constructor(public api: ApiService) {}
+  constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.api.getRiksintressen().subscribe((response) => {
@@ -148,11 +149,4 @@ export class ListSidebarComponent implements OnInit {
     }
   }
 
-  /**
-   * Simple getter. Is it good practice to encapsulate in typescript?
-   * @returns Id of national interest
-   */
-  getIdOfNationalInterest() {
-    return this.idOfNationalInterest;
-  }
 }

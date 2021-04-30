@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ListSidebarComponent } from '../list-sidebar/list-sidebar.component';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-information-sidebar',
   templateUrl: './information-sidebar.component.html',
@@ -8,9 +11,13 @@ import { ListSidebarComponent } from '../list-sidebar/list-sidebar.component';
 })
 export class InformationSidebarComponent implements OnInit {
 
+  // Id of displayed national interest
+  idOfNationalInterest: number = -1;
+
+  // Checks whether user has opened this bar or not
   drawerOpen : boolean = true;
 
-  constructor(private listSidebar: ListSidebarComponent) {  }
+  constructor() {  }
 
   ngOnInit(): void {
   }
@@ -43,6 +50,6 @@ export class InformationSidebarComponent implements OnInit {
   }
 
   getSelectedNationalInterestFromList() {
-    let id: number = this.listSidebar.getIdOfNationalInterest();
+    
   }
 }
