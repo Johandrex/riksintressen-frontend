@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Riksintresse } from '../../classes/Riksintresse';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../services/api.service';
 import { InformationSidebarComponent } from '../information-sidebar/information-sidebar.component';
 
 @Injectable({
