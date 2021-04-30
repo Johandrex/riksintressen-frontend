@@ -21,6 +21,13 @@ table {
   width: 100%;
 }
 
+// navigering
+footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
 // Table data can't have margins...
 th, td {
   padding: 5px;

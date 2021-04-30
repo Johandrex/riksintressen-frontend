@@ -62,7 +62,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let result of data | orderBy: key: reverse | 
-                        paginate:{itemsPerPage:5,currentPage:currentPage};">
+                        paginate:{itemsPerPage:7,currentPage:currentPage};">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
@@ -72,10 +72,12 @@
                     <td>{{result.kommun}}</td>
                 </tr>
             </tbody>
-            <br />
-            <tfoot>
-                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-            </tfoot>
         </table>
+
+        <footer>
+            <br />
+            <pagination-controls (pageChange)="currentPage = $event"
+            previousLabel="" nextLabel="" [maxSize]="15"></pagination-controls>
+        </footer>
     </div>
 </div>
