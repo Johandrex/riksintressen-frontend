@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { Riksintresse } from '../../../classes/Riksintresse';
+import { ApiService } from '../../../core/services/api.service';
+import { Riksintresse } from '../../../core/classes/Riksintresse.model';
 
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
@@ -20,7 +20,6 @@ export class SidebarEditRiksintresseComponent implements OnInit {
   ngOnInit(): void {
       this.api.getRiksintresse(this.idOfNationalInterest).subscribe((response) => {
         this.dataOfNationalInterest = response;
-        console.log(response);
       });
   }
 

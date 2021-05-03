@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Geometri } from '../classes/Geometri'
-import { ApiService } from '../services/api.service';
+import { Geometri } from '../core/classes/Geometri.model'
+import { ApiService } from '../core/services/api.service';
 
 /* Importerar OpenLayers */
 import { View, Feature, Map } from 'ol';
@@ -39,12 +39,6 @@ export class MapComponent implements OnInit {
    * Vid initiering av sidan
    */
   ngOnInit(): void {
-    // API, kontaktar 
-    this.api.getGeometri().subscribe((response) => {
-      this.data = response;
-      console.log(this.data);
-    })
-
     // Skapa kartan med position över visby
     this.map = new Map({
       target: 'map',

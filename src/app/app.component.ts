@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Register } from './classes/Register';
-import { ApiService } from './services/api.service';
+import { ApiService } from './core/services/api.service';
+
+import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/classes';
+
 
 @Component({
   selector: "app-root",
@@ -9,21 +11,40 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
 
-  data: Register[] = [];
+  // Register över kommuner, lan, kulturmiljötyper som återanvänds när applikationen är igång
+  registerRiksintressen: Riksintresse[] = [];
+  registerGeometrier: Geometri[] = [];
+  registerKommuner: Kommun[] = [];
+  registerLan: Lan[] = [];
+  registerKulturmiljotyper: Kulturmiljotyp[] = [];
 
   constructor(private api: ApiService) {}
 
+  // Initiera register från API
   ngOnInit(): void {
+    this.api.getRiksintressen().subscribe((response) => {
+      this.registerRiksintressen = response;
+      console.log(this.registerRiksintressen);
+    })
+
+    this.api.getGeometrier().subscribe((response) => {
+      this.registerGeometrier = response;
+      console.log(this.registerGeometrier);
+    })
+
     this.api.getKommuner().subscribe((response) => {
-      this.data = response;
+      this.registerKommuner = response;
+      console.log(this.registerKommuner);
     })
 
     this.api.getLan().subscribe((response) => {
-      this.data = response;
+      this.registerLan = response;
+      console.log(this.registerLan);
     })
 
     this.api.getKulturmiljotyper().subscribe((response) => {
-      this.data = response;
+      this.registerKulturmiljotyper = response;
+      console.log(this.registerKulturmiljotyper);
     })
   }
 

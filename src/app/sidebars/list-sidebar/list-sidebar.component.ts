@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Riksintresse } from '../../classes/Riksintresse';
-import { ApiService } from '../../services/api.service';
-import { SharedDataService } from '../../services/shared-data.service';
+import { Riksintresse } from '../../core/classes/Riksintresse.model';
+import { ApiService } from '../../core/services/api.service';
+import { SharedDataService } from '../../core/services/shared-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -96,7 +96,7 @@ export class ListSidebarComponent implements OnInit {
     }
     else {
       this.data = this.data.filter(res => {
-        return res.diarienummer.toLocaleLowerCase().match(this.municipality.toLocaleLowerCase());
+        return res.namn.toLocaleLowerCase().match(this.municipality.toLocaleLowerCase());
       })
     }
   }
