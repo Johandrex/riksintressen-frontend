@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Register } from './classes/Register';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: "app-root",
@@ -6,12 +8,26 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  listVisibility: boolean = true;
 
-  constructor() {}
+  data: Register[] = [];
 
-  ngOnInit() {
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.api.getKommuner().subscribe((response) => {
+      this.data = response;
+    })
+
+    this.api.getLan().subscribe((response) => {
+      this.data = response;
+    })
+
+    this.api.getKulturmiljotyper().subscribe((response) => {
+      this.data = response;
+    })
   }
+
+  listVisibility: boolean = true;
 
   /**
    * Function is used to show and hide the list with national interests.
