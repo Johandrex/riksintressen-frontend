@@ -25,9 +25,6 @@ export class ListSidebarComponent implements OnInit {
   // The current page of data shown in the UI.
   currentPage: number = 1;
 
-  // Id of last clicked national interest
-  idOfNationalInterest: number = -1;
-
   constructor(private api: ApiService, private dataService: SharedDataService) {}
 
   ngOnInit(): void {
@@ -115,9 +112,9 @@ export class ListSidebarComponent implements OnInit {
    * Function to sort stuff.
    */
   // Key is the item the list is currently being sorted by
-  key: string = "id";
+  public key: string = "id";
   // Change between sorting in descending and ascending order
-  reverse: boolean = false;
+  public reverse: boolean = false;
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
@@ -132,10 +129,8 @@ export class ListSidebarComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     if(value > 0) {
-      this.idOfNationalInterest = value;
       // Notify observer to keep info-sidebar up to date with selected national interest
-      this.dataService.changeIdofNationalInterestDisplayed(this.idOfNationalInterest);
-      console.log(this.idOfNationalInterest);
+      this.dataService.changeIdofNationalInterestDisplayed(value);
     }
   }
 

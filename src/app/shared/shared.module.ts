@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderButtonComponent } from './buttons/header-button/header-button.component';
 import { SidebarInfoRiksintresseComponent } from './sidebars/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
 import { SidebarEditRiksintresseComponent } from './sidebars/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
-import { SidebarInformationComponent } from './sidebars/sidebar-information/sidebar-information.component';
+import { SidebarHelpComponent } from './sidebars/sidebar-help/sidebar-help.component';
 
 
 
@@ -12,7 +12,7 @@ import { SidebarInformationComponent } from './sidebars/sidebar-information/side
     HeaderButtonComponent,
     SidebarInfoRiksintresseComponent,
     SidebarEditRiksintresseComponent,
-    SidebarInformationComponent
+    SidebarHelpComponent
   ],
   imports: [
     CommonModule
@@ -21,7 +21,7 @@ import { SidebarInformationComponent } from './sidebars/sidebar-information/side
     HeaderButtonComponent,
     SidebarInfoRiksintresseComponent,
     SidebarEditRiksintresseComponent,
-    SidebarInformationComponent
+    SidebarHelpComponent
   ]
 })
 export class SharedModule { }

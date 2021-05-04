@@ -11,31 +11,20 @@ import { filter } from 'rxjs/operators';
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
 
-  // Receives the id from the parent class (information-sidebar)
-  @Input() idOfNationalInterest: number = 1;
-
   // Data of national interest by id
-  nationalInterest: Riksintresse[] = [];
+  nationalInterest: Riksintresse = new Riksintresse();
 
   constructor(private api: ApiService, private dataService: SharedDataService) { }
 
   ngOnInit(): void {
+    this.nationalInterest = this.dataService.subscribeToSelectedNationalInterest();
     // Subscribe to selected id of national interest
-    this.dataService.currentId.subscribe((id) => {
-      this.idOfNationalInterest = id;
-      this.api.getRiksintresse(this.idOfNationalInterest).subscribe((response) => {
-        this.nationalInterest = response as Riksintresse[];
+    /*this.dataService.currentId.subscribe((id) => {
+      this.api.getRiksintresse(id).subscribe((response) => {
+        // Only one "riksintresse" is returned to the array
+        this.nationalInterest = response[0] as Riksintresse;
       });
-    });
-    
-    /*let intressen = this.api.getRiksintressen().subscribe((response) => {
-      if(response[0].id === this.idOfNationalInterest) {
-        this.nationalInterest = response as Riksintresse[];
-        this.name = this.nationalInterest[0].namn;
-      }
     });*/
-
-    //intressen.pipe(filter(a => a.id === this.idOfNationalInterest));
   }
 
 }

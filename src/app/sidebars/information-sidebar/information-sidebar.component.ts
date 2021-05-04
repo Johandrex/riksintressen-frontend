@@ -11,18 +11,12 @@ import { SharedDataService } from '../../core/services/shared-data.service';
 })
 export class InformationSidebarComponent implements OnInit {
 
-  // Id of displayed national interest
-  idOfNationalInterest: number = -1;
-
   // Checks whether user has opened this bar or not
   drawerOpen : boolean = true;
 
-  constructor(private dataService: SharedDataService) {  }
+  constructor() {  }
 
-  ngOnInit(): void {
-    // Subscribe to selected id of national interest
-    this.dataService.currentId.subscribe(id => this.idOfNationalInterest = id);
-  }
+  ngOnInit(): void {}
 
   /* hide or show sidebar menu */
   drawerToggle() {
