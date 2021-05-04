@@ -16,10 +16,16 @@ export class SharedDataService {
   currentId = this.idSource.asObservable();
 
   // Retrieved list of national interests from database
-  nationalInterests: Riksintresse[] = [];
+  private nationalInterests: Riksintresse[] = [];
+  public getNationalInterests() : Riksintresse[] {
+    return this.nationalInterests;
+  }
 
   // Rertrieved national interest by id
-  nationalInterestById: Riksintresse[] = [];
+  private nationalInterestById: Riksintresse = new Riksintresse();
+  public getNationalInterestById() : Riksintresse {
+    return this.nationalInterestById;
+  }
 
   constructor(private api: ApiService) { }
 
@@ -27,7 +33,7 @@ export class SharedDataService {
    * Changes ID based on input.
    * @param id The ID that has been selected.
    */
-  changeIdofNationalInterestDisplayed(id: number) {
+  public changeIdofNationalInterestDisplayed(id: number) : void {
     this.idSource.next(id);
   }
 
@@ -35,9 +41,9 @@ export class SharedDataService {
    * Changes content of national interest array.
    * 
    */
-  subscribeToNationalInterests() : any {
+  public subscribeToNationalInterests() : void {
     this.api.getRiksintressen().subscribe((response) => {
-      return response as Riksintresse[];
+      this.nationalInterests = response as Riksintresse[];
     })
   }
 
@@ -45,12 +51,12 @@ export class SharedDataService {
    * Changes the national interest found by id.
    * 
    */
-  subscribeToSelectedNationalInterest() : any {
+  public subscribeToSelectedNationalInterest() : void {
     // Subscribe to selected id of national interest
     this.currentId.subscribe((id) => {
       this.api.getRiksintresse(id).subscribe((response) => {
         // Only one "riksintresse" is returned to the array
-        return response[0] as Riksintresse;
+        this.nationalInterestById = response[0] as Riksintresse;
       });
     });
   }
