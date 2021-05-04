@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Riksintresse } from '../classes/Riksintresse';
-import { Geometri } from '../classes/Geometri';
+
+import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,28 @@ export class ApiService {
   }
 
   /* hämta all geografi */
-  getGeometri() {
+  getGeometrier() {
     return this.http.get<Geometri[]>(this.url + "geometrier");
+  }
+
+  /* hämta ett geografiskt område utifrån riksintresset */
+  getGeometri(id: number) {
+    return this.http.get<Geometri[]>(this.url + "geometrier/" + id);
+  }
+
+  /* hämta all geografi */
+  getKommuner() {
+    return this.http.get<Kommun[]>(this.url + "kommuner");
+  }
+
+  /* hämta all geografi */
+  getLan() {
+    return this.http.get<Lan[]>(this.url + "lan");
+  }
+
+  /* hämta all geografi */
+  getKulturmiljotyper() {
+    return this.http.get<Kulturmiljotyp[]>(this.url + "kulturmiljotyper");
   }
 
 }

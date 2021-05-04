@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { Riksintresse } from '../../../classes/Riksintresse';
-import { SharedDataService } from '../../../services/shared-data.service';
+import { ApiService } from '../../../core/services/api.service';
+import { Riksintresse } from '../../../core/classes/Riksintresse.model';
+import { SharedDataService } from '../../../core/services/shared-data.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
