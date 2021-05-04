@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Riksintresse, RiksintresseList } from '../classes';
+import { Riksintresse, RiksintresseList, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
 import { ApiService } from './api.service';
 
 /**
@@ -17,6 +17,11 @@ export class SharedDataService {
   public nationalInterests: Riksintresse[] = []; // alla riksintressen
   public nationalInterestsList: RiksintresseList[] = []; // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
+
+  public listGeometries: Geometri[] = []; // register över alla geometries
+  public listMunicipalities: Kommun[] = []; // register över alla kommuner
+  public listCounties: Lan[] = []; // register över alla län
+  public listCategories: Kulturmiljotyp[] = []; // register över alla kategorier
 
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
@@ -38,6 +43,7 @@ export class SharedDataService {
   public subscribeToNationalInterests() : void {
     this.api.getRiksintressen().subscribe((response) => {
       this.nationalInterests = response as Riksintresse[];
+      console.log(this.nationalInterests);
     })
   }
 
@@ -47,6 +53,7 @@ export class SharedDataService {
    public subscribeToNationalInterestsList() : void {
     this.api.getRiksintressenList().subscribe((response) => {
       this.nationalInterestsList = response as RiksintresseList[];
+      console.log(this.nationalInterestsList);
     })
   }
 
@@ -57,6 +64,38 @@ export class SharedDataService {
     this.api.getRiksintresse(id).subscribe((response) => {
       this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
     });
+  }
+
+  // Geometries
+  public subcribeToGeometries() {
+    this.api.getGeometrier().subscribe((response) => {
+      this.listGeometries = response;
+      console.log(this.listGeometries);
+    })
+  }
+
+  // Kommuner
+  public subcribeToMunicipalities() {
+    this.api.getKommuner().subscribe((response) => {
+      this.listMunicipalities = response;
+      console.log(this.listMunicipalities);
+    })
+  }
+
+  // Län
+  public subcribeToCounties() {
+    this.api.getLan().subscribe((response) => {
+      this.listCounties = response;
+      console.log(this.listCounties);
+    })
+  }
+
+  // Kategorier / Kulturmiljötyper
+  public subcribeToCategories() {
+    this.api.getKulturmiljotyper().subscribe((response) => {
+      this.listCategories = response;
+      console.log(this.listCategories);
+    })
   }
 }
 
