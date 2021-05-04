@@ -12,7 +12,6 @@ export class SharedDataService {
 
   changeIdofNationalInterestDisplayed(id: number) {
     this.idSource.next(id);
-    console.log(this.idSource.getValue());
   }
 
 }

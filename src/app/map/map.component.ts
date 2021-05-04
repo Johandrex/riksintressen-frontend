@@ -42,7 +42,6 @@ export class MapComponent implements OnInit {
     // API, kontaktar 
     this.api.getGeometri().subscribe((response) => {
       this.data = response;
-      console.log(this.data);
     })
 
     // Skapa kartan med position över visby

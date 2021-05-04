@@ -19,11 +19,12 @@ export class ApiService {
 
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
-    return this.http.get<Riksintresse[]>(this.url + "riksintresse/" + id);
+    return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
   }
 
   /* hämta all geografi */
   getGeometri() {
     return this.http.get<Geometri[]>(this.url + "geometrier");
   }
+
 }
