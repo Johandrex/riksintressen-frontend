@@ -17,14 +17,14 @@ export class SidebarEditRiksintresseComponent implements OnInit {
   constructor(private api: ApiService, private dataService: SharedDataService) { }
 
   ngOnInit(): void {
-    this.nationalInterest = this.dataService.subscribeToSelectedNationalInterest();
+    //this.nationalInterest = this.dataService.subscribeToSelectedNationalInterest();
     // Subscribe to selected id of national interest
-    /*this.dataService.currentId.subscribe((id) => {
+    this.dataService.currentId.subscribe((id) => {
       this.api.getRiksintresse(id).subscribe((response) => {
         // Only one "riksintresse" is returned to the array
         this.nationalInterest = response[0] as Riksintresse;
       });
-    });*/
+    });
   }
 
 }
