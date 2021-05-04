@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Riksintresse } from '../classes';
+import { Riksintresse, RiksintresseList } from '../classes';
 import { ApiService } from './api.service';
 
 /**
@@ -11,23 +11,18 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SharedDataService {
-  // Selected ID
   private idSource = new BehaviorSubject<number>(0);
-  currentId = this.idSource.asObservable();
+  public currentId = this.idSource.asObservable();
+  
+  public nationalInterests: Riksintresse[] = []; // alla riksintressen
+  public nationalInterestsList: RiksintresseList[] = []; // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
+  public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
 
-  // Retrieved list of national interests from database
-  private nationalInterests: Riksintresse[] = [];
-  public getNationalInterests() : Riksintresse[] {
-    return this.nationalInterests;
+  // fyll nationalInterests och nationalInterestsList med data
+  constructor(private api: ApiService) {
+    this.subscribeToNationalInterests();
+    this.subscribeToNationalInterestsList();
   }
-
-  // Rertrieved national interest by id
-  private nationalInterestById: Riksintresse = new Riksintresse();
-  public getNationalInterestById() : Riksintresse {
-    return this.nationalInterestById;
-  }
-
-  constructor(private api: ApiService) { }
 
   /**
    * Changes ID based on input.
@@ -39,7 +34,6 @@ export class SharedDataService {
 
   /**
    * Changes content of national interest array.
-   * 
    */
   public subscribeToNationalInterests() : void {
     this.api.getRiksintressen().subscribe((response) => {
@@ -48,19 +42,40 @@ export class SharedDataService {
   }
 
   /**
-   * Changes the national interest found by id.
-   * 
+   * Changes content of national interest array.
    */
-  public subscribeToSelectedNationalInterest() : void {
-    // Subscribe to selected id of national interest
+   public subscribeToNationalInterestsList() : void {
+    this.api.getRiksintressenList().subscribe((response) => {
+      this.nationalInterestsList = response as RiksintresseList[];
+    })
+  }
+
+  /**
+   * Changes the national interest found by id.
+   */
+  public subscribeToSelectedNationalInterest(id: number) : void {
+    this.api.getRiksintresse(id).subscribe((response) => {
+      this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
+    });
+  }
+}
+
+
+/* GAMMALT SOM EJ BEHÖVS
+
+  /**
+   * Changes ID based on input.
+   * @param id The ID that has been selected.
+   public changeIdofNationalInterestDisplayed(id: number) : void {
+    this.idSource.next(id);
+  }
+
     this.currentId.subscribe((id) => {
       this.api.getRiksintresse(id).subscribe((response) => {
         // Only one "riksintresse" is returned to the array
         this.nationalInterestById = response[0] as Riksintresse;
+        console.log(this.nationalInterestById.namn);
       });
     });
-  }
 
-  
-
-}
+*/

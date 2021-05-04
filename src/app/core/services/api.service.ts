@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
+import { Riksintresse, RiksintresseList, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,11 @@ export class ApiService {
   /* hämta alla riksintressen */
   getRiksintressen() {
     return this.http.get<Riksintresse[]>(this.url + "riksintressen");
+  }
+
+  /* hämta alla riksintressen för listan, där riksintressen har kategorier, kategorier, län, osv */
+  getRiksintressenList() {
+    return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list");
   }
 
   /* hämta ett riksintresse */

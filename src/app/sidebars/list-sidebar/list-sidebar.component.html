@@ -51,12 +51,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of data | orderBy: key: reverse | 
-                        paginate:{itemsPerPage:100000,currentPage:currentPage};">
+                <tr *ngFor="let result of this.dataService.nationalInterests | orderBy: key: reverse;">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
-                    <td>{{result.beskrivning}}</td>
+                    <td>{{result.kategorier}}</td>
                     <td>{{result.kommun}}</td>
                     <td>{{result.lan}}</td>
                 </tr>

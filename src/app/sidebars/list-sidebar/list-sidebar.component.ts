@@ -12,26 +12,15 @@ import { SharedDataService } from '../../core/services/shared-data.service';
   styleUrls: ['./list-sidebar.component.scss']
 })
 export class ListSidebarComponent implements OnInit {
-
-  // All data? 
-  data: Riksintresse[] = [];
-
   // Items to be searched for
   name: any;
   category: any;
   municipality: any;
   province: any;
 
-  // The current page of data shown in the UI.
-  currentPage: number = 1;
+  constructor(public dataService: SharedDataService) {}
 
-  constructor(private api: ApiService, private dataService: SharedDataService) {}
-
-  ngOnInit(): void {
-    this.api.getRiksintressen().subscribe((response) => {
-      this.data = response;
-    })
-  }
+  ngOnInit(): void { }
 
   drawerOpen : boolean = true;
 
@@ -68,32 +57,26 @@ export class ListSidebarComponent implements OnInit {
    * @todo Make more abstract if possible.
    */
   searchName() {
-    if (this.name == "") {
-      this.ngOnInit();
-    }
+    if (this.name == "") { this.ngOnInit(); }
     else {
-      this.data = this.data.filter(res => {
+      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
         return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
   searchCategory() {
-    if (this.category == "") {
-      this.ngOnInit();
-    }
+    if (this.category == "") { this.ngOnInit(); }
     else {
-      this.data = this.data.filter(res => {
-        return res.beskrivning.toLocaleLowerCase().match(this.category.toLocaleLowerCase());
+      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
   searchMunicipality() {
-    if (this.municipality == "") {
-      this.ngOnInit();
-    }
+    if (this.municipality == "") { this.ngOnInit(); }
     else {
-      this.data = this.data.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.municipality.toLocaleLowerCase());
+      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
@@ -102,8 +85,8 @@ export class ListSidebarComponent implements OnInit {
       this.ngOnInit();
     }
     else {
-      this.data = this.data.filter(res => {
-        return res.motivering.toLocaleLowerCase().match(this.province.toLocaleLowerCase());
+      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
@@ -111,10 +94,8 @@ export class ListSidebarComponent implements OnInit {
   /**
    * Function to sort stuff.
    */
-  // Key is the item the list is currently being sorted by
-  public key: string = "id";
-  // Change between sorting in descending and ascending order
-  public reverse: boolean = false;
+  public key: string = "id"; // Key is the item the list is currently being sorted by
+  public reverse: boolean = false; // Change between sorting in descending and ascending order
   sort(key: string) {
     this.key = key;
     this.reverse = !this.reverse;
@@ -128,9 +109,9 @@ export class ListSidebarComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
-    if(value > 0) {
-      // Notify observer to keep info-sidebar up to date with selected national interest
+    if (value > 0) {
       this.dataService.changeIdofNationalInterestDisplayed(value);
+      // this.dataService.subscribeToSelectedNationalInterest(value); // Notify observer to keep info-sidebar up to date with selected national interest
     }
   }
 

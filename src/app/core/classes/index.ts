@@ -1,4 +1,5 @@
 export * from './Riksintresse.model';
+export * from './RiksintresseList.model';
 export * from './Geometri.model';
 export * from './Kommun.model';
 export * from './Lan.model';
