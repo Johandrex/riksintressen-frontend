@@ -109,10 +109,8 @@ export class ListSidebarComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
-    if (value > 0) {
-      this.dataService.changeIdofNationalInterestDisplayed(value);
-      // this.dataService.subscribeToSelectedNationalInterest(value); // Notify observer to keep info-sidebar up to date with selected national interest
-    }
+    // Notify observer to keep info-sidebar up to date with selected national interest
+    this.dataService.changeIdOfNationalInterestDisplayed(value);
   }
 
 }

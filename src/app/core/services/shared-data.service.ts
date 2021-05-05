@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { Riksintresse, RiksintresseList, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
 import { ApiService } from './api.service';
 
@@ -33,8 +33,10 @@ export class SharedDataService {
    * Changes ID based on input.
    * @param id The ID that has been selected.
    */
-  public changeIdofNationalInterestDisplayed(id: number) : void {
+  public changeIdOfNationalInterestDisplayed(id: number) : void {
+    console.log("First: " + this.idSource.value);
     this.idSource.next(id);
+    console.log("Then: " + this.idSource.value);
   }
 
   /**
