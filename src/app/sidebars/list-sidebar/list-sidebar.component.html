@@ -16,11 +16,11 @@
                             [(ngModel)]="category" (ngModelChange)="searchCategory()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommun"
+                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommuner"
                             [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="province" placeholder="Sök på län?"
+                        <input type="text" class="form-control" name="province" placeholder="Sök på län"
                             [(ngModel)]="province" (ngModelChange)="searchProvince()">
                     </th>
                 </tr>
@@ -37,7 +37,7 @@
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
-                    <th>Kommun &nbsp;
+                    <th>Kommuner &nbsp;
                         <span (click)="sort('municipality')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
@@ -51,12 +51,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of this.dataService.nationalInterests | orderBy: key: reverse;">
+                <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
                     <td>{{result.kategorier}}</td>
-                    <td>{{result.kommun}}</td>
+                    <td>{{result.kommuner}}</td>
                     <td>{{result.lan}}</td>
                 </tr>
             </tbody>

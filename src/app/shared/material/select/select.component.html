@@ -4,15 +4,3 @@
       <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
     </mat-select>
   </mat-form-field>
-
-
-  <h4>mat-select</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>State</mat-label>
-    <select multiple>
-      <option>None</option>
-      <option *ngFor="let state of states" [value]="state">{{state}}</option>
-    </select>
-  </mat-form-field>
-
-  

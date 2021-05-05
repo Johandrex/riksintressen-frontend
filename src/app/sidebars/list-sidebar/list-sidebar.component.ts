@@ -68,7 +68,7 @@ export class ListSidebarComponent implements OnInit {
     if (this.category == "") { this.ngOnInit(); }
     else {
       this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
       })
     }
   }
@@ -76,17 +76,15 @@ export class ListSidebarComponent implements OnInit {
     if (this.municipality == "") { this.ngOnInit(); }
     else {
       this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
       })
     }
   }
   searchProvince() {
-    if (this.province == "") {
-      this.ngOnInit();
-    }
+    if (this.province == "") { this.ngOnInit(); }
     else {
       this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
       })
     }
   }

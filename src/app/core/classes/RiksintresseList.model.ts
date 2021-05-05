@@ -3,7 +3,7 @@
  * This class is used for testing and prototyping communication with db.
  */
 
- export class RiksintresseList {
+export class RiksintresseList {
     id!: number;
     namn!: string;
 
