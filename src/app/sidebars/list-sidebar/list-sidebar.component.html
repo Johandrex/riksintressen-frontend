@@ -16,34 +16,34 @@
                             [(ngModel)]="category" (ngModelChange)="searchCategory()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommun"
+                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommuner"
                             [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="province" placeholder="Sök på län?"
+                        <input type="text" class="form-control" name="province" placeholder="Sök på län"
                             [(ngModel)]="province" (ngModelChange)="searchProvince()">
                     </th>
                 </tr>
                 <tr>
                     <th>Namn &nbsp;
-                        <span (click)="sort('name')" class="icon-sort">
+                        <span (click)="sort('namn')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
                     <th>Kategorier &nbsp;
-                        <span (click)="sort('category')" class="icon-sort">
+                        <span (click)="sort('kategorier')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
-                    <th>Kommun &nbsp;
-                        <span (click)="sort('municipality')" class="icon-sort">
+                    <th>Kommuner &nbsp;
+                        <span (click)="sort('kommuner')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span></th>
                     <th>Län &nbsp;
-                        <span (click)="sort('province')" class="icon-sort">
+                        <span (click)="sort('län')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
@@ -51,12 +51,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of this.dataService.nationalInterests | orderBy: key: reverse;">
+                <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
                     <td>{{result.kategorier}}</td>
-                    <td>{{result.kommun}}</td>
+                    <td>{{result.kommuner}}</td>
                     <td>{{result.lan}}</td>
                 </tr>
             </tbody>

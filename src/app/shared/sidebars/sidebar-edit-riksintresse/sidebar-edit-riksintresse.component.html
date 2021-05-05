@@ -4,24 +4,29 @@
 <form>
   <label class="raa-label">Namn: </label>
   <input type="text" placeholder="Skriv något fint"
-  class="valid-input raa-input" value={{name}}>
+  class="valid-input raa-input" value={{this.dataService.nationalInterestById.namn}}>
   
   <label class="raa-label">Motivering: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Unik tidigmedeltida muromgärdad stad, Östersjöhandelns ledande metropol t.o.m. 1200­talets slut. Hansans födelsestad som i planmönster och bebyggelse ännu väl speglar handel, hantverk och sjöfart samt stadens förvaltningsfunktioner och sociala förhållanden från medeltid fram till modern tid.">
+  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Medeltida gatunät och tomtstruktur i det centrala stadsområdet och ett nät av infartsvägar utanför detta. Mariakyrkan, kyrkoruiner och medeltida stenhus. Försvarstornet Kruttornet vid platsen för den medeltida hamnen samt ringmuren med vallgravar och en obebyggd zon där utanför. Lämningar av Visborgs slott. Stadsbebyggelse i sten och trä från 1600-1800­talen. Småhusbebyggelse och bevarad planstruktur som under 1700- och 1800-talen växte fram på Klinten och utmed de gamla vägsträckningarna runt det medeltida bebyggelseområdet. Parker och grönstråk. Institutionsbyggnader och annan bebyggelse som hör samman med funktionen som residens- och domkyrkostad. Medeltida kulturlager.">
+  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kommun: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Visby">
+  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.kommuner}}>
+
+  <label class="raa-label">Län: </label>
+  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.lan}}>
 
   <label class="raa-label">Kategorier: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value="Visby">
+  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.kategorier}}>
 
   <div class ="two-buttons">
     <button class="raa-button">Bilder >></button>
     <button class="raa-button raa-button-secondary">Dokument >></button>
   </div>
+
+  <app-select></app-select>
 
   <div id="details">
     <label class="raa-label">Senast revidering: </label><p>1997-04-29</p><br />

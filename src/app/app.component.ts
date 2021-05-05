@@ -3,7 +3,6 @@ import { ApiService } from './core/services/api.service';
 
 import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/classes';
 
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",

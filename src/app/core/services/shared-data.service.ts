@@ -14,7 +14,6 @@ export class SharedDataService {
   private idSource = new BehaviorSubject<number>(0);
   public currentId = this.idSource.asObservable();
   
-  public nationalInterests: Riksintresse[] = []; // alla riksintressen
   public nationalInterestsList: RiksintresseList[] = []; // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
 
@@ -25,7 +24,6 @@ export class SharedDataService {
 
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
-    this.subscribeToNationalInterests();
     this.subscribeToNationalInterestsList();
   }
 
@@ -34,19 +32,7 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number) : void {
-    console.log("First: " + this.idSource.value);
     this.idSource.next(id);
-    console.log("Then: " + this.idSource.value);
-  }
-
-  /**
-   * Changes content of national interest array.
-   */
-  public subscribeToNationalInterests() : void {
-    this.api.getRiksintressen().subscribe((response) => {
-      this.nationalInterests = response as Riksintresse[];
-      console.log(this.nationalInterests);
-    })
   }
 
   /**
@@ -100,23 +86,3 @@ export class SharedDataService {
     })
   }
 }
-
-
-/* GAMMALT SOM EJ BEHÖVS
-
-  /**
-   * Changes ID based on input.
-   * @param id The ID that has been selected.
-   public changeIdofNationalInterestDisplayed(id: number) : void {
-    this.idSource.next(id);
-  }
-
-    this.currentId.subscribe((id) => {
-      this.api.getRiksintresse(id).subscribe((response) => {
-        // Only one "riksintresse" is returned to the array
-        this.nationalInterestById = response[0] as Riksintresse;
-        console.log(this.nationalInterestById.namn);
-      });
-    });
-
-*/

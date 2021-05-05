@@ -9,6 +9,9 @@ export class Riksintresse {
     beskrivning!: string; 
     motivering!: string;
     version!: number;
-
     geometri_id!: number;
+
+    kategorier!: Array<string>;
+    kommuner!: Array<string>;
+    lan!: Array<string>;
 }
