@@ -3,22 +3,14 @@ import { Geometri } from '../core/classes/Geometri.model'
 import { ApiService } from '../core/services/api.service';
 
 /* Importerar OpenLayers */
+import * as ol from 'ol';
 import { View, Feature, Map } from 'ol';
-import VectorLayer from 'ol/layer/Vector';
-import Vector from 'ol/source/Vector';
-import TileLayer from 'ol/layer/Tile';
-import Projection from 'ol/proj/Projection';
-import Overlay from 'ol/Overlay';
-import OSM, { ATTRIBUTION } from 'ol/source/OSM';
-import { register }  from 'ol/proj/proj4';
-import { get as GetProjection } from 'ol/proj'
-import { Extent} from 'ol/extent';
-import { Coordinate} from 'ol/coordinate';
-import { ScaleLine, defaults as DefaultControls } from 'ol/control';
-import { GeoJSON } from 'ol/format';
 import { fromLonLat } from 'ol/proj';
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
 
-import { Layer } from 'ol/layer';
+import ImageLayer from 'ol/layer/Image';
+import ImageWMS from 'ol/source/ImageWMS';
 
 @Component({
   selector: 'app-map',
@@ -31,12 +23,12 @@ export class MapComponent implements OnInit {
   longitude: number = 57.6271917;
 
   map: any;
-  data: Geometri[] = [];
+  mapWMS: any;
 
   constructor(public api: ApiService) {}
 
   /**
-   * Vid initiering av sidan
+   * Vid initiering av sidan skapas kartan
    */
   ngOnInit(): void {
     // Skapa kartan med position över visby
@@ -52,25 +44,17 @@ export class MapComponent implements OnInit {
         zoom: 12
       })
     });
-  
-    // Hämta json-data över geometrier
 
-    /* 
-    var geojson_format = new GeoJSON();
-    var vector_layer = new Vector();
-    this.map.addLayer(vector_layer);
-
-    // vector_layer.addFeatures(geojson_format.readFeatures(this.data));
-    */
-
-    const layer = new VectorLayer ({
-      visible: true,
-      source: new Vector({
-         url: '../assets/data/test.geojson',
-         format: new GeoJSON()
+    // Hämta data från GeoServern
+    this.mapWMS = new ImageLayer({
+      source: new ImageWMS({
+        params: {'LAYERS': 'Workspace:geometri'},
+        serverType: 'geoserver',
+        url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
       })
-    });
-    this.map.addLayer(layer);
+    })
+    this.mapWMS.setOpacity(0.4);
+    this.map.addLayer(this.mapWMS); // lägg på layer på kartan
 
     /*
     // När användaren trycker på en geometri skrivs det ut i konsolen.
