@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from './core/services/api.service';
 
 import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/classes';
+import { SharedDataService } from "./core/services/shared-data.service";
 
 @Component({
   selector: "app-root",
@@ -9,13 +10,6 @@ import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/clas
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  // Register över kommuner, lan, kulturmiljötyper som återanvänds när applikationen är igång
-  registerRiksintressen: Riksintresse[] = [];
-  registerGeometrier: Geometri[] = [];
-  registerKommuner: Kommun[] = [];
-  registerLan: Lan[] = [];
-  registerKulturmiljotyper: Kulturmiljotyp[] = [];
 
   constructor(private api: ApiService) {}
 

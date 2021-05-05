@@ -10,11 +10,22 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
 
+  public hasSelectedItem : boolean = false;
+
   constructor(private api: ApiService, public dataService: SharedDataService) { }
 
   ngOnInit(): void { // Subscribe to a selected id of national interest
     this.dataService.currentId.subscribe((id) => {
-      this.dataService.subscribeToSelectedNationalInterest(id); // Only one "riksintresse" is returned to the array
+      if(id == null) {
+        this.hasSelectedItem = false;
+      }
+      else {
+        this.hasSelectedItem = true;
+      }
+      // Only one "riksintresse" is returned to the array
+      this.dataService.subscribeToSelectedNationalInterest(id);
     });
   }
+
+
 }

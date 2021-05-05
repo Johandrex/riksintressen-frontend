@@ -11,6 +11,9 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SharedDataService {
+  // Checks whether user has selected an item from a list to display
+  public hasSelectedItem : boolean = false;
+
   private idSource = new BehaviorSubject<number>(0);
   public currentId = this.idSource.asObservable();
   
@@ -32,6 +35,7 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number) : void {
+    this.hasSelectedItem = true;
     this.idSource.next(id);
   }
 

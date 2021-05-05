@@ -4,5 +4,7 @@
 </button>
 
 <div id="sidebar-right" class="sidebar">
-  <app-sidebar-edit-riksintresse></app-sidebar-edit-riksintresse>
+  <div *ngIf="dataService.hasSelectedItem">
+    <app-sidebar-edit-riksintresse></app-sidebar-edit-riksintresse>
+  </div>
 </div>
