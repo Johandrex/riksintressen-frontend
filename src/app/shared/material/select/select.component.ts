@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule } from '@angular/material/select';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -10,7 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements OnInit {
-  toppings = new FormControl();
+  toppings: FormControl = new FormControl();
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   states: string[] = [

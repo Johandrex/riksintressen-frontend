@@ -16,7 +16,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-/* används ej ännu nedanför*/
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -39,8 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     Ng2SearchPipeModule,
     HttpClientModule ,
     NoopAnimationsModule,
-    MatRadioModule,
     MatSelectModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
