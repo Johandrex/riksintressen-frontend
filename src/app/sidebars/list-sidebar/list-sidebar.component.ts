@@ -13,18 +13,17 @@ import { SharedDataService } from '../../core/services/shared-data.service';
 })
 export class ListSidebarComponent implements OnInit {
   // Items to be searched for
-  name: any;
-  category: any;
-  municipality: any;
-  province: any;
+  public name: any;
+  public category: any;
+  public municipality: any;
+  public province: any;
 
   constructor(public dataService: SharedDataService) {}
 
   ngOnInit(): void { }
 
-  drawerOpen : boolean = true;
-
   /* hide or show sidebar menu */
+  public drawerOpen : boolean = true;
   drawerToggle() {
     let sidebar = document.getElementById('sidebar-left');
     let sidebarDrawer = document.getElementById('sidebar-left-drawer');

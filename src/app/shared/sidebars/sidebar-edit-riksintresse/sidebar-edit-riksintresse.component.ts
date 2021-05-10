@@ -12,8 +12,8 @@ export class SidebarEditRiksintresseComponent implements OnInit {
 
   public hasSelectedItem : boolean = false;
 
-  selectKategorier = new FormControl(); // för <ng-select>
-  kategorier: string[] = [];
+  // form kontroller för <ng-select>
+  selectKategorier = new FormControl();
 
   constructor(private api: ApiService, public dataService: SharedDataService) { }
 
@@ -27,8 +27,6 @@ export class SidebarEditRiksintresseComponent implements OnInit {
       }
       // Only one "riksintresse" is returned to the array
       this.dataService.subscribeToSelectedNationalInterest(id);
-
-      this.kategorier = this.dataService.nationalInterestById.kategorier
     });
   }
 

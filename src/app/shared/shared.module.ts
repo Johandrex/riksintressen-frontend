@@ -23,7 +23,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   exports: [
     HeaderButtonComponent,

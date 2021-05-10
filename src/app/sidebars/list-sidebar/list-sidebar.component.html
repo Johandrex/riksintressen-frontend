@@ -12,7 +12,7 @@
                             [(ngModel)]="name" (ngModelChange)="searchName()">
                     </th>
                     <th>
-                        <input type="text" class="form-control" name="category" placeholder="Sök på kategorier"
+                        <input type="text" class="form-control" name="category" placeholder="Sök på kulturmiljötyper"
                             [(ngModel)]="category" (ngModelChange)="searchCategory()">
                     </th>
                     <th>
@@ -31,7 +31,7 @@
                             <div class="raa-icon-arrow-down"></div>
                         </span>
                     </th>
-                    <th>Kategorier &nbsp;
+                    <th>Kulturmiljötyper &nbsp;
                         <span (click)="sort('kategorier')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
@@ -43,7 +43,7 @@
                             <div class="raa-icon-arrow-down"></div>
                         </span></th>
                     <th>Län &nbsp;
-                        <span (click)="sort('län')" class="icon-sort">
+                        <span (click)="sort('lan')" class="icon-sort">
                             <div class="raa-icon-arrow-up"></div>
                             <div class="raa-icon-arrow-down"></div>
                         </span>
@@ -51,11 +51,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
+                <tr *ngFor="let result of this.dataService.nationalInterestsList">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
-                    <td>{{result.kategorier}}</td>
+                    <td>
+                        <div *ngFor="let cat of result.kategorier">
+                            {{cat}} &nbsp;
+                        </div>
+                    </td>
                     <td>{{result.kommuner}}</td>
                     <td>{{result.lan}}</td>
                 </tr>

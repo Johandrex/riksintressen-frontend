@@ -1,7 +1,6 @@
 @import url(../sidebar.scss);
 
 #sidebar-left {
-  padding: 1em;
   width: 50%;
   left: 0;
 
@@ -29,7 +28,7 @@ footer {
 
 // Table data can't have margins...
 th, td {
-  padding: 5px;
+  padding: 3px;
   border: 1px solid #DADADA;
 }
 
