@@ -2,6 +2,7 @@
 <p>Du redigerar just nu statlig viktig information, gör ej misstag!</p>
 
 <form>
+
   <label class="raa-label">Namn: </label>
   <input type="text" placeholder="Skriv något fint"
   class="valid-input raa-input" value={{this.dataService.nationalInterestById.namn}}>
@@ -12,11 +13,10 @@
   <label class="raa-label">Beskrivning: </label>
   <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
-  <label class="raa-label">Kommun: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.kommuner}}>
-
-  <label class="raa-label">Län: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.lan}}>
+  <label class="raa-label">Kulturmiljötyper: </label>
+  <ng-select [(ngModel)]="this.dataService.listCategories" [multiple]=true appearance="outline" class="valid-input raa-input">
+  <ng-option *ngFor="let x of this.dataService.nationalInterestById.kategorier" [value]="this.dataService.nationalInterestById.kategorier" class="options">{{this.dataService.nationalInterestById.kategorier}}</ng-option>
+  </ng-select>
 
   <label class="raa-label">Kategorier: </label>
   <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.kategorier}}>
@@ -26,13 +26,16 @@
     <button class="raa-button raa-button-secondary">Dokument >></button>
   </div>
 
-  <app-select></app-select>
-
   <div id="details">
+    <label class="raa-label">Kommuner: </label><p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
+    <label class="raa-label">Län: </label><p>{{this.dataService.nationalInterestById.lan}}</p><br /><br />
+
+    <label class="raa-label">ID: </label><p>{{this.dataService.nationalInterestById.id}}</p><br />
+    <label class="raa-label">Nuvarande version: </label><p>{{this.dataService.nationalInterestById.version}}</p><br />
+    <label class="raa-label">Skapad: </label><p>1997-04-29</p><br />
     <label class="raa-label">Senast revidering: </label><p>1997-04-29</p><br />
     <label class="raa-label">Senast redigerad: </label><p>2021-04-29</p><br />
-    <label class="raa-label">Redigerad av: </label><p>Carl Gustaf</p><br />
-    <label class="raa-label">Version: </label><p>1.0</p><br />
+    <label class="raa-label">Senaste modifiering av: </label><p>Carl Gustaf</p><br />
   </div>
 
   <div class ="two-buttons">

@@ -6,10 +6,14 @@
   }
   
   #details {
-    size: 33px;
     display: inline !important;
   }
 
-  #details label, p {
+  #details label, #details p {
+    font-size: 14px !important;
     display: inline !important;
+  }
+
+  .ng-select-multiple {
+    background-color: wheat !important;
   }
