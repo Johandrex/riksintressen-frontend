@@ -3,6 +3,10 @@
 /* Importera RAÄ's stil */
 @import url(assets/raa/scss/full-import.scss);
 
+/* ng-selectstil */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+// @import "~@ng-select/ng-select/themes/material.theme.css";
+
 body, html {
     width: 100%;
     height: 100%;
