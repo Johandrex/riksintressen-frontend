@@ -4,6 +4,9 @@ import { ApiService } from './core/services/api.service';
 import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/classes';
 import { SharedDataService } from "./core/services/shared-data.service";
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",

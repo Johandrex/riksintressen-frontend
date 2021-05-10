@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
-import { Riksintresse } from '../../../core/classes/Riksintresse.model';
 import { SharedDataService } from '../../../core/services/shared-data.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
@@ -11,6 +11,9 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 export class SidebarEditRiksintresseComponent implements OnInit {
 
   public hasSelectedItem : boolean = false;
+
+  selectKategorier = new FormControl(); // för <ng-select>
+  kategorier: string[] = [];
 
   constructor(private api: ApiService, public dataService: SharedDataService) { }
 
@@ -24,6 +27,8 @@ export class SidebarEditRiksintresseComponent implements OnInit {
       }
       // Only one "riksintresse" is returned to the array
       this.dataService.subscribeToSelectedNationalInterest(id);
+
+      this.kategorier = this.dataService.nationalInterestById.kategorier
     });
   }
 

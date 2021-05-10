@@ -4,34 +4,32 @@ import { HeaderButtonComponent } from './buttons/header-button/header-button.com
 import { SidebarInfoRiksintresseComponent } from './sidebars/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
 import { SidebarEditRiksintresseComponent } from './sidebars/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
 import { SidebarHelpComponent } from './sidebars/sidebar-help/sidebar-help.component';
-import { SelectComponent } from './material/select/select.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule } from '@angular/material/select';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
     HeaderButtonComponent,
     SidebarInfoRiksintresseComponent,
     SidebarEditRiksintresseComponent,
-    SidebarHelpComponent,
-    SelectComponent
+    SidebarHelpComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     BrowserAnimationsModule,
-    MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
   ],
   exports: [
     HeaderButtonComponent,
     SidebarInfoRiksintresseComponent,
     SidebarEditRiksintresseComponent,
-    SidebarHelpComponent,
-    SelectComponent
+    SidebarHelpComponent
   ]
 })
 export class SharedModule { }

@@ -16,9 +16,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-/* används ej ännu nedanför*/
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
     NoopAnimationsModule,
     MatRadioModule,
     MatSelectModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

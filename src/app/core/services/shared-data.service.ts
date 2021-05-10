@@ -28,6 +28,7 @@ export class SharedDataService {
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
     this.subscribeToNationalInterestsList();
+    this.subcribeToCategories();
   }
 
   /**
