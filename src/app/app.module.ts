@@ -17,8 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
@@ -41,7 +39,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HttpClientModule ,
     NoopAnimationsModule,
     MatRadioModule,
-    MatSelectModule,
     NgSelectModule,
   ],
   providers: [],
