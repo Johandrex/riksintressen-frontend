@@ -91,7 +91,7 @@ export class ListSidebarComponent implements OnInit {
   /**
    * Function to sort stuff.
    */
-  public key: string = "id"; // Key is the item the list is currently being sorted by
+  public key: string = "namn"; // Key is the item the list is currently being sorted by
   public reverse: boolean = false; // Change between sorting in descending and ascending order
   sort(key: string) {
     this.key = key;

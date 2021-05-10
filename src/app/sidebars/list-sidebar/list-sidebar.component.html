@@ -51,11 +51,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let result of this.dataService.nationalInterestsList">
+                <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
                     <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
                         {{result.namn}}
                     </a></td>
                     <td>
+                        <!--Makes sure all categories are listed vertically in the td.-->
                         <div *ngFor="let cat of result.kategorier">
                             {{cat}} &nbsp;
                         </div>
