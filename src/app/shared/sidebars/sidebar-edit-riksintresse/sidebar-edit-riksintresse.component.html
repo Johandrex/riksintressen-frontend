@@ -14,8 +14,10 @@
   <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>
-  <ng-select [(ngModel)]="this.dataService.listCategories" [multiple]=true appearance="outline">
-  <ng-option *ngFor="let x of this.dataService.nationalInterestById.kategorier" [value]="this.dataService.nationalInterestById.kategorier" class="options">{{this.dataService.nationalInterestById.kategorier}}</ng-option>
+    <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" name="namn" [multiple]=true appearance="outline">
+      <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat" class="options">
+        {{cat.namn}}
+      </ng-option>
   </ng-select>
 
   <label class="raa-label">Kategorier: </label>
