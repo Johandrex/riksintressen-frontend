@@ -47,5 +47,4 @@ export class ApiService {
       console.log(data);
     });
   }
-
 }
