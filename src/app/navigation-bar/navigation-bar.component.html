@@ -2,16 +2,17 @@
 <div class="toolbar" role="banner">
   <!-- Logga -->
   <div class="toolbar-logo">
-    <a href="#" title="Riksantikvarieämbetet"><img src="../../assets/raa/assets/images/logo/RAA_logo_farg_rgb.svg" alt="Riksantikvarieämbetet"></a>
+    <a href="#" title="Riksantikvarieämbetet"><img src="../../assets/raa/assets/images/logo/RAA_logo_farg_rgb.svg"
+        alt="Riksantikvarieämbetet"></a>
   </div>
-  
+
   <div class="spacer"></div>
 
   <!-- Verktyg, ikoner från: https://app.raa.se/styleguide/styles -->
   <nav class="toolbar-tools tw-flex tw-justify-end">
-      <app-header-button (click)="buttonCall($event, buttonSearch)" [label]="buttonSearch"></app-header-button>
-      <app-header-button (click)="buttonCall($event, buttonList)" [label]="buttonList"></app-header-button>
-      <app-header-button (click)="buttonCall($event, buttonMenu)" [label]="buttonMenu"></app-header-button>
-      <app-header-button (click)="buttonCall($event, buttonHelp)" [label]="buttonHelp"></app-header-button>
+    <app-header-button (click)="buttonCall($event, buttonSearch)" [label]="buttonSearch"></app-header-button>
+    <app-header-button (click)="buttonCall($event, buttonList)" [label]="buttonList"></app-header-button>
+    <app-header-button (click)="buttonCall($event, buttonMenu)" [label]="buttonMenu"></app-header-button>
+    <app-header-button (click)="buttonCall($event, buttonHelp)" [label]="buttonHelp"></app-header-button>
   </nav>
 </div>

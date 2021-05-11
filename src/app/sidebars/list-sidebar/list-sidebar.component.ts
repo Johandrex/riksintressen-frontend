@@ -1,6 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Riksintresse } from '../../core/classes/Riksintresse.model';
-import { ApiService } from '../../core/services/api.service';
 import { SharedDataService } from '../../core/services/shared-data.service';
 
 @Injectable({
@@ -18,12 +16,12 @@ export class ListSidebarComponent implements OnInit {
   public municipality: any;
   public province: any;
 
-  constructor(public dataService: SharedDataService) {}
+  constructor(public dataService: SharedDataService) { }
 
   ngOnInit(): void { }
 
   /* hide or show sidebar menu */
-  public drawerOpen : boolean = true;
+  public drawerOpen: boolean = true;
   drawerToggle() {
     let sidebar = document.getElementById('sidebar-left');
     let sidebarDrawer = document.getElementById('sidebar-left-drawer');

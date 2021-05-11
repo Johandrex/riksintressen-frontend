@@ -2,7 +2,7 @@
  * Klass med Län
  */
 
- export class Lan {
+export class Lan {
     kod!: number;
     namn!: string;
 }

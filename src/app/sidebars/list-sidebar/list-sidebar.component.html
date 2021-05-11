@@ -1,75 +1,77 @@
-<button (click)="drawerToggle()" id="sidebar-left-drawer" class="sidebar-drawer tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus" aria-label="göm sidpanel">
-    <i id="drawer-left-arrow" class="raa-icon-arrow-left tw-text-size-1.75"></i>
+<button (click)="drawerToggle()" id="sidebar-left-drawer"
+  class="sidebar-drawer tw-bg-raa-white hover:tw-bg-raa-gray-2 tw-border tw-border-solid tw-border-raa-gray-3 tw-text-raa-gray-5 hide-button raa-button-focus"
+  aria-label="göm sidpanel">
+  <i id="drawer-left-arrow" class="raa-icon-arrow-left tw-text-size-1.75"></i>
 </button>
 
 <div id="sidebar-left" class="sidebar">
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <input type="text" class="form-control" name="name" placeholder="Sök på namn"
-                            [(ngModel)]="name" (ngModelChange)="searchName()">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" name="category" placeholder="Sök på kulturmiljötyper"
-                            [(ngModel)]="category" (ngModelChange)="searchCategory()">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" name="municipality" placeholder="Sök på kommuner"
-                            [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
-                    </th>
-                    <th>
-                        <input type="text" class="form-control" name="province" placeholder="Sök på län"
-                            [(ngModel)]="province" (ngModelChange)="searchProvince()">
-                    </th>
-                </tr>
-                <tr>
-                    <th>Namn &nbsp;
-                        <span (click)="sort('namn')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span>
-                    </th>
-                    <th>Kulturmiljötyper &nbsp;
-                        <span (click)="sort('kategorier')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span>
-                    </th>
-                    <th>Kommuner &nbsp;
-                        <span (click)="sort('kommuner')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span></th>
-                    <th>Län &nbsp;
-                        <span (click)="sort('lan')" class="icon-sort">
-                            <div class="raa-icon-arrow-up"></div>
-                            <div class="raa-icon-arrow-down"></div>
-                        </span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
-                    <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
-                        {{result.namn}}
-                    </a></td>
-                    <td>
-                        <!--Makes sure all categories are listed vertically in the td.-->
-                        <div *ngFor="let cat of result.kategorier">
-                            {{cat}} &nbsp;
-                        </div>
-                    </td>
-                    <td>{{result.kommuner}}</td>
-                    <td>{{result.lan}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <!--<footer>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="text" class="form-control" name="name" placeholder="Sök på namn" [(ngModel)]="name"
+              (ngModelChange)="searchName()">
+          </th>
+          <th>
+            <input type="text" class="form-control" name="category" placeholder="Sök på kulturmiljötyper"
+              [(ngModel)]="category" (ngModelChange)="searchCategory()">
+          </th>
+          <th>
+            <input type="text" class="form-control" name="municipality" placeholder="Sök på kommuner"
+              [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
+          </th>
+          <th>
+            <input type="text" class="form-control" name="province" placeholder="Sök på län" [(ngModel)]="province"
+              (ngModelChange)="searchProvince()">
+          </th>
+        </tr>
+        <tr>
+          <th>Namn &nbsp;
+            <span (click)="sort('namn')" class="icon-sort">
+              <div class="raa-icon-arrow-up"></div>
+              <div class="raa-icon-arrow-down"></div>
+            </span>
+          </th>
+          <th>Kulturmiljötyper &nbsp;
+            <span (click)="sort('kategorier')" class="icon-sort">
+              <div class="raa-icon-arrow-up"></div>
+              <div class="raa-icon-arrow-down"></div>
+            </span>
+          </th>
+          <th>Kommuner &nbsp;
+            <span (click)="sort('kommuner')" class="icon-sort">
+              <div class="raa-icon-arrow-up"></div>
+              <div class="raa-icon-arrow-down"></div>
+            </span></th>
+          <th>Län &nbsp;
+            <span (click)="sort('lan')" class="icon-sort">
+              <div class="raa-icon-arrow-up"></div>
+              <div class="raa-icon-arrow-down"></div>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
+          <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
+              {{result.namn}}
+            </a></td>
+          <td>
+            <!--Makes sure all categories are listed vertically in the td.-->
+            <div *ngFor="let cat of result.kategorier">
+              {{cat}} &nbsp;
+            </div>
+          </td>
+          <td>{{result.kommuner}}</td>
+          <td>{{result.lan}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<footer>
             <br />
             <pagination-controls (pageChange)="currentPage = $event"
                 previousLabel="" nextLabel="" [maxSize]="15"></pagination-controls>
         </footer>-->
-    </div>
+  </div>
 </div>

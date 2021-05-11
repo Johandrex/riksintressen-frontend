@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
@@ -43,7 +43,7 @@ export class ApiService {
 
   /* uppdatera ett riksintresse */
   postUpdateRiksintresse(riksintresse: Riksintresse) {
-    return this.http.post<Riksintresse>(this.url + "update/riksintresse/", riksintresse).toPromise().then((data : any) => {
+    return this.http.post<Riksintresse>(this.url + "update/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
     });
   }

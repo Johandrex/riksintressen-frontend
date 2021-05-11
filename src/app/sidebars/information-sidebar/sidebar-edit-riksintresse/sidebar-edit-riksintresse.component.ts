@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";

@@ -1,29 +1,29 @@
 .sidebar {
-    position: absolute;
-    height: 100%;
-    top: 0;
+  position: absolute;
+  height: 100%;
+  top: 0;
 
-    background-color: white;
-    overflow-y: auto;
+  background-color: white;
+  overflow-y: auto;
 }
 
 .sidebar-drawer {
-    position: absolute;
-    width: 1.5rem;
-    height: 3rem;
-    top: 2.7rem;
+  position: absolute;
+  width: 1.5rem;
+  height: 3rem;
+  top: 2.7rem;
 
-    border: 1px solid #e2e8f0;
-    background-color: white;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  
-    z-index: 1;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  z-index: 1;
 }
 
 .sidebar-hide {
-    visibility: hidden;
-  }
+  visibility: hidden;
+}

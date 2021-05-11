@@ -2,43 +2,53 @@
 
 <form [formGroup]="form" (ngSubmit)="submitForm()">
   <label class="raa-label">Namn: </label>
-  <input formControlName="namn" type="text" placeholder="Namn på riksintresse"
-  class="valid-input raa-input" value={{this.dataService.nationalInterestById.namn}}>
-  
+  <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input"
+    value={{this.dataService.nationalInterestById.namn}}>
+
   <label class="raa-label">Motivering: </label>
-  <input formControlName="motivering" type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.motivering}}>
+  <input formControlName="motivering" type="text" placeholder="Skriv något fint" class="valid-input raa-input"
+    value={{this.dataService.nationalInterestById.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
-  <input formControlName="beskrivning" type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
+  <input formControlName="beskrivning" type="text" placeholder="Skriv något fint" class="valid-input raa-input"
+    value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>
-    <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" [ngModelOptions]="{standalone: true}" name="namn" [multiple]=true appearance="outline">
-      <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
-        {{cat.namn}}
-      </ng-option>
+  <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" [ngModelOptions]="{standalone: true}"
+    name="namn" [multiple]=true appearance="outline">
+    <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
+      {{cat.namn}}
+    </ng-option>
   </ng-select>
 
   <div class="tw-mt-2">
     <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
   </div>
 
-  <div class ="two-buttons">
+  <div class="two-buttons">
     <button class="raa-button">Bilder >></button>
     <button class="raa-button raa-button-secondary">Dokument >></button>
   </div>
 
   <div id="details">
-    <label class="raa-label">Kommuner: </label><p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
-    <label class="raa-label">Län: </label><p>{{this.dataService.nationalInterestById.lan}}</p><br /><br />
+    <label class="raa-label">Kommuner: </label>
+    <p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
+    <label class="raa-label">Län: </label>
+    <p>{{this.dataService.nationalInterestById.lan}}</p><br /><br />
 
-    <label class="raa-label">ID: </label><p>{{this.dataService.nationalInterestById.id}}</p><br />
-    <label class="raa-label">Nuvarande version: </label><p>{{this.dataService.nationalInterestById.version}}</p><br />
-    <label class="raa-label">Beslutat: </label><p>1997-04-29</p><br />
-    <label class="raa-label">Reviderat: </label><p>2021-04-29</p><br />
-    <label class="raa-label">Senast modifierad av: </label><p>Carl Gustaf</p><br />
+    <label class="raa-label">ID: </label>
+    <p>{{this.dataService.nationalInterestById.id}}</p><br />
+    <label class="raa-label">Nuvarande version: </label>
+    <p>{{this.dataService.nationalInterestById.version}}</p><br />
+    <label class="raa-label">Beslutat: </label>
+    <p>1997-04-29</p><br />
+    <label class="raa-label">Reviderat: </label>
+    <p>2021-04-29</p><br />
+    <label class="raa-label">Senast modifierad av: </label>
+    <p>Carl Gustaf</p><br />
   </div>
 
-  <div class ="two-buttons">
+  <div class="two-buttons">
     <button type="submit" class="two-buttons raa-button raa-button-confirm">spara</button>
     <button class="two-buttons raa-button raa-button-cancel">avbryt</button>
   </div>

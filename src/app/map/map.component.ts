@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   map: any;
   layerWMS: any;
 
-  constructor(public api: ApiService) {}
+  constructor(public api: ApiService) { }
 
   /**
    * Vid initiering av sidan skapas kartan
@@ -47,7 +47,7 @@ export class MapComponent implements OnInit {
     // Hämta data från GeoServern
     this.layerWMS = new ImageLayer({
       source: new ImageWMS({
-        params: {'LAYERS': 'Workspace:geometri'},
+        params: { 'LAYERS': 'Workspace:geometri' },
         serverType: 'geoserver',
         url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
       })

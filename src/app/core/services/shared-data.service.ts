@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../classes';
 import { ApiService } from './api.service';
+
+import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
 /**
  * Class with methods for executing the logic of the program.
@@ -16,12 +17,12 @@ export class SharedDataService {
   public sidebarCurrent = this.sidebarSource.asObservable();
 
   // Checks whether user has selected an item from a list to display
-  public hasSelectedItem : boolean = false;
+  public hasSelectedItem: boolean = false;
 
   // Maintains the selected national interest
   private idSource = new BehaviorSubject<number>(0);
   public currentId = this.idSource.asObservable();
-  
+
   public nationalInterestsList: RiksintresseList[] = []; // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
 
@@ -42,7 +43,7 @@ export class SharedDataService {
    * Changes sidebar based on input.
    * @param sidebar The sidebar that has been selected.
    */
-   public changeInformationSidebarDisplayed(sidebar: string) : void {
+  public changeInformationSidebarDisplayed(sidebar: string): void {
     this.sidebarSource.next(sidebar);
   }
 
@@ -50,7 +51,7 @@ export class SharedDataService {
    * Changes ID based on input.
    * @param id The ID that has been selected.
    */
-  public changeIdOfNationalInterestDisplayed(id: number) : void {
+  public changeIdOfNationalInterestDisplayed(id: number): void {
     this.hasSelectedItem = true;
     this.idSource.next(id);
   }
@@ -58,7 +59,7 @@ export class SharedDataService {
   /**
    * Changes content of national interest array.
    */
-   public subscribeToNationalInterestsList() : void {
+  public subscribeToNationalInterestsList(): void {
     this.api.getRiksintressenList().subscribe((response) => {
       this.nationalInterestsList = response as RiksintresseList[];
       console.log(this.nationalInterestsList);
@@ -68,7 +69,7 @@ export class SharedDataService {
   /**
    * Changes the national interest found by id.
    */
-  public subscribeToSelectedNationalInterest(id: number) : void {
+  public subscribeToSelectedNationalInterest(id: number): void {
     this.api.getRiksintresse(id).subscribe((response) => {
       this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
     });
@@ -97,7 +98,7 @@ export class SharedDataService {
       console.log(this.listCategories);
     })
   }
-  
+
   // Uppdatera existerande riksintresse
   public updateRiksintresse(object: any) {
     this.api.postUpdateRiksintresse(object);
