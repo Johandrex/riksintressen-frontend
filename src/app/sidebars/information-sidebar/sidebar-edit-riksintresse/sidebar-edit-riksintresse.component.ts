@@ -31,7 +31,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     });
   }
 
-  // för HTTP post av formulärets data
+  // för objekt av formulärets data som skickas via HTTP post
   submitForm() {
     let form = this.form.value;
     form["id"] = this.dataService.nationalInterestById.id;

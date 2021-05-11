@@ -63,15 +63,17 @@
               {{cat}} &nbsp;
             </div>
           </td>
-          <td>{{result.kommuner}}</td>
-          <td>{{result.lan}}</td>
+          <td>
+            <div *ngFor="let com of result.kommuner">
+              {{com}} &nbsp;
+            </div>
+          <td>
+            <div *ngFor="let lala of result.lan">
+              {{lala}} &nbsp;
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
-    <!--<footer>
-            <br />
-            <pagination-controls (pageChange)="currentPage = $event"
-                previousLabel="" nextLabel="" [maxSize]="15"></pagination-controls>
-        </footer>-->
   </div>
 </div>
