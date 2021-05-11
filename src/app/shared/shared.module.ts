@@ -5,6 +5,7 @@ import { HeaderButtonComponent } from './buttons/header-button/header-button.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    MatCheckboxModule,
   ],
   exports: [
     HeaderButtonComponent

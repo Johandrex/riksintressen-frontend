@@ -19,6 +19,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -45,6 +46,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HttpClientModule ,
     NoopAnimationsModule,
     MatRadioModule,
+    MatCheckboxModule,
     NgSelectModule,
   ],
   providers: [],
