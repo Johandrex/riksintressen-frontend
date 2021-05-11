@@ -6,6 +6,9 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { InformationSidebarComponent } from './sidebars/information-sidebar/information-sidebar.component';
+import { SidebarEditRiksintresseComponent } from './sidebars/information-sidebar/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
+import { SidebarHelpComponent } from './sidebars/information-sidebar/sidebar-help/sidebar-help.component';
+import { SidebarInfoRiksintresseComponent } from './sidebars/information-sidebar/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
 import { ListSidebarComponent } from './sidebars/list-sidebar/list-sidebar.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
@@ -26,6 +29,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ListSidebarComponent,
     NavigationBarComponent,
     InformationSidebarComponent,
+    SidebarEditRiksintresseComponent,
+    SidebarInfoRiksintresseComponent,
+    SidebarHelpComponent,
     MapComponent
   ],
   imports: [

@@ -11,9 +11,14 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class SharedDataService {
+  // Maintains type of selected information sidebar
+  private sidebarSource = new BehaviorSubject<string>("");
+  public sidebarCurrent = this.sidebarSource.asObservable();
+
   // Checks whether user has selected an item from a list to display
   public hasSelectedItem : boolean = false;
 
+  // Maintains the selected national interest
   private idSource = new BehaviorSubject<number>(0);
   public currentId = this.idSource.asObservable();
   
@@ -31,6 +36,14 @@ export class SharedDataService {
     this.subcribeToCategories();
     this.subcribeToCounties();
     this.subcribeToMunicipalities();
+  }
+
+  /**
+   * Changes sidebar based on input.
+   * @param sidebar The sidebar that has been selected.
+   */
+   public changeInformationSidebarDisplayed(sidebar: string) : void {
+    this.sidebarSource.next(sidebar);
   }
 
   /**

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderButtonComponent } from './buttons/header-button/header-button.component';
-import { SidebarInfoRiksintresseComponent } from './sidebars/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
-import { SidebarEditRiksintresseComponent } from './sidebars/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
-import { SidebarHelpComponent } from './sidebars/sidebar-help/sidebar-help.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,10 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
-    HeaderButtonComponent,
-    SidebarInfoRiksintresseComponent,
-    SidebarEditRiksintresseComponent,
-    SidebarHelpComponent
+    HeaderButtonComponent
   ],
   imports: [
     CommonModule,
@@ -28,10 +22,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
   ],
   exports: [
-    HeaderButtonComponent,
-    SidebarInfoRiksintresseComponent,
-    SidebarEditRiksintresseComponent,
-    SidebarHelpComponent
+    HeaderButtonComponent
   ]
 })
 export class SharedModule { }

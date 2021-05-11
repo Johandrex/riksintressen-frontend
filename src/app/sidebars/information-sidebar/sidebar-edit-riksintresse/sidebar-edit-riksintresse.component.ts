@@ -3,6 +3,12 @@ import { ApiService } from '../../../core/services/api.service';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl } from '@angular/forms';
 
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
   templateUrl: './sidebar-edit-riksintresse.component.html',
