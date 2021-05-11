@@ -1,1 +1,34 @@
-<p>sidebar-info-riksintresse works!</p>
+
+<label class="raa-label">Namn: </label>
+<p>{{this.dataService.nationalInterestById.namn}}</p>
+
+<label class="raa-label">Motivering: </label>
+<p>{{this.dataService.nationalInterestById.motivering}}</p>
+
+<label class="raa-label">Beskrivning: </label>
+<p>{{this.dataService.nationalInterestById.beskrivning}}</p>
+
+<label class="raa-label">Kulturmiljötyper: </label>
+<div *ngFor="let cat of this.dataService.nationalInterestById.kategorier">
+    <p>{{cat}} &nbsp;</p>
+</div>
+
+<div class="tw-mt-2">
+    <label class="raa-label">Avstått anspråk/Beslutad/Under bearbetning</label>
+</div>
+
+<div class ="two-buttons">
+<button class="raa-button">Bilder >></button>
+<button class="raa-button raa-button-secondary">Dokument >></button>
+</div>
+
+<div id="details">
+<label class="raa-label">Kommuner: </label><p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
+<label class="raa-label">Län: </label><p>{{this.dataService.nationalInterestById.lan}}</p><br /><br />
+
+<label class="raa-label">ID: </label><p>{{this.dataService.nationalInterestById.id}}</p><br />
+<label class="raa-label">Nuvarande version: </label><p>{{this.dataService.nationalInterestById.version}}</p><br />
+<label class="raa-label">Beslutat: </label><p>1997-04-29</p><br />
+<label class="raa-label">Reviderat: </label><p>2021-04-29</p><br />
+<label class="raa-label">Senast modifierad av: </label><p>Carl Gustaf</p><br />
+</div>

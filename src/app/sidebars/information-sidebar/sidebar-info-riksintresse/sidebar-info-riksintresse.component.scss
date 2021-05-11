@@ -1,0 +1,19 @@
+.two-buttons button {
+    width: 49%;
+    margin-right: 1%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  #details {
+    display: inline !important;
+  }
+
+  #details label, #details p {
+    font-size: 14px !important;
+    display: inline !important;
+  }
+
+  .mat-checkbox-inner-container {
+    position: static !important;
+  }
