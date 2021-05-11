@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from './core/services/api.service';
 
-import { Riksintresse, Geometri, Kommun, Lan, Kulturmiljotyp } from './core/classes';
+import { Riksintresse, Kommun, Lan, Kulturmiljotyp } from './core/classes';
 import { SharedDataService } from "./core/services/shared-data.service";
 
 import { NgSelectModule } from '@ng-select/ng-select';

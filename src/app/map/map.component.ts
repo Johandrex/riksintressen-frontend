@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Geometri } from '../core/classes/Geometri.model'
 import { ApiService } from '../core/services/api.service';
 
 /* Importerar OpenLayers */
@@ -23,7 +22,7 @@ export class MapComponent implements OnInit {
   longitude: number = 57.6271917;
 
   map: any;
-  mapWMS: any;
+  layerWMS: any;
 
   constructor(public api: ApiService) {}
 
@@ -46,15 +45,32 @@ export class MapComponent implements OnInit {
     });
 
     // Hämta data från GeoServern
-    this.mapWMS = new ImageLayer({
+    this.layerWMS = new ImageLayer({
       source: new ImageWMS({
         params: {'LAYERS': 'Workspace:geometri'},
         serverType: 'geoserver',
         url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
       })
     })
-    this.mapWMS.setOpacity(0.4);
-    this.map.addLayer(this.mapWMS); // lägg på layer på kartan
+    this.layerWMS.setOpacity(0.4);
+
+    this.map.addLayer(this.layerWMS); // lägg på layer på kartan
+
+    this.map.on("click", (e: any) => {
+      console.log(e.pixel);
+      this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
+        console.log("test");
+      });
+    });
+
+    /*
+    this.map.on("singleclick", (e: any) => {
+      console.log(e);
+      this.map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+        console.log(feature); // feature.get("<property_key>")
+      });
+    });
+    */
 
     /*
     // När användaren trycker på en geometri skrivs det ut i konsolen.
