@@ -23,5 +23,11 @@ export class NavigationBarComponent implements OnInit {
     if (button == this.buttonList) {
       this.app.toggleList();
     }
+    else if (button == this.buttonMenu) {
+      this.app.toggleList();
+    }
+    else if (button == this.buttonHelp) {
+      this.app.toggleList();
+    }
   }
 }

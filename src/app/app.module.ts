@@ -22,6 +22,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SidebarMenuComponent } from './sidebars/information-sidebar/sidebar-menu/sidebar-menu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SidebarEditRiksintresseComponent,
     SidebarInfoRiksintresseComponent,
     SidebarHelpComponent,
-    MapComponent
+    MapComponent,
+    SidebarMenuComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiService } from '../../../core/services/api.service';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl } from '@angular/forms';
 
@@ -21,7 +20,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
   // form kontroller för <ng-select>
   selectKategorier = new FormControl();
 
-  constructor(private api: ApiService, public dataService: SharedDataService) { }
+  constructor(public dataService: SharedDataService) { }
 
   ngOnInit(): void { // Subscribe to a selected id of national interest
     this.dataService.currentId.subscribe((id) => {
