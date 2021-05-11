@@ -1,13 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiService } from '../../../core/services/api.service';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl } from '@angular/forms';
-
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgSelectModule } from '@ng-select/ng-select';
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
@@ -16,25 +10,34 @@ import { NgSelectModule } from '@ng-select/ng-select';
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
 
-  public hasSelectedItem : boolean = false;
-
   // form kontroller för <ng-select>
   selectKategorier = new FormControl();
 
-  constructor(private api: ApiService, public dataService: SharedDataService) { }
+  // formuläret
+  form: FormGroup;
+
+  constructor(public fb: FormBuilder, public dataService: SharedDataService) {
+    this.form = new FormGroup({
+      namn: new FormControl(),
+      beskrivning: new FormControl(),
+      motivering: new FormControl(),
+      cederat: new FormControl(),
+    })
+  }
 
   ngOnInit(): void { // Subscribe to a selected id of national interest
     this.dataService.currentId.subscribe((id) => {
-      if(id == null) {
-        this.hasSelectedItem = false;
-      }
-      else {
-        this.hasSelectedItem = true;
-      }
-      // Only one "riksintresse" is returned to the array
       this.dataService.subscribeToSelectedNationalInterest(id);
     });
   }
 
+  // för HTTP post av formulärets data
+  submitForm() {
+    let form = this.form.value;
+    form["id"] = this.dataService.nationalInterestById.id;
+    form["kategorier"] = this.dataService.nationalInterestById.kategorier;
+
+    this.dataService.updateRiksintresse(form);
+  }
 
 }

@@ -12,6 +12,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  /*********** GET ***********/
+
   /* hämta alla riksintressen för listan, där riksintressen har kategorier, kategorier, län, osv */
   getRiksintressenList() {
     return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list");
@@ -20,15 +22,6 @@ export class ApiService {
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
     return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
-  }
-
-  /* uppdatera ett riksintresse */
-  updateRiksintresse(riksintresse: Riksintresse) {
-    return this.http.post<Riksintresse>(this.url + "riksintressen/", riksintresse, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    });
   }
 
   /* hämta alla kommuner i en lista */
@@ -44,6 +37,15 @@ export class ApiService {
   /* hämta alla kulturmiljötyper i en lista */
   getKulturmiljotyper() {
     return this.http.get<Kulturmiljotyp[]>(this.url + "kulturmiljotyper");
+  }
+
+  /*********** POST ***********/
+
+  /* uppdatera ett riksintresse */
+  postUpdateRiksintresse(riksintresse: Riksintresse) {
+    return this.http.post<Riksintresse>(this.url + "update/riksintresse/", riksintresse).toPromise().then((data : any) => {
+      console.log(data);
+    });
   }
 
 }

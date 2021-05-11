@@ -8,6 +8,8 @@ export class Riksintresse {
     namn!: string;
     beskrivning!: string; 
     motivering!: string;
+    cederat!: boolean; // avstått
+
     version!: number;
     geometri_id!: number;
 

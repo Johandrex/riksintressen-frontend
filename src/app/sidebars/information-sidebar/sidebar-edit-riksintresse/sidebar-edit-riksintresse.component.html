@@ -1,25 +1,25 @@
 <h1 class="tw-heading-md tw-py-2">Redigering</h1>
 
-<form>
+<form [formGroup]="form" (ngSubmit)="submitForm()">
   <label class="raa-label">Namn: </label>
-  <input type="text" placeholder="Skriv något fint"
+  <input formControlName="namn" type="text" placeholder="Namn på riksintresse"
   class="valid-input raa-input" value={{this.dataService.nationalInterestById.namn}}>
   
   <label class="raa-label">Motivering: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.motivering}}>
+  <input formControlName="motivering" type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
-  <input type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
+  <input formControlName="beskrivning" type="text" placeholder="Skriv något fint" class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>
-    <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" name="namn" [multiple]=true appearance="outline">
-      <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat" class="options">
+    <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" [ngModelOptions]="{standalone: true}" name="namn" [multiple]=true appearance="outline">
+      <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
         {{cat.namn}}
       </ng-option>
   </ng-select>
 
   <div class="tw-mt-2">
-    <mat-checkbox [disableRipple]="true">Avstått anspråk</mat-checkbox>
+    <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
   </div>
 
   <div class ="two-buttons">
@@ -39,7 +39,7 @@
   </div>
 
   <div class ="two-buttons">
-    <button class="two-buttons raa-button raa-button-confirm">spara</button>
+    <button type="submit" class="two-buttons raa-button raa-button-confirm">spara</button>
     <button class="two-buttons raa-button raa-button-cancel">avbryt</button>
   </div>
 </form>

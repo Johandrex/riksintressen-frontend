@@ -97,4 +97,9 @@ export class SharedDataService {
       console.log(this.listCategories);
     })
   }
+  
+  // Uppdatera existerande riksintresse
+  public updateRiksintresse(object: any) {
+    this.api.postUpdateRiksintresse(object);
+  }
 }
