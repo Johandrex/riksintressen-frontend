@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { Riksintresse, RiksintresseList, Geometri, Kommun, Lan, Kulturmiljotyp } from '../classes';
+import { BehaviorSubject } from 'rxjs';
+import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../classes';
 import { ApiService } from './api.service';
 
 /**
@@ -20,7 +20,6 @@ export class SharedDataService {
   public nationalInterestsList: RiksintresseList[] = []; // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
 
-  public listGeometries: Geometri[] = []; // register över alla geometries
   public listMunicipalities: Kommun[] = []; // register över alla kommuner
   public listCounties: Lan[] = []; // register över alla län
   public listCategories: Kulturmiljotyp[] = []; // register över alla kategorier
@@ -28,7 +27,10 @@ export class SharedDataService {
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
     this.subscribeToNationalInterestsList();
+
     this.subcribeToCategories();
+    this.subcribeToCounties();
+    this.subcribeToMunicipalities();
   }
 
   /**
@@ -57,14 +59,6 @@ export class SharedDataService {
     this.api.getRiksintresse(id).subscribe((response) => {
       this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
     });
-  }
-
-  // Geometries
-  public subcribeToGeometries() {
-    this.api.getGeometrier().subscribe((response) => {
-      this.listGeometries = response;
-      console.log(this.listGeometries);
-    })
   }
 
   // Kommuner
