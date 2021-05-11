@@ -17,4 +17,4 @@ Skapare: Johannes Seldevall, Sebastian Sjöberg och Wibke Du Rietz.
 2. klona repository med kommandot "git clone https://Johandrex@bitbucket.org/Johandrex/riksintressen-frontend.git"
 3. gå in i repository mappen "cd riksintressen-frontend"
 4. installera angular och nödvändiga plugins via npm "npm install @angular/core @angular/forms @angular/common @angular/material @angular/router tailwindcss ngx-order-pipe @ng-select/ng-select"
-hrwslsehbg vnmberjxni nsjchtiiel mnjuuuitar dsqdetrnwy xlcffxqpne dxooimiadk
+isjvoonwuu
