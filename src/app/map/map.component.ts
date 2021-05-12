@@ -5,11 +5,16 @@ import { ApiService } from '../core/services/api.service';
 import * as ol from 'ol';
 import { View, Feature, Map } from 'ol';
 import { fromLonLat } from 'ol/proj';
-import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+import VectorImage from 'ol/layer/Image';
+import Vector from 'ol/source/Vector';
+import GeoJSON from 'ol/format/GeoJSON';
+import VectorSource from 'ol/source/Vector';
+import XYZ from 'ol/source/XYZ';
+import { Stroke, Style } from 'ol/style';
+import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
+import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 
-import ImageLayer from 'ol/layer/Image';
-import ImageWMS from 'ol/source/ImageWMS';
 
 @Component({
   selector: 'app-map',
@@ -22,7 +27,7 @@ export class MapComponent implements OnInit {
   longitude: number = 57.6271917;
 
   map: any;
-  layerWMS: any;
+  layer: any;
 
   constructor(public api: ApiService) { }
 
@@ -44,40 +49,51 @@ export class MapComponent implements OnInit {
       })
     });
 
-    // Hämta data från GeoServern
-    this.layerWMS = new ImageLayer({
-      source: new ImageWMS({
-        params: { 'LAYERS': 'Workspace:geometri' },
-        serverType: 'geoserver',
-        url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
-      })
-    })
-    this.layerWMS.setOpacity(0.4);
+    var vectorSource = new VectorSource({
+      format: new GeoJSON(),
+      url: function (extent) {
+        return (
+          'https://ahocevar.com/geoserver/wfs?service=WFS&' +
+          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
+          'outputFormat=application/json&srsname=EPSG:3857&' +
+          'bbox=' +
+          extent.join(',') +
+          ',EPSG:3006'
+        );
+      },
+      strategy: bboxStrategy,
+    });
 
-    this.map.addLayer(this.layerWMS); // lägg på layer på kartan
+    this.layer = new VectorLayer({
+      source: vectorSource,
+      style: new Style({
+        stroke: new Stroke({
+          color: 'rgba(0, 0, 255, 1.0)',
+          width: 2,
+        }),
+      }),
+    });
+
+    this.map.addLayer(this.layer);
+
+    // Get data with features from GeoServer
+    /*this.layer = new VectorLayer({
+      source: new VectorSource({
+        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&maxFeatures=50&outputFormat=application%2Fjson',
+        format: new GeoJSON(),
+      })
+    });
+
+    this.layer.setOpacity(0.5);
+    this.map.addLayer(this.layer);*/
 
     this.map.on("click", (e: any) => {
+      console.log("hello");
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
         console.log(feature);
       });
     });
 
-    /*
-    this.map.on("singleclick", (e: any) => {
-      console.log(e);
-      this.map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-        console.log(feature); // feature.get("<property_key>")
-      });
-    });
-    */
-
-    /*
-    // När användaren trycker på en geometri skrivs det ut i konsolen.
-    this.map.on('click', function(e){
-      map.forEachFeatureAtPixel(e.pixel, function(feature, layer) {
-        console.log(feature);
-      })
-    })
-    */
   }
+
 }
