@@ -12,12 +12,9 @@ import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../
   providedIn: 'root'
 })
 export class SharedDataService {
-  // Maintains type of selected information sidebar
-  private sidebarSource = new BehaviorSubject<string>("");
-  public sidebarCurrent = this.sidebarSource.asObservable();
-
-  // Checks whether user has selected an item from a list to display
-  public hasSelectedItem: boolean = false;
+  // Hanterar vilket läge som hanteras i sidebaren
+  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT' };
+  public infoSidebarMode = this.MODE.HELP; // vilken information ska visas i högra spalten vid initiering?
 
   // Maintains the selected national interest
   private idSource = new BehaviorSubject<number>(0);
@@ -40,19 +37,10 @@ export class SharedDataService {
   }
 
   /**
-   * Changes sidebar based on input.
-   * @param sidebar The sidebar that has been selected.
-   */
-  public changeInformationSidebarDisplayed(sidebar: string): void {
-    this.sidebarSource.next(sidebar);
-  }
-
-  /**
    * Changes ID based on input.
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    this.hasSelectedItem = true;
     this.idSource.next(id);
   }
 
@@ -63,7 +51,7 @@ export class SharedDataService {
     this.api.getRiksintressenList().subscribe((response) => {
       this.nationalInterestsList = response as RiksintresseList[];
       console.log(this.nationalInterestsList);
-    })
+    });
   }
 
   /**
@@ -80,7 +68,7 @@ export class SharedDataService {
     this.api.getKommuner().subscribe((response) => {
       this.listMunicipalities = response;
       console.log(this.listMunicipalities);
-    })
+    });
   }
 
   // Län
@@ -88,7 +76,7 @@ export class SharedDataService {
     this.api.getLan().subscribe((response) => {
       this.listCounties = response;
       console.log(this.listCounties);
-    })
+    });
   }
 
   // Kategorier / Kulturmiljötyper
@@ -96,11 +84,16 @@ export class SharedDataService {
     this.api.getKulturmiljotyper().subscribe((response) => {
       this.listCategories = response;
       console.log(this.listCategories);
-    })
+    });
   }
 
   // Uppdatera existerande riksintresse
   public updateRiksintresse(object: any) {
     this.api.postUpdateRiksintresse(object);
+  }
+
+  // Skapa nytt riksintresse
+  public newRiksintresse(object: any) {
+    this.api.postNewRiksintresse(object);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
+import { SharedDataService } from '../core/services/shared-data.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,26 +8,27 @@ import { AppComponent } from '../app.component';
 })
 export class NavigationBarComponent implements OnInit {
 
-  buttonList = "lista"
   buttonSearch = "sök"
+  buttonNew = "nytt"
   buttonHelp = "hjälp"
-  buttonMenu = "meny"
 
-  constructor(private app: AppComponent) { }
+  constructor(public dataService: SharedDataService) { }
 
   ngOnInit(): void { }
 
   /* funktion som tillkallas när anvädnaren trycker på knappen */
   buttonCall(event: any, button: string) {
     /* Dölj / visa listan, funktionen åkallar List modulen där funktionen utförs. */
-    if (button == this.buttonList) {
-      this.app.toggleList();
-    }
-    else if (button == this.buttonMenu) {
-      this.app.toggleList();
-    }
-    else if (button == this.buttonHelp) {
-      this.app.toggleList();
+    switch (button) {
+      case this.buttonSearch:
+        // används ej
+        break;
+      case this.buttonNew:
+        this.dataService.infoSidebarMode = this.dataService.MODE.NEW;
+        break;
+      case this.buttonHelp:
+        this.dataService.infoSidebarMode = this.dataService.MODE.HELP;
+        break;
     }
   }
 }

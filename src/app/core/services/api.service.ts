@@ -47,4 +47,11 @@ export class ApiService {
       console.log(data);
     });
   }
+
+  /* skapa ett nytt riksintresse */
+  postNewRiksintresse(riksintresse: Riksintresse) {
+    return this.http.post<Riksintresse>(this.url + "create/riksintresse/", riksintresse).toPromise().then((data: any) => {
+      console.log(data);
+    });
+  }
 }

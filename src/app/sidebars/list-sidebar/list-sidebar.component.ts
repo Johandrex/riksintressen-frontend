@@ -95,6 +95,7 @@ export class ListSidebarComponent implements OnInit {
     var value = idAttr.nodeValue;
     // Notify observer to keep info-sidebar up to date with selected national interest
     this.dataService.changeIdOfNationalInterestDisplayed(value);
+    this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
 
 }

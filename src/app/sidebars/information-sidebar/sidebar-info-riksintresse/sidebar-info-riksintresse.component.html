@@ -1,3 +1,5 @@
+<h1 class="tw-heading-md tw-py-2">Information</h1>
+
 <label class="raa-label">Namn: </label>
 <p>{{this.dataService.nationalInterestById.namn}}</p>
 
@@ -38,4 +40,8 @@
   <p>2021-04-29</p><br />
   <label class="raa-label">Senast modifierad av: </label>
   <p>Carl Gustaf</p><br />
+</div>
+
+<div class="one-button">
+  <button (click)="getIdOfClicked($event)" class="raa-button raa-button-confirm">Redigera</button>
 </div>

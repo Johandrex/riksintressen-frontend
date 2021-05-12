@@ -6,12 +6,9 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
   templateUrl: './sidebar-edit-riksintresse.component.html',
-  styleUrls: ['./sidebar-edit-riksintresse.component.scss']
+  styleUrls: ['../../sidebar-form.scss']
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
-
-  // form kontroller för <ng-select>
-  selectKategorier = new FormControl();
 
   // formuläret
   form: FormGroup;
