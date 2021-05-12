@@ -6,12 +6,12 @@
     value={{this.dataService.nationalInterestById.namn}}>
 
   <label class="raa-label">Motivering: </label>
-  <input formControlName="motivering" type="text" placeholder="Skriv något fint" class="valid-input raa-input"
+  <input formControlName="motivering" type="text" placeholder="Motivering av riksintresse" class="valid-input raa-input"
     value={{this.dataService.nationalInterestById.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
-  <input formControlName="beskrivning" type="text" placeholder="Skriv något fint" class="valid-input raa-input"
-    value={{this.dataService.nationalInterestById.beskrivning}}>
+  <input formControlName="beskrivning" type="text" placeholder="Beskrivning av riksintresse"
+    class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>
   <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" [ngModelOptions]="{standalone: true}"
@@ -28,6 +28,10 @@
   <div class="two-buttons">
     <button class="raa-button">Bilder >></button>
     <button class="raa-button raa-button-secondary">Dokument >></button>
+  </div>
+
+  <div class="one-button">
+    <button class="raa-button raa-button-confirm">Rita Polygon</button>
   </div>
 
   <div id="details">

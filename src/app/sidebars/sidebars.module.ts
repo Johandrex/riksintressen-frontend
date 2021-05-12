@@ -11,7 +11,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { InformationSidebarComponent } from './information-sidebar/information-sidebar.component';
 import { SidebarEditRiksintresseComponent } from './information-sidebar/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
 import { SidebarInfoRiksintresseComponent } from './information-sidebar/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
-import { SidebarMenuComponent } from './information-sidebar/sidebar-menu/sidebar-menu.component';
+import { SidebarNewRiksintresseComponent } from './information-sidebar/sidebar-new-riksintresse/sidebar-new-riksintresse.component';
 import { SidebarHelpComponent } from './information-sidebar/sidebar-help/sidebar-help.component';
 import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
 
@@ -20,7 +20,7 @@ import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
     InformationSidebarComponent,
     SidebarEditRiksintresseComponent,
     SidebarInfoRiksintresseComponent,
-    SidebarMenuComponent,
+    SidebarNewRiksintresseComponent,
     SidebarHelpComponent,
     ListSidebarComponent,
   ],
@@ -36,7 +36,7 @@ import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
     InformationSidebarComponent,
     SidebarEditRiksintresseComponent,
     SidebarInfoRiksintresseComponent,
-    SidebarMenuComponent,
+    SidebarNewRiksintresseComponent,
     SidebarHelpComponent,
     ListSidebarComponent,
   ],

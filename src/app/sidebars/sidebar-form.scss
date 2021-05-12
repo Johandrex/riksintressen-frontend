@@ -5,14 +5,18 @@
   margin-bottom: 5px;
 }
 
-#details {
-  display: inline !important;
+.one-button button {
+  width: 99%;
 }
 
-#details label,
-#details p {
-  font-size: 14px !important;
+#details {
   display: inline !important;
+
+  label,
+  p {
+    font-size: 14px !important;
+    display: inline !important;
+  }
 }
 
 .mat-checkbox-inner-container {

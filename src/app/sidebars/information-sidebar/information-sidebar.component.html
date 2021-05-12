@@ -5,9 +5,19 @@
   <i id="drawer-right-arrow" class="raa-icon-arrow-right tw-text-size-1.75"></i>
 </button>
 
+<!-- Välj en komponent utifrån dataService.infoSidebarMode -->
 <div id="sidebar-right" class="sidebar">
-  <div *ngIf="dataService.hasSelectedItem">
+  <div *ngIf="dataService.infoSidebarMode === dataService.MODE.HELP">
+    <app-sidebar-help></app-sidebar-help>
+  </div>
+  <div *ngIf="dataService.infoSidebarMode === dataService.MODE.INFO">
+    <app-sidebar-info-riksintresse></app-sidebar-info-riksintresse>
+  </div>
+  <div *ngIf="dataService.infoSidebarMode === dataService.MODE.EDIT">
     <app-sidebar-edit-riksintresse></app-sidebar-edit-riksintresse>
+  </div>
+  <div *ngIf="dataService.infoSidebarMode === dataService.MODE.NEW">
+    <app-sidebar-new-riksintresse></app-sidebar-new-riksintresse>
   </div>
 
 </div>
