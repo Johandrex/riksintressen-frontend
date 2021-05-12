@@ -57,9 +57,8 @@ export class MapComponent implements OnInit {
     this.map.addLayer(this.layerWMS); // lägg på layer på kartan
 
     this.map.on("click", (e: any) => {
-      console.log(e.pixel);
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
-        console.log("test");
+        console.log(feature);
       });
     });
 
