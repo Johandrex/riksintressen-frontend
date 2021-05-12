@@ -1,12 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from './core/services/api.service';
 
-import { Riksintresse, Kommun, Lan, Kulturmiljotyp } from './core/classes';
-import { SharedDataService } from "./core/services/shared-data.service";
-
-import { NgSelectModule } from '@ng-select/ng-select';
-
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -14,7 +8,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   // Initiera register från API
   ngOnInit(): void { }

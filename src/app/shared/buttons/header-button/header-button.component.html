@@ -1,14 +1,15 @@
-<button role="button" class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
-    <span class="tw-flex tw-flex-col tw-items-center">
-        <!-- ikoner bestäms utifrån {{ label }} -->
-        <span *ngIf="label==='lista'" class="tw-text-header raa-icon-list"></span>
-        <span *ngIf="label==='sök'" class="tw-text-header raa-icon-search"></span>
-        <span *ngIf="label==='hjälp'" class="tw-text-header raa-icon-help"></span>
-        <span *ngIf="label==='meny'" class="tw-text-header raa-icon-menu"></span>
+<button role="button"
+  class="tw-select-none tw-cursor-pointer tw-text-size-1.75 tw-ml-2 raa-button-focus tw-text-raa-orange">
+  <span class="tw-flex tw-flex-col tw-items-center">
+    <!-- ikoner bestäms utifrån {{ label }} -->
+    <span *ngIf="label==='lista'" class="tw-text-header raa-icon-list"></span>
+    <span *ngIf="label==='sök'" class="tw-text-header raa-icon-search"></span>
+    <span *ngIf="label==='hjälp'" class="tw-text-header raa-icon-help"></span>
+    <span *ngIf="label==='meny'" class="tw-text-header raa-icon-menu"></span>
 
-        <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">
-            <!-- namn -->
-            {{ label }}
-        </span>
+    <span class="tw-text-size-0.813 tw-font-semibold tw-uppercase">
+      <!-- namn -->
+      {{ label }}
     </span>
+  </span>
 </button>

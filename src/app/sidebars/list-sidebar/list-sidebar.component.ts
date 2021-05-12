@@ -1,6 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Riksintresse } from '../../core/classes/Riksintresse.model';
-import { ApiService } from '../../core/services/api.service';
 import { SharedDataService } from '../../core/services/shared-data.service';
 
 @Injectable({
@@ -18,12 +16,12 @@ export class ListSidebarComponent implements OnInit {
   public municipality: any;
   public province: any;
 
-  constructor(public dataService: SharedDataService) {}
+  constructor(public dataService: SharedDataService) { }
 
   ngOnInit(): void { }
 
   /* hide or show sidebar menu */
-  public drawerOpen : boolean = true;
+  public drawerOpen: boolean = true;
   drawerToggle() {
     let sidebar = document.getElementById('sidebar-left');
     let sidebarDrawer = document.getElementById('sidebar-left-drawer');
@@ -56,36 +54,25 @@ export class ListSidebarComponent implements OnInit {
    * @todo Make more abstract if possible.
    */
   searchName() {
-    if (this.name == "") { this.ngOnInit(); }
-    else {
-      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-      })
-    }
+    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+      console.log(res.namn + " " + this.name);
+      return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+    })
   }
   searchCategory() {
-    if (this.category == "") { this.ngOnInit(); }
-    else {
-      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
-      })
-    }
+    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+      return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
+    })
   }
   searchMunicipality() {
-    if (this.municipality == "") { this.ngOnInit(); }
-    else {
-      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
-      })
-    }
+    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+      return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
+    })
   }
   searchProvince() {
-    if (this.province == "") { this.ngOnInit(); }
-    else {
-      this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-        return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
-      })
-    }
+    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+      return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
+    })
   }
 
   /**

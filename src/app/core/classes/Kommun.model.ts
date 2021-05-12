@@ -2,7 +2,7 @@
  * Klass med kommuner
  */
 
- export class Kommun {
+export class Kommun {
     kod!: number;
     namn!: string;
 }

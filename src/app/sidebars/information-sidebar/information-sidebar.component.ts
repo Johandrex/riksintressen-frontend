@@ -12,11 +12,11 @@ import { SharedDataService } from '../../core/services/shared-data.service';
 export class InformationSidebarComponent implements OnInit {
 
   // Checks whether user has opened this bar or not
-  public drawerOpen : boolean = true;
+  public drawerOpen: boolean = true;
 
-  constructor(public dataService : SharedDataService) {  }
+  constructor(public dataService: SharedDataService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   /* hide or show sidebar menu */
   drawerToggle() {
