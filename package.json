@@ -30,6 +30,7 @@
     "ngx-order-pipe": "^2.1.1",
     "ngx-pagination": "^5.1.0",
     "ol": "^6.5.0",
+    "ol-hashed": "^2.0.0",
     "postcss": "^8.2.15",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^5.2.0",

@@ -7,14 +7,17 @@ import { View, Feature, Map } from 'ol';
 import { fromLonLat } from 'ol/proj';
 import OSM from 'ol/source/OSM';
 import VectorImage from 'ol/layer/Image';
-import Vector from 'ol/source/Vector';
-import GeoJSON from 'ol/format/GeoJSON';
 import VectorSource from 'ol/source/Vector';
+import GeoJSON from 'ol/format/GeoJSON';
 import XYZ from 'ol/source/XYZ';
 import { Stroke, Style } from 'ol/style';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 
+import ImageLayer from 'ol/layer/Image';
+import ImageWMS from 'ol/source/ImageWMS';
+
+//import sync from 'ol-hashed';
 
 @Component({
   selector: 'app-map',
@@ -49,7 +52,18 @@ export class MapComponent implements OnInit {
       })
     });
 
-    var vectorSource = new VectorSource({
+    // Hämta data från GeoServern
+    //url: 'http://109.225.108.59:8080/geoserver/Workspace/wms',
+    this.layer = new VectorLayer({
+      source: new VectorSource({
+        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&maxFeatures=50&outputFormat=application%2Fjson',
+        format: new GeoJSON()
+      }),
+    });
+    this.layer.setOpacity(0.4);
+    this.map.addLayer(this.layer); // lägg på layer på kartan
+
+    /*var vectorSource = new VectorSource({
       format: new GeoJSON(),
       url: function (extent) {
         return (
@@ -74,7 +88,19 @@ export class MapComponent implements OnInit {
       }),
     });
 
-    this.map.addLayer(this.layer);
+    this.map.addLayer(this.layer);*/
+
+    // Hämta data från GeoServern
+    /*this.layer = new ImageLayer({
+      source: new ImageWMS({
+        params: { 'LAYERS': 'Workspace:geometri' },
+        serverType: 'geoserver',
+        url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
+      })
+    });
+    this.layer.setOpacity(0.4);
+
+    this.map.addLayer(this.layer); // lägg på layer på kartan*/
 
     // Get data with features from GeoServer
     /*this.layer = new VectorLayer({
@@ -83,7 +109,7 @@ export class MapComponent implements OnInit {
         format: new GeoJSON(),
       })
     });
-
+    
     this.layer.setOpacity(0.5);
     this.map.addLayer(this.layer);*/
 
@@ -93,6 +119,8 @@ export class MapComponent implements OnInit {
         console.log(feature);
       });
     });
+
+    //sync(this.map);
 
   }
 
