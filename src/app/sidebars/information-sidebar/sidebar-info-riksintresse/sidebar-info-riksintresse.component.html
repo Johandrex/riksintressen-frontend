@@ -14,9 +14,10 @@
   <p>{{cat}} &nbsp;</p>
 </div>
 
-<label class="raa-label">Avsått anspråk: </label>
-<div class="tw-mt-2">
-  <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
+<div *ngIf="this.dataService.nationalInterestById.cederat">
+  <!-- Syns endast vid cedering -->
+  <label class="raa-label">Status: </label>
+  <p>Avstått anspråk</p>
 </div>
 
 <label class="raa-label">Kommuner: </label>
