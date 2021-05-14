@@ -11,19 +11,18 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class SidebarEditRiksintresseComponent implements OnInit {
 
   // formuläret
-  form: FormGroup;
+  form!: any;
 
-  constructor(public fb: FormBuilder, public dataService: SharedDataService) {
+  constructor(public dataService: SharedDataService) {
     this.form = new FormGroup({
-      namn: new FormControl(),
-      beskrivning: new FormControl(),
-      motivering: new FormControl(),
-      cederat: new FormControl(),
+      namn: new FormControl(this.dataService.nationalInterestById.namn),
+      beskrivning: new FormControl(this.dataService.nationalInterestById.beskrivning),
+      motivering: new FormControl(this.dataService.nationalInterestById.motivering),
+      cederat: new FormControl(this.dataService.nationalInterestById.cederat),
     })
   }
 
   ngOnInit(): void { // Subscribe to a selected id of national interest
-
   }
 
   // för objekt av formulärets data som skickas via HTTP post
