@@ -16,6 +16,7 @@ import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 
 import ImageLayer from 'ol/layer/Image';
 import ImageWMS from 'ol/source/ImageWMS';
+import { SharedDataService } from '../core/services/shared-data.service';
 
 //import sync from 'ol-hashed';
 
@@ -26,13 +27,13 @@ import ImageWMS from 'ol/source/ImageWMS';
 })
 export class MapComponent implements OnInit {
   // Kordinater över visby
-  latitude: number = 18.3278145;
-  longitude: number = 57.6271917;
+  private latitude: number = 18.3278145;
+  private longitude: number = 57.6271917;
 
-  map: any;
-  layer: any;
+  public map: any;
+  public layer: any;
 
-  constructor(public api: ApiService) { }
+  constructor(public dataService: SharedDataService) { }
 
   /**
    * Vid initiering av sidan skapas kartan
