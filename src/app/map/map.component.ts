@@ -17,7 +17,6 @@ import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 
 import ImageLayer from 'ol/layer/Image';
 import ImageWMS from 'ol/source/ImageWMS';
-import { SharedDataService } from '../core/services/shared-data.service';
 
 //import sync from 'ol-hashed';
 
@@ -66,11 +65,7 @@ export class MapComponent implements OnInit {
     this.map.addLayer(this.layer); // lägg på layer på kartan
 
     this.map.on("click", (e: any) => {
-<<<<<<< HEAD
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any, dataService: SharedDataService) { // denna funkar inte, finns inga features at pixel?
-=======
-      this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => { // denna funkar inte, finns inga features at pixel?
->>>>>>> 716e7455bc1df8c2aea1540269c3318a8cbc3b88
         console.log("user clicked on id: " + feature.id_.split(".")[1]);
         dataService.changeIdOfNationalInterestDisplayed(feature.id_.split(".")[1]);
       });
