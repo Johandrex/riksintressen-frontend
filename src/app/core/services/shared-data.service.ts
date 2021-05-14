@@ -55,13 +55,14 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    console.log(id);
     this.idSource.next(id);
     this.infoSidebarMode = this.MODE.INFO;
 
     this.currentId.subscribe((id) => {
       this.subscribeToSelectedNationalInterest(id);
     });
+
+    this.centerOnMap(id);
   }
 
   // *********************************** Database related ***********************************
@@ -81,7 +82,6 @@ export class SharedDataService {
   public subscribeToNationalInterestsList(): void {
     this.api.getRiksintressenList().subscribe((response) => {
       this.nationalInterestsList = response as RiksintresseList[];
-      console.log(this.nationalInterestsList);
     });
   }
 
@@ -89,7 +89,6 @@ export class SharedDataService {
   public subcribeToMunicipalities() {
     this.api.getKommuner().subscribe((response) => {
       this.listMunicipalities = response;
-      console.log(this.listMunicipalities);
     });
   }
 
@@ -97,7 +96,6 @@ export class SharedDataService {
   public subcribeToCounties() {
     this.api.getLan().subscribe((response) => {
       this.listCounties = response;
-      console.log(this.listCounties);
     });
   }
 
@@ -105,7 +103,6 @@ export class SharedDataService {
   public subcribeToCategories() {
     this.api.getKulturmiljotyper().subscribe((response) => {
       this.listCategories = response;
-      console.log(this.listCategories);
     });
   }
 
@@ -143,6 +140,9 @@ export class SharedDataService {
     });
   }
 
+  /**
+   * Get data from the geoserver to create a layer with national interests
+   */
   public getGeoJsonFromServer() {
     // Hämta data från GeoServern
     this.layer = new VectorLayer({
@@ -156,6 +156,9 @@ export class SharedDataService {
     this.map.addLayer(this.layer); // lägg på layer på kartan
   }
 
+  /**
+   * Method for when the user clicks somewhere on the map
+   */
   public onClickMap() {
     this.map.on("click", (e: any) => {
       this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {
@@ -164,6 +167,14 @@ export class SharedDataService {
         this.changeIdOfNationalInterestDisplayed(clickedId);
       });
     });
+  }
+
+  /**
+   * Center and zoom to national interest on map
+   */
+  public centerOnMap(id: number) {
+    let feature = this.layer.getSource().getFeatureById('geometri.' + id);
+    this.map.getView().fit(feature.getGeometry(), { size: this.map.getSize(), maxZoom: 10 });
   }
 
 }
