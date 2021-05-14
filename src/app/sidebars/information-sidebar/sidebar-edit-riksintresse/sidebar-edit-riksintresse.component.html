@@ -10,7 +10,7 @@
     value={{this.dataService.nationalInterestById.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
-  <input formControlName="beskrivning" type="text" placeholder="Beskrivning av riksintresse"
+  <input ng-reflect-readonly="true" formControlName="beskrivning" type="text" placeholder="Beskrivning av riksintresse"
     class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>

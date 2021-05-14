@@ -42,7 +42,21 @@ export class SharedDataService {
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
     this.idSource.next(id);
+
+    this.currentId.subscribe((id) => {
+      this.subscribeToSelectedNationalInterest(id);
+    });
   }
+
+  /**
+ * Changes the national interest found by id.
+ */
+  public subscribeToSelectedNationalInterest(id: number): void {
+    this.api.getRiksintresse(id).subscribe((response) => {
+      this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
+    });
+  }
+
 
   /**
    * Changes content of national interest array.
@@ -51,15 +65,6 @@ export class SharedDataService {
     this.api.getRiksintressenList().subscribe((response) => {
       this.nationalInterestsList = response as RiksintresseList[];
       console.log(this.nationalInterestsList);
-    });
-  }
-
-  /**
-   * Changes the national interest found by id.
-   */
-  public subscribeToSelectedNationalInterest(id: number): void {
-    this.api.getRiksintresse(id).subscribe((response) => {
-      this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
     });
   }
 

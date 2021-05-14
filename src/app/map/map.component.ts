@@ -66,6 +66,7 @@ export class MapComponent implements OnInit {
     this.map.on("click", (e: any) => {
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
         console.log(feature);
+        console.log("id: " + feature.id_);
       });
     });
 
