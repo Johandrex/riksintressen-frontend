@@ -64,7 +64,6 @@ export class MapComponent implements OnInit {
     this.map.addLayer(this.layer); // lägg på layer på kartan
 
     this.map.on("click", (e: any) => {
-      console.log("hello");
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
         console.log(feature);
       });
