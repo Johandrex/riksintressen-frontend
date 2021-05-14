@@ -53,65 +53,15 @@ export class MapComponent implements OnInit {
     });
 
     // Hämta data från GeoServern
-    // url: 'http://109.225.108.59:8080/geoserver/Workspace/wms',
     this.layer = new VectorLayer({
       source: new VectorSource({
+        // Make sure to configure the URL according to your needs
         url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&outputFormat=application%2Fjson&srsname=EPSG:3857',
-        format: new GeoJSON({}),
+        format: new GeoJSON()
       }),
     });
     this.layer.setOpacity(1);
     this.map.addLayer(this.layer); // lägg på layer på kartan
-
-    /*var vectorSource = new VectorSource({
-      format: new GeoJSON(),
-      url: function (extent) {
-        return (
-          'https://ahocevar.com/geoserver/wfs?service=WFS&' +
-          'version=1.1.0&request=GetFeature&typename=osm:water_areas&' +
-          'outputFormat=application/json&srsname=EPSG:3857&' +
-          'bbox=' +
-          extent.join(',') +
-          ',EPSG:3006'
-        );
-      },
-      strategy: bboxStrategy,
-    });
-
-    this.layer = new VectorLayer({
-      source: vectorSource,
-      style: new Style({
-        stroke: new Stroke({
-          color: 'rgba(0, 0, 255, 1.0)',
-          width: 2,
-        }),
-      }),
-    });
-
-    this.map.addLayer(this.layer);*/
-
-    // Hämta data från GeoServern
-    /*this.layer = new ImageLayer({
-      source: new ImageWMS({
-        params: { 'LAYERS': 'Workspace:geometri' },
-        serverType: 'geoserver',
-        url: 'http://109.225.108.59:8080/geoserver/Workspace/wms'
-      })
-    });
-    this.layer.setOpacity(0.4);
-
-    this.map.addLayer(this.layer); // lägg på layer på kartan*/
-
-    // Get data with features from GeoServer
-    /*this.layer = new VectorLayer({
-      source: new VectorSource({
-        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&maxFeatures=50&outputFormat=application%2Fjson',
-        format: new GeoJSON(),
-      })
-    });
-    
-    this.layer.setOpacity(0.5);
-    this.map.addLayer(this.layer);*/
 
     this.map.on("click", (e: any) => {
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
@@ -120,6 +70,7 @@ export class MapComponent implements OnInit {
       });
     });
 
+    // Don't let the map change coordinate view when refreshing the page
     //sync(this.map);
 
   }
