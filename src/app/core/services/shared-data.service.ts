@@ -63,7 +63,7 @@ export class SharedDataService {
     });
 
     // Zoom to location on map
-    this.centerOnMap(id);
+    this.centerOnMapFeature(id);
   }
 
   // *********************************** Database related ***********************************
@@ -174,9 +174,13 @@ export class SharedDataService {
    * Center and zoom to feature on map
    * @param id ID of item on map
    */
-  public centerOnMap(id: number) {
+  public centerOnMapFeature(id: number) {
     let feature = this.layer.getSource().getFeatureById('geometri.' + id);
-    this.map.getView().fit(feature.getGeometry(), { size: this.map.getSize(), maxZoom: this.map.getView().getZoom() });
+    this.map.getView().fit(feature.getGeometry(), {
+      size: this.map.getSize(),
+      maxZoom: this.map.getView().getZoom(),
+      padding: [100, 100, 100, 100]
+    });
   }
 
 }
