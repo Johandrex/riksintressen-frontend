@@ -9,7 +9,6 @@ export class SidebarHelpComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

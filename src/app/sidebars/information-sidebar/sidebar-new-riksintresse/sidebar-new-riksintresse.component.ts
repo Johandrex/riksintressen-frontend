@@ -27,8 +27,7 @@ export class SidebarNewRiksintresseComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { // Subscribe to a selected id of national interest
-  }
+  ngOnInit(): void { }
 
   // för objekt av formulärets data som skickas via HTTP post
   submitForm() {

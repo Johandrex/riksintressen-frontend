@@ -14,16 +14,12 @@ export class SidebarInfoRiksintresseComponent implements OnInit {
 
   constructor(public dataService: SharedDataService) { }
 
-  ngOnInit(): void { // Subscribe to a selected id of national interest
-  }
+  ngOnInit(): void { }
 
   /**
- * Function to get id of clicked national interest.
+ * Function to switch infoSidebarMode
  */
   getIdOfClicked(event: any) {
-    //let tempId = this.dataService.nationalInterestById;
-
-    // Notify observer to keep info-sidebar up to date with selected national interest
     this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
 }
