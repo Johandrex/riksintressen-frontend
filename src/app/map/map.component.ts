@@ -53,14 +53,14 @@ export class MapComponent implements OnInit {
     });
 
     // Hämta data från GeoServern
-    //url: 'http://109.225.108.59:8080/geoserver/Workspace/wms',
+    // url: 'http://109.225.108.59:8080/geoserver/Workspace/wms',
     this.layer = new VectorLayer({
       source: new VectorSource({
-        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&maxFeatures=50&outputFormat=application%2Fjson',
-        format: new GeoJSON()
+        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&outputFormat=application%2Fjson&srsname=EPSG:3857',
+        format: new GeoJSON({}),
       }),
     });
-    this.layer.setOpacity(0.4);
+    this.layer.setOpacity(1);
     this.map.addLayer(this.layer); // lägg på layer på kartan
 
     /*var vectorSource = new VectorSource({
@@ -114,9 +114,9 @@ export class MapComponent implements OnInit {
     this.map.addLayer(this.layer);*/
 
     this.map.on("click", (e: any) => {
-      console.log("hello");
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
         console.log(feature);
+        console.log("id: " + feature.id_);
       });
     });
 

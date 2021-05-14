@@ -23,9 +23,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
   }
 
   ngOnInit(): void { // Subscribe to a selected id of national interest
-    this.dataService.currentId.subscribe((id) => {
-      this.dataService.subscribeToSelectedNationalInterest(id);
-    });
+
   }
 
   // för objekt av formulärets data som skickas via HTTP post
