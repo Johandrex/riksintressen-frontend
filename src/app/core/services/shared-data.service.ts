@@ -62,6 +62,7 @@ export class SharedDataService {
       this.subscribeToSelectedNationalInterest(id);
     });
 
+    // Zoom to location on map
     this.centerOnMap(id);
   }
 
@@ -170,11 +171,12 @@ export class SharedDataService {
   }
 
   /**
-   * Center and zoom to national interest on map
+   * Center and zoom to feature on map
+   * @param id ID of item on map
    */
   public centerOnMap(id: number) {
     let feature = this.layer.getSource().getFeatureById('geometri.' + id);
-    this.map.getView().fit(feature.getGeometry(), { size: this.map.getSize(), maxZoom: 10 });
+    this.map.getView().fit(feature.getGeometry(), { size: this.map.getSize(), maxZoom: this.map.getView().getZoom() });
   }
 
 }
