@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../core/services/api.service';
 import { SharedDataService } from '../core/services/shared-data.service';
 
 /* Importerar OpenLayers */
@@ -66,9 +65,10 @@ export class MapComponent implements OnInit {
 
     this.map.on("click", (e: any) => {
       this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {
-        console.log("user clicked on id: " + feature.id_.split(".")[1]);
-        // Split the ID into an array and pick the number to use as input
-        this.dataService.changeIdOfNationalInterestDisplayed(feature.id_.split(".")[1]);
+        let clickedId = parseInt(feature.id_.split(".")[1]); // Split the ID into an array and pick the number to use as input
+
+        console.log("user clicked on id: " + clickedId);
+        this.dataService.changeIdOfNationalInterestDisplayed(clickedId);
       });
     });
 

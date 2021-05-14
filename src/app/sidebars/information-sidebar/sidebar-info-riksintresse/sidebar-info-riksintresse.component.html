@@ -14,22 +14,23 @@
   <p>{{cat}} &nbsp;</p>
 </div>
 
-<label class="raa-label">Status: </label>
+<label class="raa-label">Avsått anspråk: </label>
 <div class="tw-mt-2">
-  <label class="raa-label">Avstått anspråk/Beslutad/Under bearbetning</label>
+  <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
 </div>
 
+<label class="raa-label">Kommuner: </label>
+<p>{{this.dataService.nationalInterestById.kommuner}}</p>
+
+<label class="raa-label">Län: </label>
+<p>{{this.dataService.nationalInterestById.lan}}</p>
+
 <div class="two-buttons">
-  <button class="raa-button">Bilder >></button>
-  <button class="raa-button raa-button-secondary">Dokument >></button>
+  <button type="button" class="raa-button">Bilder >></button>
+  <button type="button" class="raa-button raa-button-secondary">Dokument >></button>
 </div>
 
 <div id="details">
-  <label class="raa-label">Kommuner: </label>
-  <p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
-  <label class="raa-label">Län: </label>
-  <p>{{this.dataService.nationalInterestById.lan}}</p><br /><br />
-
   <label class="raa-label">ID: </label>
   <p>{{this.dataService.nationalInterestById.id}}</p><br />
   <label class="raa-label">Nuvarande version: </label>

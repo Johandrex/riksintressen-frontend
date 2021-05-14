@@ -41,7 +41,6 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    console.log("dude");
     this.idSource.next(id);
     this.infoSidebarMode = this.MODE.INFO;
 

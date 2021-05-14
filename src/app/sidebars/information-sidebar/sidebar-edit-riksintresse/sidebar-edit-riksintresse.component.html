@@ -1,6 +1,6 @@
 <h1 class="tw-heading-md tw-py-2">Redigering</h1>
 
-<form [formGroup]="form" (ngSubmit)="submitForm()">
+<form [formGroup]="form" (ngSubmit)="buttonSubmit()">
   <label class="raa-label">Namn: </label>
   <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input"
     value={{this.dataService.nationalInterestById.namn}}>
@@ -28,12 +28,12 @@
   </div>
 
   <div class="two-buttons">
-    <button class="raa-button">Bilder >></button>
-    <button class="raa-button raa-button-secondary">Dokument >></button>
+    <button type="button" class="raa-button">Bilder >></button>
+    <button type="button" class="raa-button raa-button-secondary">Dokument >></button>
   </div>
 
   <div class="one-button">
-    <button class="raa-button raa-button-confirm">Rita Polygon</button>
+    <button type="button" class="raa-button raa-button-confirm">Rita Polygon</button>
   </div>
 
   <div id="details">
@@ -56,6 +56,6 @@
 
   <div class="two-buttons">
     <button type="submit" class="two-buttons raa-button raa-button-confirm">spara</button>
-    <button class="two-buttons raa-button raa-button-cancel">avbryt</button>
+    <button type="button" (click)="buttonCancel()" class="two-buttons raa-button raa-button-cancel">avbryt</button>
   </div>
 </form>
