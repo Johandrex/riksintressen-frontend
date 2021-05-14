@@ -65,9 +65,10 @@ export class MapComponent implements OnInit {
     this.map.addLayer(this.layer); // lägg på layer på kartan
 
     this.map.on("click", (e: any) => {
-      this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any, dataService: SharedDataService) { // denna funkar inte, finns inga features at pixel?
+      this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {
         console.log("user clicked on id: " + feature.id_.split(".")[1]);
-        dataService.changeIdOfNationalInterestDisplayed(feature.id_.split(".")[1]);
+        // Split the ID into an array and pick the number to use as input
+        this.dataService.changeIdOfNationalInterestDisplayed(feature.id_.split(".")[1]);
       });
     });
 
