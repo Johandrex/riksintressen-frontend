@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../core/services/api.service';
+import { SharedDataService } from '../core/services/shared-data.service';
 
 /* Importerar OpenLayers */
 import * as ol from 'ol';
@@ -66,14 +67,10 @@ export class MapComponent implements OnInit {
 
     this.map.on("click", (e: any) => {
       this.map.forEachFeatureAtPixel(e.pixel, function (feature: any, layer: any) { // denna funkar inte, finns inga features at pixel?
-        console.log(feature);
-        console.log("id: " + feature.id_);
+        console.log("user clicked on id: " + feature.id_.split(".")[1]);
+        this.dataService.changeIdOfNationalInterestDisplayed(feature.id_.split(".")[1]);
       });
     });
 
-    // Don't let the map change coordinate view when refreshing the page
-    //sync(this.map);
-
   }
-
 }
