@@ -1,17 +1,16 @@
 <h1 class="tw-heading-md tw-py-2">Nytt Riksintresse</h1>
 
-<form [formGroup]="form" (ngSubmit)="submitForm()">
-  <label class="raa-label">Namn: </label>
-  <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input"
-    required=true>
+<form [formGroup]="form" (ngSubmit)="submitForm()" ngNativeValidate>
+  <label class="raa-label" aria-required="true">Namn: </label>
+  <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input" required>
 
   <label class="raa-label">Motivering: </label>
-  <input formControlName="motivering" type="text" placeholder="Motivering av riksintresse"
-    class="valid-input raa-input">
+  <input formControlName="motivering" type="text" placeholder="Motivering av riksintresse" class="valid-input raa-input"
+    required>
 
   <label class="raa-label">Beskrivning: </label>
   <input formControlName="beskrivning" type="text" placeholder="Beskrivning av riksintresse"
-    class="valid-input raa-input">
+    class="valid-input raa-input" required>
 
   <label class="raa-label">Kulturmiljötyper: </label>
   <ng-select [(ngModel)]="kategorier" [ngModelOptions]="{standalone: true}" [multiple]=true>
