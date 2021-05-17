@@ -216,7 +216,7 @@ export class SharedDataService {
         size: this.map.getSize(),
         maxZoom: this.map.getView().getZoom(),
         padding: [100, 100, 100, 100],
-        style: { strokeColor: '#009605' }
+        style: { strokeColor: '#009605' },
       });
     }
     catch (e) {
