@@ -29,7 +29,7 @@ export class SidebarNewRiksintresseComponent implements OnInit {
   ngOnInit(): void { }
 
   // för objekt av formulärets data som skickas via HTTP post
-  submitForm() {
+  buttonSubmit() {
     let form = this.form.value;
     form["kategorier"] = this.kategorier;
     form["kommuner"] = this.kommuner;
@@ -44,5 +44,9 @@ export class SidebarNewRiksintresseComponent implements OnInit {
     else {
       this.dataService.newRiksintresse(form);
     }
+  }
+
+  buttonCancel() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.HELP;
   }
 }
