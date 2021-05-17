@@ -108,15 +108,15 @@ export class SharedDataService {
   }
 
   // Uppdatera existerande riksintresse
-  public updateRiksintresse(object: any) {
-    this.api.postUpdateRiksintresse(object);
+  public async updateRiksintresse(object: any) {
+    await this.api.postUpdateRiksintresse(object); // async för att säkerställa ett ett riksintresse postas innan vi går vidare i metoden
     this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
     this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
   // Skapa nytt riksintresse
-  public newRiksintresse(object: any) {
-    this.api.postNewRiksintresse(object);
+  public async newRiksintresse(object: any) {
+    await this.api.postNewRiksintresse(object);
     this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
     this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }

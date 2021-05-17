@@ -42,14 +42,14 @@ export class ApiService {
   /*********** POST ***********/
 
   /* uppdatera ett riksintresse */
-  postUpdateRiksintresse(riksintresse: Riksintresse) {
+  async postUpdateRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "update/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
     });
   }
 
   /* skapa ett nytt riksintresse */
-  postNewRiksintresse(riksintresse: Riksintresse) {
+  async postNewRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "create/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
     });
