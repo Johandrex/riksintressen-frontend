@@ -22,4 +22,8 @@ export class SidebarInfoRiksintresseComponent implements OnInit {
   getIdOfClicked(event: any) {
     this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
+
+  buttonUpload() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.UPLOAD;
+  }
 }

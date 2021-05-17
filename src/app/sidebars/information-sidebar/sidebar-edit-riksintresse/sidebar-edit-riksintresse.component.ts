@@ -30,7 +30,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     form["kategorier"] = this.dataService.nationalInterestById.kategorier;
 
     this.dataService.updateRiksintresse(form); // uppdatera o visa informations sidebar
-    console.log(form);
+    console.log(form)
   }
 
   buttonCancel() {
@@ -52,4 +52,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     }
   }
 
+  buttonUpload() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.UPLOAD;
+  }
 }

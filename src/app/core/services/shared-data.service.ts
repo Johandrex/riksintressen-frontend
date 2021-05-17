@@ -28,7 +28,7 @@ import GeometryType from 'ol/geom/GeometryType';
 })
 export class SharedDataService {
   // Hanterar vilket läge som hanteras i sidebaren
-  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT' };
+  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT', UPLOAD: 'UPLOAD' };
   public infoSidebarMode = this.MODE.HELP; // vilken information ska visas i högra spalten vid initiering?
 
   // Ska cederade riksintressen visas i listan?
@@ -223,7 +223,7 @@ export class SharedDataService {
         size: this.map.getSize(),
         maxZoom: this.map.getView().getZoom(),
         padding: [100, 100, 100, 100],
-        style: { strokeColor: '#009605' }
+        style: { strokeColor: '#009605' },
       });
     }
     catch (e) {
