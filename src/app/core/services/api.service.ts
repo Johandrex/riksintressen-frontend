@@ -19,6 +19,11 @@ export class ApiService {
     return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list");
   }
 
+  /* hämta alla raderade riksintressen för listan */
+  getRiksintressenListDeleted() {
+    return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list/deleted");
+  }
+
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
     return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
@@ -42,16 +47,18 @@ export class ApiService {
   /*********** POST ***********/
 
   /* uppdatera ett riksintresse */
-  postUpdateRiksintresse(riksintresse: Riksintresse) {
+  async postUpdateRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "update/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
     });
   }
 
   /* skapa ett nytt riksintresse */
-  postNewRiksintresse(riksintresse: Riksintresse) {
+  async postNewRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "create/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
+
+      return data; // returnera data (id o message) till shared-data-services
     });
   }
 }

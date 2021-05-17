@@ -23,7 +23,6 @@ export class SidebarNewRiksintresseComponent implements OnInit {
       namn: new FormControl(),
       beskrivning: new FormControl(),
       motivering: new FormControl(),
-      cederat: new FormControl(),
     })
   }
 
@@ -36,6 +35,14 @@ export class SidebarNewRiksintresseComponent implements OnInit {
     form["kommuner"] = this.kommuner;
     form["lan"] = this.lan;
 
-    this.dataService.newRiksintresse(form);
+    if (this.form.value.namn == null // kontrollera att de nödvändigaste fälten är ifyllda
+      || this.form.value.beskrivning == null
+      || this.form.value.motivering == null) {
+      console.log("Skickade inte det nya riksintresset, fyll i namn, beskrivning och motivering!");
+    }
+
+    else {
+      this.dataService.newRiksintresse(form);
+    }
   }
 }

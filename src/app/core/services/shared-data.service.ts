@@ -28,6 +28,9 @@ export class SharedDataService {
   public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT' };
   public infoSidebarMode = this.MODE.HELP; // vilken information ska visas i högra spalten vid initiering?
 
+  // Ska cederade riksintressen visas i listan?
+  public displayDeleted = false;
+
   // Maintains the selected national interest
   private idSource = new BehaviorSubject<number>(0);
   public currentId = this.idSource.asObservable();
@@ -92,11 +95,18 @@ export class SharedDataService {
 
   /**
    * Changes content of national interest array.
+   * Välj att visa raderade(cederade) eller ej raderade riksintressen
    */
   public subscribeToNationalInterestsList(): void {
-    this.api.getRiksintressenList().subscribe((response) => {
-      this.nationalInterestsList = response as RiksintresseList[];
-    });
+    if (this.displayDeleted) {
+      this.api.getRiksintressenListDeleted().subscribe((response) => {
+        this.nationalInterestsList = response as RiksintresseList[];
+      });
+    } else {
+      this.api.getRiksintressenList().subscribe((response) => {
+        this.nationalInterestsList = response as RiksintresseList[];
+      });
+    }
   }
 
   // Kommuner
@@ -121,13 +131,17 @@ export class SharedDataService {
   }
 
   // Uppdatera existerande riksintresse
-  public updateRiksintresse(object: any) {
-    this.api.postUpdateRiksintresse(object);
+  public async updateRiksintresse(object: any) {
+    await this.api.postUpdateRiksintresse(object); // async för att säkerställa ett ett riksintresse postas innan vi går vidare i metoden
+    this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
+    this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
   // Skapa nytt riksintresse
-  public newRiksintresse(object: any) {
-    this.api.postNewRiksintresse(object);
+  public async newRiksintresse(object: any) {
+    let data = await this.api.postNewRiksintresse(object);
+    this.changeIdOfNationalInterestDisplayed(data.id); // hämta den nya informationen om det nuvarande id:et
+    this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
   // *********************************** Map related methods ***********************************
@@ -189,20 +203,24 @@ export class SharedDataService {
    * @param id ID of item on map
    */
   public selectMapFeature(id: number) {
-    let feature = this.layer.getSource().getFeatureById('geometri.' + id);
-    // Remove previous selected feature, if any
-    this.selectInteraction.getFeatures().clear();
-    // Add newly selected feature
-    this.selectInteraction.getFeatures().push(feature);
-    // Display the select style for feature
-    this.map.addInteraction(this.selectInteraction);
-    // Center and zoom to feature on map
-    this.map.getView().fit(feature.getGeometry(), {
-      size: this.map.getSize(),
-      maxZoom: this.map.getView().getZoom(),
-      padding: [100, 100, 100, 100],
-      style: { strokeColor: '#009605' }
-    });
+    try {
+      let feature = this.layer.getSource().getFeatureById('geometri.' + id);
+      // Remove previous selected feature, if any
+      this.selectInteraction.getFeatures().clear();
+      // Add newly selected feature
+      this.selectInteraction.getFeatures().push(feature);
+      // Display the select style for feature
+      this.map.addInteraction(this.selectInteraction);
+      // Center and zoom to feature on map
+      this.map.getView().fit(feature.getGeometry(), {
+        size: this.map.getSize(),
+        maxZoom: this.map.getView().getZoom(),
+        padding: [100, 100, 100, 100],
+        style: { strokeColor: '#009605' }
+      });
+    }
+    catch (e) {
+      console.log("Exception at centerOnMapFeature() " + e);
+    }
   }
-
 }
