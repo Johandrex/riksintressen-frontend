@@ -19,6 +19,11 @@ export class ApiService {
     return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list");
   }
 
+  /* hämta alla raderade riksintressen för listan */
+  getRiksintressenListDeleted() {
+    return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list/deleted");
+  }
+
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
     return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
