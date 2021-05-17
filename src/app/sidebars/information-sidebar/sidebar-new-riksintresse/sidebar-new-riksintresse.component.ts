@@ -49,4 +49,8 @@ export class SidebarNewRiksintresseComponent implements OnInit {
   buttonCancel() {
     this.dataService.infoSidebarMode = this.dataService.MODE.HELP;
   }
+
+  buttonUpload() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.UPLOAD;
+  }
 }

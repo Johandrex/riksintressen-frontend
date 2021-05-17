@@ -26,8 +26,8 @@
   <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
 
   <div class="two-buttons">
-    <button type="button" class="raa-button">Bilder >></button>
-    <button type="button" class="raa-button raa-button-secondary">Dokument >></button>
+    <button type="button" (click)="buttonUpload()" class="raa-button">Bilder >></button>
+    <button type="button" (click)="buttonUpload()" class="raa-button raa-button-secondary">Dokument >></button>
   </div>
 
   <div class="one-button">

@@ -14,6 +14,7 @@ import { SidebarInfoRiksintresseComponent } from './information-sidebar/sidebar-
 import { SidebarNewRiksintresseComponent } from './information-sidebar/sidebar-new-riksintresse/sidebar-new-riksintresse.component';
 import { SidebarHelpComponent } from './information-sidebar/sidebar-help/sidebar-help.component';
 import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
+import { SidebarUploadComponent } from './information-sidebar/sidebar-upload/sidebar-upload.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
     SidebarNewRiksintresseComponent,
     SidebarHelpComponent,
     ListSidebarComponent,
+    SidebarUploadComponent,
   ],
   imports: [
     CommonModule,

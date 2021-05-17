@@ -37,4 +37,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     this.dataService.infoSidebarMode = this.dataService.MODE.INFO;
   }
 
+  buttonUpload() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.UPLOAD;
+  }
 }

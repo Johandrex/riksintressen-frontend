@@ -20,4 +20,8 @@
     <app-sidebar-new-riksintresse></app-sidebar-new-riksintresse>
   </div>
 
+  <div *ngIf="dataService.infoSidebarMode === dataService.MODE.UPLOAD">
+    <app-sidebar-upload></app-sidebar-upload>
+  </div>
+
 </div>

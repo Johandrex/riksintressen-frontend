@@ -25,7 +25,7 @@ import Select from 'ol/interaction/Select';
 })
 export class SharedDataService {
   // Hanterar vilket läge som hanteras i sidebaren
-  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT' };
+  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT', UPLOAD: 'UPLOAD' };
   public infoSidebarMode = this.MODE.HELP; // vilken information ska visas i högra spalten vid initiering?
 
   // Ska cederade riksintressen visas i listan?
