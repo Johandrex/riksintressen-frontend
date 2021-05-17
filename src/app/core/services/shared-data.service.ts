@@ -110,11 +110,15 @@ export class SharedDataService {
   // Uppdatera existerande riksintresse
   public updateRiksintresse(object: any) {
     this.api.postUpdateRiksintresse(object);
+    this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
+    this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
   // Skapa nytt riksintresse
   public newRiksintresse(object: any) {
     this.api.postNewRiksintresse(object);
+    this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
+    this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
   // *********************************** Map related methods ***********************************

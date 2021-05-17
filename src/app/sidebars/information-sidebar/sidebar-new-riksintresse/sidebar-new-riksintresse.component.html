@@ -2,7 +2,8 @@
 
 <form [formGroup]="form" (ngSubmit)="submitForm()">
   <label class="raa-label">Namn: </label>
-  <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input">
+  <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input"
+    required=true>
 
   <label class="raa-label">Motivering: </label>
   <input formControlName="motivering" type="text" placeholder="Motivering av riksintresse"
@@ -13,7 +14,7 @@
     class="valid-input raa-input">
 
   <label class="raa-label">Kulturmiljötyper: </label>
-  <ng-select [(ngModel)]="kategorier" [ngModelOptions]="{standalone: true}" [multiple]=true appearance=" outline">
+  <ng-select [(ngModel)]="kategorier" [ngModelOptions]="{standalone: true}" [multiple]=true>
     <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
       {{cat.namn}}
     </ng-option>
