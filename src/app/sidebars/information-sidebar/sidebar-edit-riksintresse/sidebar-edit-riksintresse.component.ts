@@ -37,4 +37,19 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     this.dataService.infoSidebarMode = this.dataService.MODE.INFO;
   }
 
+  /**
+   * Executes a feature edit mode when user clicks draw polygon button.
+   */
+  private toggleDrawPolygon: boolean = false;
+  public drawPolygon(): void {
+    if (this.toggleDrawPolygon === false) {
+      this.toggleDrawPolygon = true;
+      this.dataService.startEditMapFeature();
+    }
+    else {
+      this.toggleDrawPolygon = false;
+      this.dataService.stopEditMapFeature();
+    }
+  }
+
 }

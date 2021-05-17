@@ -45,4 +45,19 @@ export class SidebarNewRiksintresseComponent implements OnInit {
       this.dataService.newRiksintresse(form);
     }
   }
+
+  /**
+   * Executes a feature creation mode when user clicks draw polygon button.
+   */
+  private toggleDrawPolygon: boolean = false;
+  public drawPolygon(): void {
+    if (this.toggleDrawPolygon === false) {
+      this.toggleDrawPolygon = true;
+      this.dataService.startCreateMapFeature();
+    }
+    else {
+      this.toggleDrawPolygon = false;
+      this.dataService.stopCreateMapFeature();
+    }
+  }
 }

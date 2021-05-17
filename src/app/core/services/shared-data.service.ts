@@ -14,6 +14,9 @@ import { Fill, Stroke, Style } from 'ol/style';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import { altKeyOnly, always, click, never, pointerMove } from 'ol/events/condition';
 import Select from 'ol/interaction/Select';
+import { Draw, Interaction, Modify, Snap } from 'ol/interaction';
+import Polygon from 'ol/geom/Polygon';
+import GeometryType from 'ol/geom/GeometryType';
 //import sync from 'ol-hashed';
 
 /**
@@ -43,7 +46,9 @@ export class SharedDataService {
   public listCategories: Kulturmiljotyp[] = []; // register över alla kategorier
 
   // *************** The map related properties ***************
+  // Map with layer of map tiles and the layer below
   public map: any;
+  // The layer used for all map features associated with the national interests
   public layer: any;
   // Current selected map feature (singe click)
   public selectInteraction = new Select(
@@ -191,9 +196,11 @@ export class SharedDataService {
     this.map.on("click", (e: any) => {
       // Executes an arrow function for every overlaying feature clicked at
       this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {
-        // Split the ID into an array and pick the number to use as input
-        let clickedId = parseInt(feature.id_.split(".")[1]);
-        this.changeIdOfNationalInterestDisplayed(clickedId);
+        if (feature.id_ != undefined) {
+          // Split the ID into an array and pick the number to use as input
+          let clickedId = parseInt(feature.id_.split(".")[1]);
+          this.changeIdOfNationalInterestDisplayed(clickedId);
+        }
       });
     });
   }
@@ -222,5 +229,68 @@ export class SharedDataService {
     catch (e) {
       console.log("Exception at centerOnMapFeature() " + e);
     }
+  }
+
+  /**
+   * Creates a new map feature.
+   */
+  public startCreateMapFeature(): void {
+    let modify = new Modify({ source: this.layer });
+    this.map.addInteraction(modify);
+
+    let draw = new Draw({
+      source: this.layer,
+      type: GeometryType.MULTI_POLYGON
+    });
+    this.map.addInteraction(draw);
+    let snap = new Snap({ source: this.layer });
+    this.map.addInteraction(snap);
+
+    // Save the feature vector?
+    // Stop the interaction when finished
+  }
+
+  /**
+   * Removes the interactions of creating a map feature.
+   */
+  public stopCreateMapFeature(): void {
+    // Find the seeked after interaction on the map
+    var interactionToBeRemoved1;
+    var interactionToBeRemoved2;
+    this.map.getInteractions().forEach(function (interaction: Interaction) {
+      if (interaction instanceof Draw) {
+        interactionToBeRemoved1 = interaction;
+      }
+      else if (interaction instanceof Snap) {
+        interactionToBeRemoved2 = interaction;
+      }
+    });
+    // Remove the interactions from the map
+    if (interactionToBeRemoved1) { this.map.removeInteraction(interactionToBeRemoved1); }
+    if (interactionToBeRemoved2) { this.map.removeInteraction(interactionToBeRemoved2); }
+  }
+
+  /**
+   * Modify an existing map feature.
+   */
+  public startEditMapFeature(): void {
+    let modify = new Modify({
+      features: this.selectInteraction.getFeatures(),
+    });
+    this.map.addInteraction(modify);
+    // Stop the interaction when finished
+  }
+
+  /**
+   * Removes the interaction of editting a map feature.
+   */
+  public stopEditMapFeature(): void {
+    var modifyToBeRemoved;
+    this.map.getInteractions().forEach(function (interaction: Interaction) {
+      if (interaction instanceof Draw) {
+        modifyToBeRemoved = interaction;
+      }
+    });
+    this.map.removeInteraction(modifyToBeRemoved);
   }
 }
