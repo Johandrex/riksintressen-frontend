@@ -52,6 +52,8 @@ export class ApiService {
   async postNewRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "create/riksintresse/", riksintresse).toPromise().then((data: any) => {
       console.log(data);
+
+      return data; // returnera data (id o message) till shared-data-services
     });
   }
 }

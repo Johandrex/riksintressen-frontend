@@ -116,8 +116,8 @@ export class SharedDataService {
 
   // Skapa nytt riksintresse
   public async newRiksintresse(object: any) {
-    await this.api.postNewRiksintresse(object);
-    this.changeIdOfNationalInterestDisplayed(this.nationalInterestById.id); // hämta den nya informationen om det nuvarande id:et
+    let data = await this.api.postNewRiksintresse(object);
+    this.changeIdOfNationalInterestDisplayed(data.id); // hämta den nya informationen om det nuvarande id:et
     this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
@@ -179,12 +179,18 @@ export class SharedDataService {
    * @param id ID of item on map
    */
   public centerOnMapFeature(id: number) {
-    let feature = this.layer.getSource().getFeatureById('geometri.' + id);
-    this.map.getView().fit(feature.getGeometry(), {
-      size: this.map.getSize(),
-      maxZoom: this.map.getView().getZoom(),
-      padding: [100, 100, 100, 100]
-    });
+    try {
+      let feature = this.layer.getSource().getFeatureById('geometri.' + id);
+      if (feature != null) {
+        this.map.getView().fit(feature.getGeometry(), {
+          size: this.map.getSize(),
+          maxZoom: this.map.getView().getZoom(),
+          padding: [100, 100, 100, 100]
+        });
+      }
+    }
+    catch (e) {
+      console.log("Exception at centerOnMapFeature() " + e);
+    }
   }
-
 }
