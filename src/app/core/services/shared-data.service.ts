@@ -10,8 +10,10 @@ import { fromLonLat } from 'ol/proj';
 import OSM from 'ol/source/OSM';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
-import { Stroke, Style } from 'ol/style';
+import { Fill, Stroke, Style } from 'ol/style';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
+import { altKeyOnly, always, click, never, pointerMove } from 'ol/events/condition';
+import Select from 'ol/interaction/Select';
 //import sync from 'ol-hashed';
 
 /**
@@ -33,14 +35,20 @@ export class SharedDataService {
   // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestsList: RiksintresseList[] = [];
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
-
   public listMunicipalities: Kommun[] = []; // register över alla kommuner
   public listCounties: Lan[] = []; // register över alla län
   public listCategories: Kulturmiljotyp[] = []; // register över alla kategorier
 
-  // The map related objects
+  // *************** The map related properties ***************
   public map: any;
   public layer: any;
+  // Current selected map feature (singe click)
+  public selectInteraction = new Select(
+    {
+      condition: never,
+      style: new Style({ fill: new Fill({ color: '#009605' }) })
+    }
+  );
 
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
@@ -50,20 +58,25 @@ export class SharedDataService {
     this.subcribeToMunicipalities();
   }
 
+  // *********************************** General user interaction ***********************************
+
   /**
-   * Changes ID based on input.
+   * Changes current ID based on input.
+   * Used when user clicks on a national interest.
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
     this.idSource.next(id);
     this.infoSidebarMode = this.MODE.INFO;
 
+    // Request national interest from server
     this.currentId.subscribe((id) => {
       this.subscribeToSelectedNationalInterest(id);
     });
 
-    // Zoom to location on map
-    this.centerOnMapFeature(id);
+    // These are in this method so it's also activated when user is selecting 
+    // a national interest from the list.
+    this.selectMapFeature(id);
   }
 
   // *********************************** Database related ***********************************
@@ -120,7 +133,7 @@ export class SharedDataService {
   // *********************************** Map related methods ***********************************
 
   /**
-   * Create map
+   * Initiate and create map.
    */
   public createMap(): void {
     // Kordinater över visby
@@ -142,7 +155,7 @@ export class SharedDataService {
   }
 
   /**
-   * Get data from the geoserver to create a layer with national interests
+   * Get data from the geoserver to create a layer with national interests.
    */
   public getGeoJsonFromServer() {
     // Hämta data från GeoServern
@@ -158,10 +171,11 @@ export class SharedDataService {
   }
 
   /**
-   * Method for when the user clicks somewhere on the map
+   * Method for when the user clicks somewhere on the map.
    */
   public onClickMap() {
     this.map.on("click", (e: any) => {
+      // Executes an arrow function for every overlaying feature clicked at
       this.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {
         // Split the ID into an array and pick the number to use as input
         let clickedId = parseInt(feature.id_.split(".")[1]);
@@ -171,15 +185,23 @@ export class SharedDataService {
   }
 
   /**
-   * Center and zoom to feature on map
+   * Selects a feature on the map to mark it.
    * @param id ID of item on map
    */
-  public centerOnMapFeature(id: number) {
+  public selectMapFeature(id: number) {
     let feature = this.layer.getSource().getFeatureById('geometri.' + id);
+    // Remove previous selected feature, if any
+    this.selectInteraction.getFeatures().clear();
+    // Add newly selected feature
+    this.selectInteraction.getFeatures().push(feature);
+    // Display the select style for feature
+    this.map.addInteraction(this.selectInteraction);
+    // Center and zoom to feature on map
     this.map.getView().fit(feature.getGeometry(), {
       size: this.map.getSize(),
       maxZoom: this.map.getView().getZoom(),
-      padding: [100, 100, 100, 100]
+      padding: [100, 100, 100, 100],
+      style: { strokeColor: '#009605' }
     });
   }
 
