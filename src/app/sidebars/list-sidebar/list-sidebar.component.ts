@@ -54,23 +54,23 @@ export class ListSidebarComponent implements OnInit {
    * @todo Make more abstract if possible.
    */
   searchName() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+    this.dataService.nationalInterestsList = this.dataService.subscribeToNationalInterestsList().filter(res => {
       console.log(res.namn + " " + this.name);
       return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
     })
   }
   searchCategory() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+    this.dataService.nationalInterestsList = this.dataService.subscribeToNationalInterestsList().filter(res => {
       return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
     })
   }
   searchMunicipality() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+    this.dataService.nationalInterestsList = this.dataService.subscribeToNationalInterestsList().filter(res => {
       return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
     })
   }
   searchProvince() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
+    this.dataService.nationalInterestsList = this.dataService.subscribeToNationalInterestsList().filter(res => {
       return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
     })
   }
