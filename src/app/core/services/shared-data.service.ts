@@ -34,10 +34,6 @@ export class SharedDataService {
   // Ska cederade riksintressen visas i listan?
   public displayDeleted = false;
 
-  // Maintains the selected national interest
-  private idSource = new BehaviorSubject<number>(0);
-  public currentId = this.idSource.asObservable();
-
   // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
   public nationalInterestByIdFiles: any = []; // ett riksintresses filer i JSON format
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
@@ -78,21 +74,15 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    console.log(this.infoSidebarMode.valueOf());
-    if (this.infoSidebarMode === this.MODE.HELP || this.infoSidebarMode === this.MODE.INFO) {
-      this.idSource.next(id);
-      this.infoSidebarMode = this.MODE.INFO;
+    this.infoSidebarMode = this.MODE.INFO;
 
-      // Request national interest from server
-      this.currentId.subscribe((id) => {
-        this.subscribeToSelectedNationalInterest(id);
-        // this.subscribeToSelectedNationalInterestFiles(id);
-      });
+    // Request national interest from server
+    this.subscribeToSelectedNationalInterest(id);
+    // this.subscribeToSelectedNationalInterestFiles(id);
 
-      // These are in this method so it's also activated when user is selecting 
-      // a national interest from the list.
-      this.selectMapFeature(id);
-    }
+    // These are in this method so it's also activated when user is selecting 
+    // a national interest from the list.
+    this.selectMapFeature(id);
   }
 
   // *********************************** Database related ***********************************
@@ -102,6 +92,7 @@ export class SharedDataService {
  */
   public subscribeToSelectedNationalInterest(id: number): void {
     this.api.getRiksintresse(id).subscribe((response) => {
+      console.log("Valde riksintresse " + id);
       this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
     });
   }
@@ -112,7 +103,6 @@ export class SharedDataService {
    */
   public subscribeToSelectedNationalInterestFiles(id: number): void {
     this.api.getFiles(id).subscribe((response) => {
-      console.log(response);
       this.nationalInterestByIdFiles = response; // Only one "riksintresse" is returned to the array
     });
   }

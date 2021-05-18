@@ -55,7 +55,6 @@ export class ListSidebarComponent implements OnInit {
    */
   searchName() {
     this.dataService.nationalInterestsList = this.dataService.subscribeToNationalInterestsList().filter(res => {
-      console.log(res.namn + " " + this.name);
       return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
     })
   }
