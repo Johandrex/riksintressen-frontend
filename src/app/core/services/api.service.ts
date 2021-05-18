@@ -61,4 +61,13 @@ export class ApiService {
       return data; // returnera data (id o message) till shared-data-services
     });
   }
+
+  /* ladda upp dokument/bilder på backend */
+  async upload(formData: FormData) {
+    return this.http.post<FormData>(this.url + "upload", formData).toPromise().then((data: any) => {
+      console.log(data);
+
+      return data; // returnera data (id o message) till shared-data-services
+    });
+  }
 }
