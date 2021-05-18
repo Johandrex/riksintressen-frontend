@@ -77,7 +77,8 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    if (this.isUnableToSelectFeature === false) {
+    console.log(this.infoSidebarMode.valueOf());
+    if (this.infoSidebarMode === this.MODE.HELP || this.infoSidebarMode === this.MODE.INFO) {
       this.idSource.next(id);
       this.infoSidebarMode = this.MODE.INFO;
 

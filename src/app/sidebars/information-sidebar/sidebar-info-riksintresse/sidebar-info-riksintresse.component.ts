@@ -19,7 +19,7 @@ export class SidebarInfoRiksintresseComponent implements OnInit {
   /**
  * Function to switch infoSidebarMode
  */
-  getIdOfClicked(event: any) {
+  getIdOfClicked() {
     this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
 
