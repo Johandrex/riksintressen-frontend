@@ -23,6 +23,7 @@ export class SidebarUploadComponent implements OnInit {
       this.fileName = file.name;
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("id", this.dataService.nationalInterestById.id.toString()); // skicka med ID
 
       this.dataService.upload(formData);
     }
