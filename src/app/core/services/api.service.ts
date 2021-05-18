@@ -26,6 +26,7 @@ export class ApiService {
 
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
+    console.log(id);
     return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
   }
 
@@ -44,7 +45,19 @@ export class ApiService {
     return this.http.get<Kulturmiljotyp[]>(this.url + "kulturmiljotyper");
   }
 
+  /* hämta alla kulturmiljötyper i en lista */
+  getFiles(id: number) {
+    return this.http.get<any[]>(this.url + "files/" + id);
+  }
+
   /*********** POST ***********/
+
+  /* ladda upp dokument/bilder på backend */
+  async upload(formData: FormData) {
+    return this.http.post<FormData>(this.url + "upload", formData).toPromise().then((data: any) => {
+      return data; // returnera data (id o message) till shared-data-services
+    });
+  }
 
   /* uppdatera ett riksintresse */
   async postUpdateRiksintresse(riksintresse: Riksintresse) {
@@ -56,15 +69,6 @@ export class ApiService {
   /* skapa ett nytt riksintresse */
   async postNewRiksintresse(riksintresse: Riksintresse) {
     return this.http.post<Riksintresse>(this.url + "create/riksintresse/", riksintresse).toPromise().then((data: any) => {
-      console.log(data);
-
-      return data; // returnera data (id o message) till shared-data-services
-    });
-  }
-
-  /* ladda upp dokument/bilder på backend */
-  async upload(formData: FormData) {
-    return this.http.post<FormData>(this.url + "upload", formData).toPromise().then((data: any) => {
       console.log(data);
 
       return data; // returnera data (id o message) till shared-data-services

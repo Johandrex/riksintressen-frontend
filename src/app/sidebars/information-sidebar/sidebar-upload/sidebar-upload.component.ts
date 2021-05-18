@@ -13,10 +13,12 @@ export class SidebarUploadComponent implements OnInit {
 
   fileName = '';
 
-  constructor(public dataService: SharedDataService) { }
+  constructor(public dataService: SharedDataService) {
+    // console.log(this.dataService.nationalInterestByIdFiles);
+  }
 
   /* När användaren väljer en fil skickas den upp via API och lagras i Node.js */
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     const file: File = event.target.files[0];
 
     if (file) {
@@ -25,7 +27,7 @@ export class SidebarUploadComponent implements OnInit {
       formData.append("file", file);
       formData.append("id", this.dataService.nationalInterestById.id.toString()); // skicka med ID
 
-      this.dataService.upload(formData);
+      await this.dataService.upload(formData); // async, vänta tills filen har laddats upp
     }
   }
 }

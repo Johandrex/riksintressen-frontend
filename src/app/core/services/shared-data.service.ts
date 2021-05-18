@@ -39,8 +39,9 @@ export class SharedDataService {
   public currentId = this.idSource.asObservable();
 
   // riksintressen listan där riksintressen är kopplade till kommuner, län, kategorier
-  public nationalInterestsList: RiksintresseList[] = [];
+  public nationalInterestByIdFiles: any = []; // ett riksintresses filer i JSON format
   public nationalInterestById: Riksintresse = new Riksintresse(); // ett enda riksintresse
+  public nationalInterestsList: RiksintresseList[] = [];
   public listMunicipalities: Kommun[] = []; // register över alla kommuner
   public listCounties: Lan[] = []; // register över alla län
   public listCategories: Kulturmiljotyp[] = []; // register över alla kategorier
@@ -84,6 +85,7 @@ export class SharedDataService {
       // Request national interest from server
       this.currentId.subscribe((id) => {
         this.subscribeToSelectedNationalInterest(id);
+        this.subscribeToSelectedNationalInterestFiles(id);
       });
 
       // These are in this method so it's also activated when user is selecting 
@@ -100,6 +102,17 @@ export class SharedDataService {
   public subscribeToSelectedNationalInterest(id: number): void {
     this.api.getRiksintresse(id).subscribe((response) => {
       this.nationalInterestById = response[0] as Riksintresse; // Only one "riksintresse" is returned to the array
+    });
+  }
+
+  /**
+   * Hämta ett riksintresses filer
+   * @param id 
+   */
+  public subscribeToSelectedNationalInterestFiles(id: number): void {
+    this.api.getFiles(id).subscribe((response) => {
+      console.log(response);
+      this.nationalInterestByIdFiles = response; // Only one "riksintresse" is returned to the array
     });
   }
 
@@ -140,6 +153,11 @@ export class SharedDataService {
     });
   }
 
+  // Ladda upp dokument / bild
+  public async upload(object: any) {
+    await this.api.upload(object);
+  }
+
   // Uppdatera existerande riksintresse
   public async updateRiksintresse(object: any) {
     await this.api.postUpdateRiksintresse(object); // async för att säkerställa ett ett riksintresse postas innan vi går vidare i metoden
@@ -152,11 +170,6 @@ export class SharedDataService {
     let data = await this.api.postNewRiksintresse(object);
     this.changeIdOfNationalInterestDisplayed(data.id); // hämta den nya informationen om det nuvarande id:et
     this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
-  }
-
-  // Ladda upp dokument / bild
-  public async upload(object: any) {
-    await this.api.upload(object);
   }
 
   // *********************************** Map related methods ***********************************
