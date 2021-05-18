@@ -50,6 +50,8 @@ export class SharedDataService {
   public map: any;
   // The layer used for all map features associated with the national interests
   public layer: any;
+  // Geoserver source used to create and edit features
+  public vectorSource: any;
   // Current selected map feature (singe click)
   public selectInteraction = new Select(
     {
@@ -57,6 +59,7 @@ export class SharedDataService {
       style: new Style({ fill: new Fill({ color: '#009605' }) })
     }
   );
+  public isUnableToSelectFeature: boolean = false;
 
   // fyll nationalInterests och nationalInterestsList med data
   constructor(private api: ApiService) {
@@ -74,17 +77,19 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    this.idSource.next(id);
-    this.infoSidebarMode = this.MODE.INFO;
+    if (this.isUnableToSelectFeature === false) {
+      this.idSource.next(id);
+      this.infoSidebarMode = this.MODE.INFO;
 
-    // Request national interest from server
-    this.currentId.subscribe((id) => {
-      this.subscribeToSelectedNationalInterest(id);
-    });
+      // Request national interest from server
+      this.currentId.subscribe((id) => {
+        this.subscribeToSelectedNationalInterest(id);
+      });
 
-    // These are in this method so it's also activated when user is selecting 
-    // a national interest from the list.
-    this.selectMapFeature(id);
+      // These are in this method so it's also activated when user is selecting 
+      // a national interest from the list.
+      this.selectMapFeature(id);
+    }
   }
 
   // *********************************** Database related ***********************************
@@ -177,13 +182,15 @@ export class SharedDataService {
    * Get data from the geoserver to create a layer with national interests.
    */
   public getGeoJsonFromServer() {
+    // Initialise source
+    this.vectorSource = new VectorSource({
+      // Make sure to configure the URL according to your needs
+      url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&outputFormat=application%2Fjson&srsname=EPSG:3857',
+      format: new GeoJSON()
+    });
     // Hämta data från GeoServern
     this.layer = new VectorLayer({
-      source: new VectorSource({
-        // Make sure to configure the URL according to your needs
-        url: 'http://109.225.108.59:8080/geoserver/Workspace/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Workspace%3Ageometri&outputFormat=application%2Fjson&srsname=EPSG:3857',
-        format: new GeoJSON()
-      }),
+      source: this.vectorSource,
     });
     this.layer.setOpacity(1);
     this.map.addLayer(this.layer); // lägg på layer på kartan
@@ -234,17 +241,22 @@ export class SharedDataService {
   /**
    * Creates a new map feature.
    */
+  public draw: any;
+  public snap: any;
+  public modifyCreate: any;
   public startCreateMapFeature(): void {
-    let modify = new Modify({ source: this.layer });
-    this.map.addInteraction(modify);
+    this.isUnableToSelectFeature = true;
+    this.modifyCreate = new Modify({ source: this.vectorSource });
+    this.map.addInteraction(this.modifyCreate);
 
-    let draw = new Draw({
-      source: this.layer,
+    this.draw = new Draw({
+      source: this.vectorSource,
       type: GeometryType.MULTI_POLYGON
     });
-    this.map.addInteraction(draw);
-    let snap = new Snap({ source: this.layer });
-    this.map.addInteraction(snap);
+    this.map.addInteraction(this.draw);
+
+    this.snap = new Snap({ source: this.vectorSource });
+    this.map.addInteraction(this.snap);
 
     // Save the feature vector?
     // Stop the interaction when finished
@@ -255,7 +267,7 @@ export class SharedDataService {
    */
   public stopCreateMapFeature(): void {
     // Find the seeked after interaction on the map
-    var interactionToBeRemoved1;
+    /*var interactionToBeRemoved1;
     var interactionToBeRemoved2;
     this.map.getInteractions().forEach(function (interaction: Interaction) {
       if (interaction instanceof Draw) {
@@ -267,17 +279,24 @@ export class SharedDataService {
     });
     // Remove the interactions from the map
     if (interactionToBeRemoved1) { this.map.removeInteraction(interactionToBeRemoved1); }
-    if (interactionToBeRemoved2) { this.map.removeInteraction(interactionToBeRemoved2); }
+    if (interactionToBeRemoved2) { this.map.removeInteraction(interactionToBeRemoved2); }*/
+    this.isUnableToSelectFeature = false;
+    if (this.draw) { this.map.removeInteraction(this.draw); }
+    if (this.snap) { this.map.removeInteraction(this.snap); }
+    if (this.modifyCreate) { this.map.removeInteraction(this.modifyCreate); }
   }
 
   /**
    * Modify an existing map feature.
    */
+  public modify: any;
   public startEditMapFeature(): void {
-    let modify = new Modify({
+    this.isUnableToSelectFeature = true;
+    this.modify = new Modify({
+      source: this.vectorSource,
       features: this.selectInteraction.getFeatures(),
     });
-    this.map.addInteraction(modify);
+    this.map.addInteraction(this.modify);
     // Stop the interaction when finished
   }
 
@@ -285,12 +304,13 @@ export class SharedDataService {
    * Removes the interaction of editting a map feature.
    */
   public stopEditMapFeature(): void {
-    var modifyToBeRemoved;
+    /*var modifyToBeRemoved;
     this.map.getInteractions().forEach(function (interaction: Interaction) {
       if (interaction instanceof Draw) {
         modifyToBeRemoved = interaction;
       }
-    });
-    this.map.removeInteraction(modifyToBeRemoved);
+    });*/
+    this.isUnableToSelectFeature = false;
+    this.map.removeInteraction(this.modify);
   }
 }
