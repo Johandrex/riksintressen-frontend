@@ -78,7 +78,8 @@ export class SharedDataService {
    * @param id The ID that has been selected.
    */
   public changeIdOfNationalInterestDisplayed(id: number): void {
-    if (this.isUnableToSelectFeature === false) {
+    console.log(this.infoSidebarMode.valueOf());
+    if (this.infoSidebarMode === this.MODE.HELP || this.infoSidebarMode === this.MODE.INFO) {
       this.idSource.next(id);
       this.infoSidebarMode = this.MODE.INFO;
 
@@ -119,8 +120,9 @@ export class SharedDataService {
   /**
    * Changes content of national interest array.
    * Välj att visa raderade(cederade) eller ej raderade riksintressen
+   * @returns A list with national interest that is continuosly updated.
    */
-  public subscribeToNationalInterestsList(): void {
+  public subscribeToNationalInterestsList(): RiksintresseList[] {
     if (this.displayDeleted) {
       this.api.getRiksintressenListDeleted().subscribe((response) => {
         this.nationalInterestsList = response as RiksintresseList[];
@@ -130,6 +132,7 @@ export class SharedDataService {
         this.nationalInterestsList = response as RiksintresseList[];
       });
     }
+    return this.nationalInterestsList;
   }
 
   // Kommuner
