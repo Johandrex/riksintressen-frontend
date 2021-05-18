@@ -86,7 +86,6 @@ export class SharedDataService {
       // Request national interest from server
       this.currentId.subscribe((id) => {
         this.subscribeToSelectedNationalInterest(id);
-        // this.subscribeToSelectedNationalInterestFiles(id);
       });
 
       // These are in this method so it's also activated when user is selecting 
