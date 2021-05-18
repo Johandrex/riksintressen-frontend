@@ -154,6 +154,11 @@ export class SharedDataService {
     this.subscribeToNationalInterestsList(); // hämta listan över riksintressena på nytt
   }
 
+  // Ladda upp dokument / bild
+  public async upload(object: any) {
+    await this.api.upload(object);
+  }
+
   // *********************************** Map related methods ***********************************
 
   /**
