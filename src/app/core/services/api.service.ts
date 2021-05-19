@@ -8,7 +8,7 @@ import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../
 })
 export class ApiService {
 
-  url: string = "http://109.225.108.59:3000/api/"; // accessing node.js server, which handles the database
+  public url: string = "http://109.225.108.59:3000/api/"; // accessing node.js server, which handles the database
 
   constructor(private http: HttpClient) { }
 

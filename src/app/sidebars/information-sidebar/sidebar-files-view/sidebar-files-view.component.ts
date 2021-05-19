@@ -13,9 +13,9 @@ export class SidebarFilesViewComponent implements OnInit {
 
   fileName = '';
 
-  constructor(public dataService: SharedDataService) {
-    // console.log(this.dataService.nationalInterestByIdFiles);
-  }
+  public getAPI = this.dataService.getAPI().replace("api/", ""); // url till API
+
+  constructor(public dataService: SharedDataService) { }
 
   /* När användaren väljer en fil skickas den upp via API och lagras i Node.js */
   async onFileSelected(event: any) {
@@ -33,6 +33,6 @@ export class SidebarFilesViewComponent implements OnInit {
 
   /* Avbryter, går tillbaks till redigeringen */
   buttonCancel() {
-    this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
+    this.dataService.infoSidebarMode = this.dataService.MODE.INFO;
   }
 }

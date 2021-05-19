@@ -1,11 +1,17 @@
-<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload hidden>
+<h1 class="tw-heading-md tw-py-2">Visa Filer</h1>
 
-<div class="file-upload">
-
-  {{fileName || "No file uploaded yet."}}
-
-  <div class="two-buttons">
-    <button type="button" (click)="fileUpload.click()" class="raa-button">Ladda upp >></button>
-    <button type="button" (click)="buttonCancel()" class="raa-button raa-button-secondary">Avbryt >></button>
+<!-- Skriver ut en lista med alla existerande filer som går att ladda ner -->
+<div class="existing-files">
+  <h2>Existerande filer</h2>
+  <div class="one-button" *ngFor="let file of dataService.nationalInterestByIdFiles">
+    <a href="{{this.getAPI + file.url}}" target="_blank">
+      <button type="button" class="raa-button raa-button-cancel">{{file.name}}</button>
+    </a>
   </div>
+</div>
+
+
+<br />
+<div class="one-button">
+  <button type="button" (click)="buttonCancel()" class="raa-button">Återvänd</button>
 </div>

@@ -23,7 +23,7 @@ export class SidebarInfoRiksintresseComponent implements OnInit {
     this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
 
-  buttonUpload() {
-    this.dataService.infoSidebarMode = this.dataService.MODE.FILES_UPLOAD;
+  buttonViewFiles() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.FILES_VIEW;
   }
 }

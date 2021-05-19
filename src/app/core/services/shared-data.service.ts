@@ -70,6 +70,11 @@ export class SharedDataService {
     this.subcribeToMunicipalities();
   }
 
+  // Hämta API url:et
+  public getAPI(): string {
+    return this.api.url;
+  }
+
   // *********************************** General user interaction ***********************************
 
   /**
@@ -102,8 +107,8 @@ export class SharedDataService {
   // *********************************** Database related ***********************************
 
   /**
- * Changes the national interest found by id.
- */
+   * Changes the national interest found by id.
+   */
   public subscribeToSelectedNationalInterest(id: number): void {
     this.api.getRiksintresse(id).subscribe((response) => {
       console.log("Valde riksintresse " + id);
@@ -117,8 +122,7 @@ export class SharedDataService {
    */
   public subscribeToSelectedNationalInterestFiles(id: number): void {
     this.api.getFiles(id).subscribe((response) => {
-      console.log(response);
-      this.nationalInterestByIdFiles = response; // Only one "riksintresse" is returned to the array
+      this.nationalInterestByIdFiles = response;
     });
   }
 

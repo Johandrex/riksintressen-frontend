@@ -25,12 +25,8 @@
   <label class="raa-label">Status: </label>
   <mat-checkbox formControlName="cederat" [disableRipple]="true">Avstått anspråk</mat-checkbox>
 
-  <div class="two-buttons">
-    <button type="button" (click)="buttonUpload()" class="raa-button">Bilder >></button>
-    <button type="button" (click)="buttonUpload()" class="raa-button raa-button-secondary">Dokument >></button>
-  </div>
-
   <div class="one-button">
+    <button type="button" (click)="buttonUpload()" class="raa-button">Ladda upp filer >></button>
     <button type="button" (click)="drawPolygon()" class="raa-button raa-button-confirm">Rita polygon</button>
   </div>
 
