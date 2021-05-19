@@ -1,0 +1,11 @@
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload hidden>
+
+<div class="file-upload">
+
+  {{fileName || "No file uploaded yet."}}
+
+  <div class="two-buttons">
+    <button type="button" (click)="fileUpload.click()" class="raa-button">Ladda upp >></button>
+    <button type="button" (click)="buttonCancel()" class="raa-button raa-button-secondary">Avbryt >></button>
+  </div>
+</div>

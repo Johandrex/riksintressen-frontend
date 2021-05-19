@@ -24,6 +24,6 @@ export class SidebarInfoRiksintresseComponent implements OnInit {
   }
 
   buttonUpload() {
-    this.dataService.infoSidebarMode = this.dataService.MODE.UPLOAD;
+    this.dataService.infoSidebarMode = this.dataService.MODE.FILES_UPLOAD;
   }
 }

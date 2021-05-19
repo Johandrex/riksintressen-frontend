@@ -12,7 +12,8 @@ import { InformationSidebarComponent } from './information-sidebar/information-s
 import { SidebarEditRiksintresseComponent } from './information-sidebar/sidebar-edit-riksintresse/sidebar-edit-riksintresse.component';
 import { SidebarInfoRiksintresseComponent } from './information-sidebar/sidebar-info-riksintresse/sidebar-info-riksintresse.component';
 import { SidebarNewRiksintresseComponent } from './information-sidebar/sidebar-new-riksintresse/sidebar-new-riksintresse.component';
-import { SidebarUploadComponent } from './information-sidebar/sidebar-upload/sidebar-upload.component';
+import { SidebarFilesUploadComponent } from './information-sidebar/sidebar-files-upload/sidebar-files-upload.component';
+import { SidebarFilesViewComponent } from './information-sidebar/sidebar-files-view/sidebar-files-view.component';
 import { SidebarHelpComponent } from './information-sidebar/sidebar-help/sidebar-help.component';
 import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
 
@@ -22,7 +23,8 @@ import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
     SidebarEditRiksintresseComponent,
     SidebarInfoRiksintresseComponent,
     SidebarNewRiksintresseComponent,
-    SidebarUploadComponent,
+    SidebarFilesUploadComponent,
+    SidebarFilesViewComponent,
     SidebarHelpComponent,
     ListSidebarComponent,
   ],
@@ -39,7 +41,8 @@ import { ListSidebarComponent } from './list-sidebar/list-sidebar.component';
     SidebarEditRiksintresseComponent,
     SidebarInfoRiksintresseComponent,
     SidebarNewRiksintresseComponent,
-    SidebarUploadComponent,
+    SidebarFilesUploadComponent,
+    SidebarFilesViewComponent,
     SidebarHelpComponent,
     ListSidebarComponent,
   ],

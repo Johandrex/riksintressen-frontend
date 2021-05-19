@@ -3,11 +3,11 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 
 
 @Component({
-  selector: 'app-sidebar-upload',
-  templateUrl: './sidebar-upload.component.html',
+  selector: 'app-files-upload',
+  templateUrl: './sidebar-files-upload.component.html',
   styleUrls: ['../../sidebar-form.scss']
 })
-export class SidebarUploadComponent implements OnInit {
+export class SidebarFilesUploadComponent implements OnInit {
 
   ngOnInit(): void { }
 
@@ -29,5 +29,10 @@ export class SidebarUploadComponent implements OnInit {
 
       await this.dataService.upload(formData); // async, vänta tills filen har laddats upp
     }
+  }
+
+  /* Avbryter, går tillbaks till redigeringen */
+  buttonCancel() {
+    this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }
 }

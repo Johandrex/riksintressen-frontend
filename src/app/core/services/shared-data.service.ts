@@ -28,7 +28,7 @@ import GeometryType from 'ol/geom/GeometryType';
 })
 export class SharedDataService {
   // Hanterar vilket läge som hanteras i sidebaren
-  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT', UPLOAD: 'UPLOAD' };
+  public MODE = { HELP: 'HELP', NEW: 'NEW', INFO: 'INFO', EDIT: 'EDIT', FILES_UPLOAD: 'FILES_UPLOAD', FILES_VIEW: 'VIEW_FILES' };
   public infoSidebarMode = this.MODE.HELP; // vilken information ska visas i högra spalten vid initiering?
 
   // Ska cederade riksintressen visas i listan?
@@ -91,7 +91,7 @@ export class SharedDataService {
 
       // Request national interest from server
       this.subscribeToSelectedNationalInterest(id);
-      // this.subscribeToSelectedNationalInterestFiles(id);
+      this.subscribeToSelectedNationalInterestFiles(id);
 
       // These are in this method so it's also activated when user is selecting 
       // a national interest from the list.
@@ -117,6 +117,7 @@ export class SharedDataService {
    */
   public subscribeToSelectedNationalInterestFiles(id: number): void {
     this.api.getFiles(id).subscribe((response) => {
+      console.log(response);
       this.nationalInterestByIdFiles = response; // Only one "riksintresse" is returned to the array
     });
   }
