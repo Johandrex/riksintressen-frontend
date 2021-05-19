@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { RiksintresseList } from 'src/app/core/classes';
 import { SharedDataService } from '../../core/services/shared-data.service';
 
 @Injectable({
@@ -50,28 +51,43 @@ export class ListSidebarComponent implements OnInit {
 
   /**
    * Functions which are executed when user filters list or searches.
-   * Query database.
    * @todo Make more abstract if possible.
    */
-  searchName() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-      return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-    })
+  public search() {
+    this.dataService.listOfFilteredNationalInterests = this.dataService.nationalInterestsList;
+    this.searchName();
+    this.searchCategory();
+    this.searchMunicipality();
+    this.searchProvince();
   }
-  searchCategory() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-      return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
-    })
+
+  private searchName() {
+    if (this.name != undefined || this.name != null) {
+      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+        return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
   }
-  searchMunicipality() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-      return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
-    })
+  private searchCategory() {
+    if (this.category != undefined || this.category != null) {
+      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+        return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
+      })
+    }
   }
-  searchProvince() {
-    this.dataService.nationalInterestsList = this.dataService.nationalInterestsList.filter(res => {
-      return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
-    })
+  private searchMunicipality() {
+    if (this.municipality != undefined || this.municipality != null) {
+      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+        return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
+      })
+    }
+  }
+  private searchProvince() {
+    if (this.province != undefined || this.province != null) {
+      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+        return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
+      })
+    }
   }
 
   /**

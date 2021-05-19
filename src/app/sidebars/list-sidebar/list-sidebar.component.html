@@ -11,19 +11,19 @@
         <tr>
           <th>
             <input type="text" class="form-control" name="name" placeholder="Sök på namn" [(ngModel)]="name"
-              (ngModelChange)="searchName()">
+              (ngModelChange)="search()">
           </th>
           <th>
             <input type="text" class="form-control" name="category" placeholder="Sök på kulturmiljötyper"
-              [(ngModel)]="category" (ngModelChange)="searchCategory()">
+              [(ngModel)]="category" (ngModelChange)="search()">
           </th>
           <th>
             <input type="text" class="form-control" name="municipality" placeholder="Sök på kommuner"
-              [(ngModel)]="municipality" (ngModelChange)="searchMunicipality()">
+              [(ngModel)]="municipality" (ngModelChange)="search()">
           </th>
           <th>
             <input type="text" class="form-control" name="province" placeholder="Sök på län" [(ngModel)]="province"
-              (ngModelChange)="searchProvince()">
+              (ngModelChange)="search()">
           </th>
         </tr>
         <tr>
@@ -53,7 +53,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of this.dataService.nationalInterestsList | orderBy: key: reverse;">
+        <tr *ngFor="let result of this.dataService.listOfFilteredNationalInterests | orderBy: key: reverse;">
           <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
               {{result.namn}}
             </a></td>

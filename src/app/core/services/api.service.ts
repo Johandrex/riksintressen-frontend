@@ -26,7 +26,6 @@ export class ApiService {
 
   /* hämta ett riksintresse */
   getRiksintresse(id: number) {
-    console.log(id);
     return this.http.get<Riksintresse[]>(this.url + "riksintressen/" + id);
   }
 
