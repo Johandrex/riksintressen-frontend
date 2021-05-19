@@ -295,23 +295,11 @@ export class SharedDataService {
    */
   public stopCreateMapFeature(): void {
     // Find the seeked after interaction on the map
-    /*var interactionToBeRemoved1;
-    var interactionToBeRemoved2;
-    this.map.getInteractions().forEach(function (interaction: Interaction) {
-      if (interaction instanceof Draw) {
-        interactionToBeRemoved1 = interaction;
-      }
-      else if (interaction instanceof Snap) {
-        interactionToBeRemoved2 = interaction;
-      }
-    });
-    // Remove the interactions from the map
-    if (interactionToBeRemoved1) { this.map.removeInteraction(interactionToBeRemoved1); }
-    if (interactionToBeRemoved2) { this.map.removeInteraction(interactionToBeRemoved2); }*/
     this.isUnableToSelectFeature = false;
     if (this.draw) { this.map.removeInteraction(this.draw); }
     if (this.snap) { this.map.removeInteraction(this.snap); }
     if (this.modifyCreate) { this.map.removeInteraction(this.modifyCreate); }
+    // Store change in database
   }
 
   /**
@@ -332,13 +320,8 @@ export class SharedDataService {
    * Removes the interaction of editting a map feature.
    */
   public stopEditMapFeature(): void {
-    /*var modifyToBeRemoved;
-    this.map.getInteractions().forEach(function (interaction: Interaction) {
-      if (interaction instanceof Draw) {
-        modifyToBeRemoved = interaction;
-      }
-    });*/
     this.isUnableToSelectFeature = false;
-    this.map.removeInteraction(this.modify);
+    if (this.modify) { this.map.removeInteraction(this.modify); }
+    // Store change in database
   }
 }
