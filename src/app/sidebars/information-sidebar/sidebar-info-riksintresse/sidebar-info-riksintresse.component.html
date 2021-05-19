@@ -9,9 +9,13 @@
 <label class="raa-label">Beskrivning: </label>
 <p>{{this.dataService.nationalInterestById.beskrivning}}</p>
 
-<label class="raa-label">Kulturmiljötyper: </label>
-<div *ngFor="let cat of this.dataService.nationalInterestById.kategorier">
-  <p>{{cat}} &nbsp;</p>
+<div *ngIf="this.dataService.nationalInterestById.kategorier[0] != undefined">
+  <!-- dölj ifall inga kategorier finns -->
+  <label class="raa-label">Kulturmiljötyper:
+  </label>
+  <div *ngFor="let cat of this.dataService.nationalInterestById.kategorier">
+    <p>{{cat}} &nbsp;</p>
+  </div>
 </div>
 
 <div *ngIf="this.dataService.nationalInterestById.cederat">
@@ -26,11 +30,9 @@
 <label class="raa-label">Län: </label>
 <p>{{this.dataService.nationalInterestById.lan}}</p>
 
-<div class="one-button">
-  <button type="button" (click)="buttonViewFiles()" class="raa-button">Se filer >></button>
-</div>
-
 <div id="details">
+  <br />
+  <label class="raa-label">Detaljer</label><br />
   <label class="raa-label">ID: </label>
   <p>{{this.dataService.nationalInterestById.id}}</p><br />
   <label class="raa-label">Nuvarande version: </label>
@@ -44,5 +46,6 @@
 </div>
 
 <div class="one-button">
+  <button type="button" (click)="buttonViewFiles()" class="raa-button">Visa filer >></button>
   <button (click)="getIdOfClicked()" class="raa-button raa-button-confirm">Redigera</button>
 </div>
