@@ -53,7 +53,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of this.dataService.listOfFilteredNationalInterests | orderBy: key: reverse;">
+        <tr *ngFor="let result of this.dataService.listOfFilteredRiksintressen | orderBy: key: reverse;">
           <td><a (click)="getIdOfClicked($event)" id={{result.id}}>
               {{result.namn}}
             </a></td>

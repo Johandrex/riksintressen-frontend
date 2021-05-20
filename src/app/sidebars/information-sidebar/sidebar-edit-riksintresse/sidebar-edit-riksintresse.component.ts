@@ -14,10 +14,10 @@ export class SidebarEditRiksintresseComponent implements OnInit {
 
   constructor(public dataService: SharedDataService) {
     this.form = new FormGroup({
-      namn: new FormControl(this.dataService.nationalInterestById.namn),
-      beskrivning: new FormControl(this.dataService.nationalInterestById.beskrivning),
-      motivering: new FormControl(this.dataService.nationalInterestById.motivering),
-      cederat: new FormControl(this.dataService.nationalInterestById.cederat),
+      namn: new FormControl(this.dataService.riksintresse.namn),
+      beskrivning: new FormControl(this.dataService.riksintresse.beskrivning),
+      motivering: new FormControl(this.dataService.riksintresse.motivering),
+      cederat: new FormControl(this.dataService.riksintresse.cederat),
     })
   }
 
@@ -26,8 +26,8 @@ export class SidebarEditRiksintresseComponent implements OnInit {
   // för objekt av formulärets data som skickas via HTTP post
   buttonSubmit() {
     let form = this.form.value;
-    form["id"] = this.dataService.nationalInterestById.id;
-    form["kategorier"] = this.dataService.nationalInterestById.kategorier;
+    form["id"] = this.dataService.riksintresse.id;
+    form["kategorier"] = this.dataService.riksintresse.kategorier;
 
     this.dataService.updateRiksintresse(form); // uppdatera o visa informations sidebar
     console.log(form)

@@ -15,7 +15,7 @@
 <!-- Skriver ut en lista med alla existerande filer som går att ladda ner -->
 <div class="existing-files">
   <h2>Existerande filer</h2>
-  <div class="one-button" *ngFor="let file of dataService.nationalInterestByIdFiles">
+  <div class="one-button" *ngFor="let file of dataService.riksintresseFiles">
     <a href="{{this.getAPI + file.url}}" target="_blank">
       <button type="button" class="raa-button raa-button-cancel">{{file.name}}</button>
     </a>

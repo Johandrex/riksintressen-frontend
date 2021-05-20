@@ -14,7 +14,7 @@
 
   <label class="raa-label">Kulturmiljötyper: </label>
   <ng-select [(ngModel)]="kategorier" [ngModelOptions]="{standalone: true}" [multiple]=true>
-    <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
+    <ng-option *ngFor="let cat of this.dataService.listKulturmiljotyper" [value]="cat.namn" class="options">
       {{cat.namn}}
     </ng-option>
   </ng-select>

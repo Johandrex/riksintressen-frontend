@@ -54,7 +54,7 @@ export class ListSidebarComponent implements OnInit {
    * @todo Make more abstract if possible.
    */
   public search() {
-    this.dataService.listOfFilteredNationalInterests = this.dataService.nationalInterestsList;
+    this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen;
     this.searchName();
     this.searchCategory();
     this.searchMunicipality();
@@ -63,28 +63,28 @@ export class ListSidebarComponent implements OnInit {
 
   private searchName() {
     if (this.name != undefined || this.name != null) {
-      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+      this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen.filter(res => {
         return res.namn.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
   }
   private searchCategory() {
     if (this.category != undefined || this.category != null) {
-      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+      this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen.filter(res => {
         return res.kategorier.toString().toLocaleLowerCase().match(this.category.toLocaleLowerCase()); // konverta från array till string
       })
     }
   }
   private searchMunicipality() {
     if (this.municipality != undefined || this.municipality != null) {
-      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+      this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen.filter(res => {
         return res.kommuner.toString().toLocaleLowerCase().match(this.municipality.toLocaleLowerCase()); // konverta från array till string
       })
     }
   }
   private searchProvince() {
     if (this.province != undefined || this.province != null) {
-      this.dataService.listOfFilteredNationalInterests = this.dataService.listOfFilteredNationalInterests.filter(res => {
+      this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen.filter(res => {
         return res.lan.toString().toLocaleLowerCase().match(this.province.toLocaleLowerCase()); // konverta från array till string
       })
     }
@@ -109,7 +109,7 @@ export class ListSidebarComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     // Notify observer to keep info-sidebar up to date with selected national interest
-    this.dataService.changeIdOfNationalInterestDisplayed(value);
+    this.dataService.selectRiksintresse(value);
   }
 
 }

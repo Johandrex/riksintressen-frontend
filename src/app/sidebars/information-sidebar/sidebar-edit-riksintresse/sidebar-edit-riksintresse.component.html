@@ -3,21 +3,21 @@
 <form [formGroup]="form" (ngSubmit)="buttonSubmit()">
   <label class="raa-label">Namn: </label>
   <input formControlName="namn" type="text" placeholder="Namn på riksintresse" class="valid-input raa-input"
-    value={{this.dataService.nationalInterestById.namn}}>
+    value={{this.dataService.riksintresse.namn}}>
 
 
   <label class="raa-label">Motivering: </label>
   <input formControlName="motivering" type="text" placeholder="Motivering av riksintresse" class="valid-input raa-input"
-    value={{this.dataService.nationalInterestById.motivering}}>
+    value={{this.dataService.riksintresse.motivering}}>
 
   <label class="raa-label">Beskrivning: </label>
   <input ng-reflect-readonly="true" formControlName="beskrivning" type="text" placeholder="Beskrivning av riksintresse"
-    class="valid-input raa-input" value={{this.dataService.nationalInterestById.beskrivning}}>
+    class="valid-input raa-input" value={{this.dataService.riksintresse.beskrivning}}>
 
   <label class="raa-label">Kulturmiljötyper: </label>
-  <ng-select [(ngModel)]="this.dataService.nationalInterestById.kategorier" [ngModelOptions]="{standalone: true}"
-    name="namn" [multiple]=true appearance="outline">
-    <ng-option *ngFor="let cat of this.dataService.listCategories" [value]="cat.namn" class="options">
+  <ng-select [(ngModel)]="this.dataService.riksintresse.kategorier" [ngModelOptions]="{standalone: true}" name="namn"
+    [multiple]=true appearance="outline">
+    <ng-option *ngFor="let cat of this.dataService.listKulturmiljotyper" [value]="cat.namn" class="options">
       {{cat.namn}}
     </ng-option>
   </ng-select>
@@ -33,14 +33,14 @@
   <div id="details">
     <label class="raa-label">Detaljer</label><br />
     <label class="raa-label">Kommuner: </label>
-    <p>{{this.dataService.nationalInterestById.kommuner}}</p><br />
+    <p>{{this.dataService.riksintresse.kommuner}}</p><br />
     <label class="raa-label">Län: </label>
-    <p>{{this.dataService.nationalInterestById.lan}}</p><br />
+    <p>{{this.dataService.riksintresse.lan}}</p><br />
 
     <label class="raa-label">ID: </label>
-    <p>{{this.dataService.nationalInterestById.id}}</p><br />
+    <p>{{this.dataService.riksintresse.id}}</p><br />
     <label class="raa-label">Nuvarande version: </label>
-    <p>{{this.dataService.nationalInterestById.version}}</p><br />
+    <p>{{this.dataService.riksintresse.version}}</p><br />
     <label class="raa-label">Beslutat: </label>
     <p>1997-04-29</p><br />
     <label class="raa-label">Reviderat: </label>

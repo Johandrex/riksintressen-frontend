@@ -25,11 +25,11 @@ export class SidebarFilesUploadComponent implements OnInit {
       this.fileName = file.name;
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("id", this.dataService.nationalInterestById.id.toString()); // skicka med ID
+      formData.append("id", this.dataService.riksintresse.id.toString()); // skicka med ID
 
       await this.dataService.upload(formData); // async, vänta tills filen har laddats upp
 
-      this.dataService.subscribeToSelectedNationalInterestFiles(this.dataService.nationalInterestById.id); // hämta nya filer på nytt
+      this.dataService.subscribeToRiksintresseFiles(this.dataService.riksintresse.id); // hämta nya filer på nytt
     }
   }
 

@@ -25,7 +25,7 @@ export class SidebarFilesViewComponent implements OnInit {
       this.fileName = file.name;
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("id", this.dataService.nationalInterestById.id.toString()); // skicka med ID
+      formData.append("id", this.dataService.riksintresse.id.toString()); // skicka med ID
 
       await this.dataService.upload(formData); // async, vänta tills filen har laddats upp
     }

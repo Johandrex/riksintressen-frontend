@@ -52,7 +52,7 @@ export class ApiService {
   /*********** POST ***********/
 
   /* ladda upp dokument/bilder på backend */
-  async upload(formData: FormData) {
+  async postFiles(formData: FormData) {
     return this.http.post<FormData>(this.url + "upload", formData).toPromise().then((data: any) => {
       return data; // returnera data (id o message) till shared-data-services
     });

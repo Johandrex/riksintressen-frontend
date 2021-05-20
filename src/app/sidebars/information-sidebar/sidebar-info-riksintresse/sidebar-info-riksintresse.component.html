@@ -1,42 +1,42 @@
 <h1 class="tw-heading-md tw-py-2">Information</h1>
 
 <label class="raa-label">Namn: </label>
-<p>{{this.dataService.nationalInterestById.namn}}</p>
+<p>{{this.dataService.riksintresse.namn}}</p>
 
 <label class="raa-label">Motivering: </label>
-<p>{{this.dataService.nationalInterestById.motivering}}</p>
+<p>{{this.dataService.riksintresse.motivering}}</p>
 
 <label class="raa-label">Beskrivning: </label>
-<p>{{this.dataService.nationalInterestById.beskrivning}}</p>
+<p>{{this.dataService.riksintresse.beskrivning}}</p>
 
-<div *ngIf="this.dataService.nationalInterestById.kategorier[0] != undefined">
+<div *ngIf="this.dataService.riksintresse.kategorier[0] != undefined">
   <!-- dölj ifall inga kategorier finns -->
   <label class="raa-label">Kulturmiljötyper:
   </label>
-  <div *ngFor="let cat of this.dataService.nationalInterestById.kategorier">
+  <div *ngFor="let cat of this.dataService.riksintresse.kategorier">
     <p>{{cat}} &nbsp;</p>
   </div>
 </div>
 
-<div *ngIf="this.dataService.nationalInterestById.cederat">
+<div *ngIf="this.dataService.riksintresse.cederat">
   <!-- Syns endast vid cedering -->
   <label class="raa-label">Status: </label>
   <p>Avstått anspråk</p>
 </div>
 
 <label class="raa-label">Kommuner: </label>
-<p>{{this.dataService.nationalInterestById.kommuner}}</p>
+<p>{{this.dataService.riksintresse.kommuner}}</p>
 
 <label class="raa-label">Län: </label>
-<p>{{this.dataService.nationalInterestById.lan}}</p>
+<p>{{this.dataService.riksintresse.lan}}</p>
 
 <div id="details">
   <br />
   <label class="raa-label">Detaljer</label><br />
   <label class="raa-label">ID: </label>
-  <p>{{this.dataService.nationalInterestById.id}}</p><br />
+  <p>{{this.dataService.riksintresse.id}}</p><br />
   <label class="raa-label">Nuvarande version: </label>
-  <p>{{this.dataService.nationalInterestById.version}}</p><br />
+  <p>{{this.dataService.riksintresse.version}}</p><br />
   <label class="raa-label">Beslutat: </label>
   <p>1997-04-29</p><br />
   <label class="raa-label">Reviderat: </label>

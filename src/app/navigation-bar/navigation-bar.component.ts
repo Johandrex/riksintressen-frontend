@@ -25,14 +25,14 @@ export class NavigationBarComponent implements OnInit {
         this.dataService.infoSidebarMode = this.dataService.MODE.NEW;
         break;
       case this.buttonList: // toggles list
-        if (this.dataService.displayDeleted == false) {
+        if (this.dataService.listContainsDeleted == false) {
           this.buttonList = "lista";
-          this.dataService.displayDeleted = true; // visa vanliga lista
-          this.dataService.subscribeToNationalInterestsList();
+          this.dataService.listContainsDeleted = true; // visa vanliga lista
+          this.dataService.subscribeToRiksintressenList();
         } else {
           this.buttonList = "arkiv";
-          this.dataService.displayDeleted = false; // visa lista med raderade(cederade) riksintressen
-          this.dataService.subscribeToNationalInterestsList();
+          this.dataService.listContainsDeleted = false; // visa lista med raderade(cederade) riksintressen
+          this.dataService.subscribeToRiksintressenList();
         }
         break;
       case this.buttonHelp:
