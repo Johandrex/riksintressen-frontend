@@ -5,7 +5,7 @@
 }
 
 .one-button button {
-  width: 99%;
+  width: 100%;
   margin-bottom: 5px;
 }
 
@@ -21,4 +21,14 @@
 
 .mat-checkbox-inner-container {
   position: static !important;
+}
+
+
+.existing-files a {
+  color: gray;
+  text-decoration: none;
+}
+
+.existing-files a:hover {
+  text-decoration: underline;
 }

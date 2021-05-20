@@ -9,7 +9,7 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 })
 export class SidebarFilesViewComponent implements OnInit {
 
-  public getAPI = this.dataService.getAPI().replace("api/", ""); // url till API
+  public getStaticURL = this.dataService.getStaticAPI(); // url till API
 
   constructor(public dataService: SharedDataService) { }
 

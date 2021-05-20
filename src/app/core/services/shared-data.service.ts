@@ -36,9 +36,9 @@ export class SharedDataService {
     this.subcribeToLan();
   }
 
-  // Hämta API url:et
-  public getAPI(): string {
-    return this.api.url;
+  // Hämta statiska filer från API
+  public getStaticAPI(): string {
+    return this.api.url.replace("api/", "")
   }
 
   /**
@@ -80,18 +80,16 @@ export class SharedDataService {
   public subscribeToRiksintresseFiles(id: number): void {
     this.api.getFiles(id).subscribe((response) => {
       this.riksintresseFiles = response;
+      this.riksintressePhotos = []; // starta med tom array
 
       // Kontrollera filändelsen och lägg bilder i en egen array
       if (response[0] != undefined) {
-        this.riksintressePhotos = // att fixa
-
-          response.forEach((obj) => { // TODO: COMPLETE THIS!!!!!!!!!!!
-            let ext = obj.url.substring(obj.url.lastIndexOf('.') + 1);
-            if (ext == ".png" || ext == ".jpg") {
-              this.riksintressePhotos.push(obj); // lägg till i array ifall det är en bild
-              console.log(obj);
-            }
-          });
+        response.forEach((obj) => {
+          let ext = obj.url.substring(obj.url.lastIndexOf('.') + 1);
+          if (ext == "png" || ext == "jpg") {
+            this.riksintressePhotos.push(obj); // lägg till i array ifall det är en bild
+          }
+        });
       }
     });
   }

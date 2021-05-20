@@ -9,8 +9,8 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 })
 export class SidebarInfoRiksintresseComponent implements OnInit {
 
-  // form kontroller för <ng-select>
-  public selectKategorier = new FormControl();
+  public getStaticURL = this.dataService.getStaticAPI(); // url till API
+  public selectKategorier = new FormControl(); // form kontroller för <ng-select>
 
   constructor(public dataService: SharedDataService) { }
 
