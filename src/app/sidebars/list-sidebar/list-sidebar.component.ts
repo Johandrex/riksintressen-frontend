@@ -1,5 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { RiksintresseList } from 'src/app/core/classes';
 import { SharedDataService } from '../../core/services/shared-data.service';
 
 @Injectable({
@@ -12,10 +11,10 @@ import { SharedDataService } from '../../core/services/shared-data.service';
 })
 export class ListSidebarComponent implements OnInit {
   // Items to be searched for
-  public name: any;
-  public category: any;
-  public municipality: any;
-  public province: any;
+  public name = new String();
+  public category = new String();
+  public municipality = new String();
+  public province = new String();
 
   constructor(public dataService: SharedDataService) { }
 

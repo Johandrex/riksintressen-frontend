@@ -9,14 +9,12 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 })
 export class SidebarFilesUploadComponent implements OnInit {
 
-  ngOnInit(): void { }
-
-  fileName = '';
-
+  public fileName = new String; // filnamnen
   public getAPI = this.dataService.getAPI().replace("api/", ""); // url till API
 
   constructor(public dataService: SharedDataService) { }
 
+  ngOnInit(): void { }
   /* När användaren väljer en fil skickas den upp via API och lagras i Node.js */
   async onFileSelected(event: any) {
     const file: File = event.target.files[0];

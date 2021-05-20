@@ -12,8 +12,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  /*********** GET ***********/
-
   /* hämta alla riksintressen för listan, där riksintressen har kategorier, kategorier, län, osv */
   getRiksintressenList() {
     return this.http.get<RiksintresseList[]>(this.url + "riksintressen/list");
@@ -48,8 +46,6 @@ export class ApiService {
   getFiles(id: number) {
     return this.http.get<any[]>(this.url + "files/" + id);
   }
-
-  /*********** POST ***********/
 
   /* ladda upp dokument/bilder på backend */
   async postFiles(formData: FormData) {

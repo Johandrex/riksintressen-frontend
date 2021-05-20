@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiService } from './core/services/api.service';
 
 @Component({
   selector: "app-root",
@@ -8,18 +7,8 @@ import { ApiService } from './core/services/api.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor() { }
 
-  // Initiera register från API
   ngOnInit(): void { }
-
-  listVisibility: boolean = true;
-
-  /**
-   * Function is used to show and hide the list with national interests.
-   */
-  toggleList() {
-    this.listVisibility = !this.listVisibility;
-  }
 
 }

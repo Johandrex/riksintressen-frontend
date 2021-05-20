@@ -10,15 +10,15 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 export class SidebarInfoRiksintresseComponent implements OnInit {
 
   // form kontroller för <ng-select>
-  selectKategorier = new FormControl();
+  public selectKategorier = new FormControl();
 
   constructor(public dataService: SharedDataService) { }
 
   ngOnInit(): void { }
 
   /**
- * Function to switch infoSidebarMode
- */
+   * Function to switch infoSidebarMode
+   */
   getIdOfClicked() {
     this.dataService.infoSidebarMode = this.dataService.MODE.EDIT;
   }

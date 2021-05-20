@@ -8,10 +8,10 @@ import { SharedDataService } from '../core/services/shared-data.service';
 })
 export class NavigationBarComponent implements OnInit {
 
-  buttonSearch = "sök"
-  buttonNew = "nytt"
-  buttonList = "arkiv"
-  buttonHelp = "hjälp"
+  public buttonSearch = "sök"
+  public buttonNew = "nytt"
+  public buttonList = "arkiv"
+  public buttonHelp = "hjälp"
 
   constructor(public dataService: SharedDataService) { }
 

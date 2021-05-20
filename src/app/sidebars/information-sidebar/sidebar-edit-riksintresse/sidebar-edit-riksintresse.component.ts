@@ -10,7 +10,6 @@ import { MapService } from 'src/app/core/services/map.service';
 })
 export class SidebarEditRiksintresseComponent implements OnInit {
 
-  // formuläret
   public form!: any;
 
   constructor(public dataService: SharedDataService, private map: MapService) {
