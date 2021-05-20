@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { MapService } from './map.service';
 
-import { Riksintresse, RiksintresseList, Kommun, Lan, Kulturmiljotyp } from '../classes';
+import { Riksintresse, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
 /**
  * Class with methods for executing the logic of the program.
@@ -21,9 +21,9 @@ export class SharedDataService {
   public riksintresseFiles: any = []; // ett riksintresses filer i JSON format (ENDAST BILDER)
   public riksintressePhotos: any = []; // ett riksintresses filer i JSON format (BILDER + DOCUMENT)
   public riksintresse: Riksintresse = new Riksintresse(); // ett enda riksintresse
-  public riksintressenList: RiksintresseList[] = []; // Complete list of all national interests
+  public riksintressenList: Riksintresse[] = []; // Complete list of all national interests
 
-  public listOfFilteredRiksintressen: RiksintresseList[] = []; // List of national interests filtered by input
+  public listOfFilteredRiksintressen: Riksintresse[] = []; // List of national interests filtered by input
   public listKommuner: Kommun[] = []; // register över alla kommuner
   public listLan: Lan[] = []; // register över alla län
   public listKulturmiljotyper: Kulturmiljotyp[] = []; // register över alla kategorier
@@ -99,15 +99,15 @@ export class SharedDataService {
    * Välj att visa raderade(cederade) eller ej raderade riksintressen
    * @returns A list with national interest that is continuosly updated.
    */
-  public subscribeToRiksintressenList(): RiksintresseList[] {
+  public subscribeToRiksintressenList(): Riksintresse[] {
     if (this.listContainsDeleted) {
       this.api.getRiksintressenListDeleted().subscribe((response) => {
-        this.riksintressenList = response as RiksintresseList[];
+        this.riksintressenList = response as Riksintresse[];
         this.listOfFilteredRiksintressen = this.riksintressenList;
       });
     } else {
       this.api.getRiksintressenList().subscribe((response) => {
-        this.riksintressenList = response as RiksintresseList[];
+        this.riksintressenList = response as Riksintresse[];
         this.listOfFilteredRiksintressen = this.riksintressenList;
       });
     }
