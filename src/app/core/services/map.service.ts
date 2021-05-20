@@ -30,11 +30,11 @@ export class MapService {
     public layer: any; // The layer used for all map features associated with the national interests
     public vectorSource: any; // Geoserver source used to create and edit features
 
-    // Current selected map feature (singe click)
+    // Current selected map feature (single click)
     public selectInteraction = new Select(
         {
             condition: never,
-            style: new Style({ fill: new Fill({ color: '#007496'})  })
+            style: new Style({ fill: new Fill({ color: 'rgba(201, 74, 24, 0.4)' })})
         }
     );
     public isUnableToSelectFeature: boolean = false;
@@ -75,7 +75,7 @@ export class MapService {
         this.layer = new VectorLayer({
             source: this.vectorSource,
         });
-        this.layer.setOpacity(.4);
+        this.layer.setOpacity(1);
         this.map.addLayer(this.layer); // lägg på layer på kartan
     }
 
@@ -97,7 +97,7 @@ export class MapService {
                 size: this.map.getSize(),
                 maxZoom: this.map.getView().getZoom(),
                 padding: [100, 100, 100, 100],
-                style: { strokeColor: '#007496' },
+                style: { strokeColor: 'rgba(201, 74, 24, 1)' },
             });
         }
         catch (e) {
