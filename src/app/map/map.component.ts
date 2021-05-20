@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from '../core/services/map.service';
 import { SharedDataService } from '../core/services/shared-data.service';
 
 @Component({
@@ -6,18 +7,17 @@ import { SharedDataService } from '../core/services/shared-data.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+
 export class MapComponent implements OnInit {
 
-  constructor(public dataService: SharedDataService) { }
+  constructor(private map: MapService, private dataService: SharedDataService) { }
 
   /**
-   * Vid initiering av sidan skapas kartan
+   * Vid initiering av sidan skapas kartan med hjälp av map och shared data services
    */
   ngOnInit(): void {
-
-    this.dataService.createMap();
-    this.dataService.getGeoJsonFromServer();
+    this.map.createMap();
+    this.map.getGeoJsonFromServer();
     this.dataService.onClickMap();
-
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MapService } from 'src/app/core/services/map.service';
 
 @Component({
   selector: 'app-sidebar-edit-riksintresse',
@@ -10,9 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SidebarEditRiksintresseComponent implements OnInit {
 
   // formuläret
-  form!: any;
+  public form!: any;
 
-  constructor(public dataService: SharedDataService) {
+  constructor(public dataService: SharedDataService, private map: MapService) {
     this.form = new FormGroup({
       namn: new FormControl(this.dataService.riksintresse.namn),
       beskrivning: new FormControl(this.dataService.riksintresse.beskrivning),
@@ -41,14 +42,14 @@ export class SidebarEditRiksintresseComponent implements OnInit {
    * Executes a feature edit mode when user clicks draw polygon button.
    */
   private toggleDrawPolygon: boolean = false;
-  public drawPolygon(): void {
+  public buttonDraw(): void {
     if (this.toggleDrawPolygon === false) {
       this.toggleDrawPolygon = true;
-      this.dataService.startEditMapFeature();
+      this.map.startEditMapFeature();
     }
     else {
       this.toggleDrawPolygon = false;
-      this.dataService.stopEditMapFeature();
+      this.map.stopEditMapFeature();
     }
   }
 

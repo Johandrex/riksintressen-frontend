@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../../../core/services/shared-data.service';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { MapService } from 'src/app/core/services/map.service';
 
 @Component({
   selector: 'app-sidebar-new-riksintresse',
@@ -18,7 +19,7 @@ export class SidebarNewRiksintresseComponent implements OnInit {
   // formuläret
   form: FormGroup;
 
-  constructor(public fb: FormBuilder, public dataService: SharedDataService) {
+  constructor(public fb: FormBuilder, public dataService: SharedDataService, private map: MapService) {
     this.form = new FormGroup({
       namn: new FormControl(),
       beskrivning: new FormControl(),
@@ -50,14 +51,14 @@ export class SidebarNewRiksintresseComponent implements OnInit {
    * Executes a feature creation mode when user clicks draw polygon button.
    */
   private toggleDrawPolygon: boolean = false;
-  public drawPolygon(): void {
+  public buttonDraw(): void {
     if (this.toggleDrawPolygon === false) {
       this.toggleDrawPolygon = true;
-      this.dataService.startCreateMapFeature();
+      this.map.startCreateMapFeature();
     }
     else {
       this.toggleDrawPolygon = false;
-      this.dataService.stopCreateMapFeature();
+      this.map.stopCreateMapFeature();
     }
   }
 
