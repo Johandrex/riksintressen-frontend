@@ -85,10 +85,12 @@ export class SharedDataService {
       if (response[0] != undefined) {
         this.riksintressePhotos = // att fixa
 
-          response.forEach((obj) => { // TODO: COMPLETE
+          response.forEach((obj) => { // TODO: COMPLETE THIS!!!!!!!!!!!
             let ext = obj.url.substring(obj.url.lastIndexOf('.') + 1);
-            if (ext == ".png" || ext == ".jpg")
+            if (ext == ".png" || ext == ".jpg") {
               this.riksintressePhotos.push(obj); // lägg till i array ifall det är en bild
+              console.log(obj);
+            }
           });
       }
     });

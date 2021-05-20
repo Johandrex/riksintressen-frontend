@@ -9,7 +9,7 @@
 <label class="raa-label">Beskrivning: </label>
 <p>{{this.dataService.riksintresse.beskrivning}}</p>
 
-<div *ngIf="this.dataService.riksintresse.kategorier[0] != undefined">
+<div *ngIf="this.dataService.riksintresse.kategorier.length == 0">
   <!-- dölj ifall inga kategorier finns -->
   <label class="raa-label">Kulturmiljötyper:
   </label>
