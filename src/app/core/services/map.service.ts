@@ -34,7 +34,7 @@ export class MapService {
     public selectInteraction = new Select(
         {
             condition: never,
-            style: new Style({ fill: new Fill({ color: '#009605' }) })
+            style: new Style({ fill: new Fill({ color: '#007496'})  })
         }
     );
     public isUnableToSelectFeature: boolean = false;
@@ -75,7 +75,7 @@ export class MapService {
         this.layer = new VectorLayer({
             source: this.vectorSource,
         });
-        this.layer.setOpacity(1);
+        this.layer.setOpacity(.4);
         this.map.addLayer(this.layer); // lägg på layer på kartan
     }
 
@@ -97,7 +97,7 @@ export class MapService {
                 size: this.map.getSize(),
                 maxZoom: this.map.getView().getZoom(),
                 padding: [100, 100, 100, 100],
-                style: { strokeColor: '#009605' },
+                style: { strokeColor: '#007496' },
             });
         }
         catch (e) {
