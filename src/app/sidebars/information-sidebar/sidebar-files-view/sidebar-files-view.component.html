@@ -2,14 +2,14 @@
 
 <!-- Skriver ut en lista med alla existerande filer som går att ladda ner -->
 <div class="existing-files">
-  <h2>Existerande filer</h2>
+  <p>Nedanför finns alla lister som är kopplade till det nuvarande riksintresset. För att ladda ner eller visa en fil är
+    det bara att trycka på en specifik fil.</p><br />
   <div class="one-button" *ngFor="let file of dataService.riksintresseFiles">
-    <a href="{{this.getAPI + file.url}}" target="_blank">
+    <a href="{{getStaticURL + file.url}}" target="_blank">
       <button type="button" class="raa-button raa-button-cancel">{{file.name}}</button>
     </a>
   </div>
 </div>
-
 
 <br />
 <div class="one-button">

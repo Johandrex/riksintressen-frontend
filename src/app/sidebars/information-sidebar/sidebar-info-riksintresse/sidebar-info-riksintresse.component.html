@@ -9,7 +9,7 @@
 <label class="raa-label">Beskrivning: </label>
 <p>{{this.dataService.riksintresse.beskrivning}}</p>
 
-<div *ngIf="this.dataService.riksintresse.kategorier.length == 0">
+<div *ngIf="this.dataService.riksintresse.kategorier[0] != undefined">
   <!-- dölj ifall inga kategorier finns -->
   <label class="raa-label">Kulturmiljötyper:
   </label>
@@ -48,4 +48,9 @@
 <div class="one-button">
   <button type="button" (click)="buttonViewFiles()" class="raa-button">Visa filer >></button>
   <button (click)="getIdOfClicked()" class="raa-button raa-button-confirm">Redigera</button>
+</div>
+
+<!-- Printa alla bilder kopplade till ett riksintresse -->
+<div *ngFor="let file of dataService.riksintressePhotos">
+  <img src="{{getStaticURL + file.url}}" alt="{{file.name}}" height="600">
 </div>
