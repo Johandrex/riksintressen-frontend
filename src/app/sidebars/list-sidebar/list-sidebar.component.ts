@@ -53,7 +53,7 @@ export class ListSidebarComponent implements OnInit {
    * @todo Make more abstract if possible.
    */
   public search() {
-    this.dataService.listOfFilteredRiksintressen = this.dataService.listOfFilteredRiksintressen;
+    this.dataService.listOfFilteredRiksintressen = this.dataService.riksintressenList;
     this.searchName();
     this.searchCategory();
     this.searchMunicipality();
