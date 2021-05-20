@@ -28,7 +28,6 @@ table {
 th,
 td {
   padding: 3px;
-  padding-left: 5px;
   border: 1px solid #DADADA;
 }
 
@@ -56,4 +55,22 @@ a:hover {
 .icon-sort:hover {
   color: #C94A18;
   cursor: pointer;
+}
+
+/* för skärmar mindre än 1200px i bredd */
+@media screen and (max-width: 1200px) {
+  #sidebar-left {
+    width: 40%;
+  }
+
+  #sidebar-left-drawer {
+    left: 39.9%;
+  }
+}
+
+/* skärmar mindre än 1600px */
+@media screen and (max-width: 1600px) {
+  table {
+    font-size: 0.7rem;
+  }
 }
