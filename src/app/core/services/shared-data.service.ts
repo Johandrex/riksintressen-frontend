@@ -61,8 +61,6 @@ export class SharedDataService {
     }
   }
 
-  // *********************************** Database related ***********************************
-
   /**
    * Changes the national interest found by id.
    */
@@ -158,7 +156,7 @@ export class SharedDataService {
   /**
    * Method for when the user clicks somewhere on the map.
    */
-  public onClickMap() {
+  public mapEvents() {
     this.map.map.on("click", (e: any) => {
       // Executes an arrow function for every overlaying feature clicked at
       this.map.map.forEachFeatureAtPixel(e.pixel, (feature: any, layer: any) => {

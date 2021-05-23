@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { Riksintresse, Kommun, Lan, Kulturmiljotyp } from '../classes';
 
+/**
+ * Klassen kommer åt vår REST API som är skapad i node.js, klassen hämtar och postar data
+ */
 @Injectable({
   providedIn: 'root'
 })

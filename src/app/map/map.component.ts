@@ -18,6 +18,6 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.map.createMap();
     this.map.getGeoJsonFromServer();
-    this.dataService.onClickMap();
+    this.dataService.mapEvents();
   }
 }
