@@ -29,6 +29,7 @@ export class SidebarEditRiksintresseComponent implements OnInit {
     form["id"] = this.dataService.riksintresse.id;
     form["kategorier"] = this.dataService.riksintresse.kategorier;
 
+    this.dataService.infoSidebarMode = this.dataService.MODE.INFO;
     this.dataService.updateRiksintresse(form); // uppdatera o visa informations sidebar
     console.log(form)
   }

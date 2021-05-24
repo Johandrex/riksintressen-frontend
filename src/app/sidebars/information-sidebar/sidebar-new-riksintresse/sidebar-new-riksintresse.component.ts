@@ -43,6 +43,7 @@ export class SidebarNewRiksintresseComponent implements OnInit {
     }
 
     else {
+      this.dataService.infoSidebarMode = this.dataService.MODE.INFO;
       this.dataService.newRiksintresse(form);
     }
   }
