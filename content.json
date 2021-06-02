@@ -13497,7 +13497,7 @@
       "integrity": "sha512-DDh2Ab+A/B+9mJyajPjHFPWfYU1H+pdun4wnnk0OcQTNjem1XQSZ2CDW+rfZEUDjv5M19SBqAkjZi0x5wuB5Qw==",
       "requires": {
         "tslib": "^2.0.0"
-  "sngpk": 21,
-  "xobvq": 50,
+      }
+    }
   }
 }

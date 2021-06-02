@@ -204,7 +204,9 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme, {
+      negative
+    }) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -374,7 +376,10 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [
-    plugin(({ addUtilities, variants }) => {
+    plugin(({
+      addUtilities,
+      variants
+    }) => {
       const outlineTransparent = {
         '.outline-transparent': {
           outline: '2px dotted transparent',
@@ -382,6 +387,5 @@ module.exports = {
       };
       addUtilities(outlineTransparent, variants('outlineTransparent'));
     }),
-  ],
-console.log("kshdn")
-console.log("vtkuj")
+  ]
+}
